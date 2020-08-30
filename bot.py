@@ -40,6 +40,7 @@ async def on_member_join(member):
 async def dmsend(member, *, note):
 	await member.create_dm()
 	await member.dm_channel.send(note)
+	await ctx.send("DM sent successfully")
 
 @client.command(aliases=['Pop', 'POP'])
 async def pop(ctx):
