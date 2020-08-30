@@ -96,7 +96,7 @@ async def timer(ctx, *, Tm):
 		return
 
 
-@client.command(aliases=['clean'])
+@client.command(aliases=['Clear' , 'CLEAR'])
 async def clear(ctx, amount=5):
 	await ctx.channel.purge(limit=amount + 1)
 	print(f'{amount} messages deleted')
