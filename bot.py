@@ -3,6 +3,10 @@ from discord.ext import commands, tasks
 import random
 from itertools import cycle
 import time
+import json
+import os
+import shutil
+import asyncio
 from discord.utils import get
 
 client = commands.Bot(command_prefix="")
