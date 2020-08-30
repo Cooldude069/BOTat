@@ -37,7 +37,7 @@ async def on_member_join(member):
     await member.dm_channel.send(f'Hi {member.name}, welcome to The server!')
 
 @client.command()
-async def dmsend(member, *, note):
+async def dmsend(member:discord.Member, *, note):
 	await member.create_dm()
 	await member.dm_channel.send(note)
 	await ctx.send("DM sent successfully")
