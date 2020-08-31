@@ -98,11 +98,12 @@ async def timer(ctx, *, Tm):
 
 @client.command(aliases=['Clear' , 'CLEAR'])
 async def clear(ctx, amount=5):
-	await ctx.channel.purge(limit=amount + 1)
-	print(f'{amount} messages deleted')
-	await ctx.send(f"`{amount}` messages deleted")
-	time.sleep(2)
-	await ctx.channel.purge(limit = 1)
+	if ctx.message.author.guild_permissions.manage_messages:
+		await ctx.channel.purge(limit=amount + 1)
+		print(f'{amount} messages deleted')
+		await ctx.send(f"`{amount}` messages deleted")
+		time.sleep(2)
+		await ctx.channel.purge(limit = 1)
 
 @client.command(aliases=['ssd', 'SSD', 'Ssd', 'Dilip', 'DILIP'])
 async def dilip(ctx):
@@ -164,7 +165,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 
 @client.command(aliases=['F'])
 async def f(ctx):
-	await ctx.send(f'You have paid your respects')
+	await ctx.send(f'{ctx.message.author.username} has paid their respects')
 
 @tasks.loop(minutes=15)
 async def change_status():
