@@ -36,13 +36,11 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 		await ctx.send(f"{role.name} has been removed from {member.name} by {ctx.message.author.name}")
 		
 @client.command(pass_context=True)
-global ROLE
 async def addmuterole(ctx, *, ROLE:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await ctx.send(f"{ROLE.name} has been assigned as the mute role")
 		
 @client.command(pass_context=True)
-global GENERAL
 async def addgenrole(ctx, *, GENERAL:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await ctx.send(f"{GENERAL.name} has been assigned as the general role")
