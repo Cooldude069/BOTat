@@ -11,7 +11,7 @@ from discord.utils import get
 
 client = commands.Bot(command_prefix="")
 client.remove_command('help')
-status = cycle(['Fortnite on Android', 'Fortnite on Iphone'])
+status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice'])
 global g
 g = 0
 
