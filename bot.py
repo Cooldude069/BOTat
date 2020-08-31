@@ -48,7 +48,7 @@ async def dmsend(ctx, member:discord.Member, *, note):
 @client.command()
 async def addrole(ctx, member:discord.Member, * , role):
 	if ctx.message.author.guild_permissions.manage_roles:
-		await add_roles(role, atomic=True)
+		await member.add_roles(role, atomic=True)
 	else:
 		await ctx.send("Your are not authorised to use this command")
 
