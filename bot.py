@@ -19,11 +19,6 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
-	async def runtime_background_task(role = discord.utils.get(server.roles, name="Moderator")):
-   		while not client.is_closed:
-			await client.edit_role(server="723435494578323476", role="Moderator", colour=discord.Colour(0xff0000))
-			await asyncio.sleep(5)
-			await client.edit_role(server="723435494578323476", role="Moderator", colour=discord.Colour(0xffff00))
 	
 @client.command(pass_context=True)
 async def say(ctx, channel:discord.TextChannel , *, message):
