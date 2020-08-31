@@ -22,6 +22,12 @@ async def on_ready():
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
 async def hello(ctx):
 	await ctx.send("Hi there!")
+	
+@client.command(pass_context=True)
+async def addrole(ctx, member:discord.Member , *, rolename):
+	if ctx.message.author.guild_permissions.manage_roles:
+		role = get(member.guild.roles , name=rolename)
+		await ctx.add_roles(member , role)
 
 @client.command(aliases=['AJO','Ajo'])
 async def ajo(ctx):
