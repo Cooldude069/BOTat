@@ -10,6 +10,7 @@ import asyncio
 from discord.utils import get
 
 client = commands.Bot(command_prefix="")
+client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone'])
 global g
 g = 0
@@ -18,6 +19,13 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+
+@client.command(aliases=['HELP', 'Help'])
+async def help(ctx):
+	member = ctx.message.author
+	await member.create_dm()
+	await ctx.send("Let me help you via DM")
+    	await member.dm_channel.send("`i have no prefix \n addrole/removerole {user} {role name}-> adds of removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr`")
 
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
 async def hello(ctx):
