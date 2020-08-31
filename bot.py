@@ -28,9 +28,9 @@ async def runtime_background_task():
 	role = discord.utils.get(server.roles, name="Moderator")
 	
 	while not bot.is_closed:
-    	i = (i + 1) % 3
-    	await client.edit_role(server=server, role=role, colour=discord.Colour(colours[i]))
-	await asyncio.sleep(5)
+		i = (i + 1) % 3
+		await client.edit_role(server=server, role=role, colour=discord.Colour(colours[i]))
+		await asyncio.sleep(5)
 
 client.loop.create_task(runtime_background_task())
 	
