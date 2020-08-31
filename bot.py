@@ -38,7 +38,7 @@ async def on_member_join(member):
 
 @client.command(aliases = ['Dmsend' , 'DMSEND'])
 async def dmsend(ctx, member:discord.Member, *, note):
-	if ctx.message.author.guild_permissions.manage_members:
+	if ctx.message.author.guild_permissions.manage_messages:
 		await member.create_dm()
 		await member.dm_channel.send(note)
 		await ctx.send("DM sent successfully")
@@ -51,7 +51,7 @@ async def pop(ctx):
      
 @client.command()
 async def unban(ctx, *, member):
-	if ctx.message.author.guild_permissions.manage_members:
+	if ctx.message.author.guild_permissions.ban_members:
 		banned_users = await ctx.guild.bans()
 		member_name, member_discriminator = member.split('#')
 
@@ -163,7 +163,7 @@ async def gnumber(ctx, gnum):
 
 @client.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
-	if ctx.message.author.guild_permissions.manage_members:
+	if ctx.message.author.guild_permissions.kick_members:
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
 		embed  = discord.Embed(title=f"{ctx.author.name} has kicked {member.name} , description = reason")
@@ -173,7 +173,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 
 @client.command()
 async def ban(ctx, member : discord.Member, *, reason=None):
-	if ctx.message.author.guild_permissions.manage_members:
+	if ctx.message.author.guild_permissions.ban_members:
 		await member.ban(reason=reason)
 		await ctx.send(f'Banned {member.mention}')
 	else:
