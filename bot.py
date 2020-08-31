@@ -23,6 +23,7 @@ async def on_ready():
 @client.command(pass_context=True)
 async def say(ctx, channel:discord.TextChannel , *, message):
 	await channel.send(message)
+	await ctx.send(f"{ctx.message.author.mention} sending message.....")
 
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
