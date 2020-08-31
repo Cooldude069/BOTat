@@ -13,8 +13,6 @@ client = commands.Bot(command_prefix="")
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone'])
 global g
 g = 0
-ROLE = 'Muted'
-GENERAL = 'Members'
 
 @client.event
 async def on_ready():
@@ -38,7 +36,19 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 		await ctx.send(f"{role.name} has been removed from {member.name} by {ctx.message.author.name}")
 		
 @client.command(pass_context=True)
-async def mute(ctx, member:discord.Member, ROLE:discord.Role, GENERAL:discord.Role):
+global ROLE
+async def addmuterole(ctx, *, ROLE:discord.Role):
+	if ctx.message.author.guild_permissions.manage_roles:
+		await ctx.send(f"{ROLE.name} has been assigned as the mute role")
+		
+@client.command(pass_context=True)
+global GENERAL
+async def addgenrole(ctx, *, GENERAL:discord.Role):
+	if ctx.message.author.guild_permissions.manage_roles:
+		await ctx.send(f"{GENERAL.name} has been assigned as the general role")
+		
+@client.command(pass_context=True)
+async def mute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.remove_roles(GENERAL)
 		await member.add_roles(ROLE)
