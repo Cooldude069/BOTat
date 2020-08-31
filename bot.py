@@ -46,7 +46,7 @@ async def mute(ctx, member:discord.Member):
 		await ctx.send(f"{member.name} has been muted by {ctx.message.author.name}")
 	
 @client.command(pass_context=True)
-async def unmute(ctx, member:discord.Member, ROLE:discord.Role, GENERAL:discord.Role):
+async def unmute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
 		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 		Grole = discord.utils.get(member.guild.roles, name = "Members")
