@@ -38,9 +38,12 @@ async def on_member_join(member):
 
 @client.command(aliases = ['Dmsend' , 'DMSEND'])
 async def dmsend(ctx, member:discord.Member, *, note):
-	await member.create_dm()
-	await member.dm_channel.send(note)
-	await ctx.send("DM sent successfully")
+	if ctx.message.author.guild_permissions.manage_members:
+		await member.create_dm()
+		await member.dm_channel.send(note)
+		await ctx.send("DM sent successfully")
+	else:
+		ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['Pop', 'POP'])
 async def pop(ctx):
@@ -48,16 +51,19 @@ async def pop(ctx):
      
 @client.command()
 async def unban(ctx, *, member):
-	banned_users = await ctx.guild.bans()
-	member_name, member_discriminator = member.split('#')
+	if ctx.message.author.guild_permissions.manage_members:
+		banned_users = await ctx.guild.bans()
+		member_name, member_discriminator = member.split('#')
 
-	for ban_entry in banned_users:
-		user = ban_entry.user
+		for ban_entry in banned_users:
+			user = ban_entry.user
 
-		if (user.name, user.discriminator) == (member_name, member_discriminator):
-			await ctx.guild.unban(user)
-			await ctx.send(f'Unbanned {user.mention}')
-			return
+			if (user.name, user.discriminator) == (member_name, member_discriminator):
+				await ctx.guild.unban(user)
+				await ctx.send(f'Unbanned {user.mention}')
+				return
+	else:
+		ctx.send("You are not authorized to use this command")
 
 @client.command()
 async def ping(ctx):
@@ -157,13 +163,21 @@ async def gnumber(ctx, gnum):
 
 @client.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
-	await member.kick(reason=reason)
-	await ctx.send(f'Kicked {member.mention}')
+	if ctx.message.author.guild_permissions.manage_members:
+		await member.kick(reason=reason)
+		await ctx.send(f'Kicked {member.mention}')
+		embed  = discord.Embed(title=f"{ctx.author.name} has kicked {member.name} , description = reason")
+		await channel.send(embed = embed)
+	else:
+		ctx.send("You are not authorized to use this command")
 
 @client.command()
 async def ban(ctx, member : discord.Member, *, reason=None):
-	await member.ban(reason=reason)
-	await ctx.send(f'Banned {member.mention}')
+	if ctx.message.author.guild_permissions.manage_members:
+		await member.ban(reason=reason)
+		await ctx.send(f'Banned {member.mention}')
+	else:
+		ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['F'])
 async def f(ctx):
