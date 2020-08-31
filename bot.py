@@ -167,7 +167,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
 		embed  = discord.Embed(title=f"{ctx.author.name} has kicked {member.name} , description = reason")
-		await channel.send(embed = embed)
+		await ctx.send(embed = embed)
 	else:
 		ctx.send("You are not authorized to use this command")
 
