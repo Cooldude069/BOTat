@@ -26,6 +26,10 @@ async def hello(ctx):
 @client.command(aliases=['AJO','Ajo'])
 async def ajo(ctx):
 	await ctx.send("BENJENE!!")
+	
+@client.command()
+async def pin(*, reason=None):
+	await pin()
 
 @client.command(aliases=["nice", "Noice", "Nice"])
 async def noice(ctx):
