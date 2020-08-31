@@ -60,8 +60,7 @@ async def unban(ctx, *, member):
 
 			if (user.name, user.discriminator) == (member_name, member_discriminator):
 				await ctx.guild.unban(user)
-				embed  = discord.Embed(title=f"{ctx.author.name} has unbanned {member.name}", description = reason)
-				await ctx.send(embed = embed)
+				await ctx.send(f'Unbanned {user.mention}')
 				return
 	else:
 		ctx.send("You are not authorized to use this command")
@@ -166,8 +165,7 @@ async def gnumber(ctx, gnum):
 async def kick(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.kick_members:
 		await member.kick(reason=reason)
-		embed  = discord.Embed(title=f"{ctx.author.name} has kicked {member.name}", description = reason)
-		await ctx.send(embed = embed)
+		await ctx.send(f'Kicked {member.mention}')
 	else:
 		ctx.send("You are not authorized to use this command")
 
@@ -175,8 +173,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 async def ban(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.ban_members:
 		await member.ban(reason=reason)
-		embed  = discord.Embed(title=f"{ctx.author.name} has banned {member.name}", description = reason)
-		await ctx.send(embed = embed)
+		await ctx.send(f'Banned {member.mention}')
 	else:
 		ctx.send("You are not authorized to use this command")
 
