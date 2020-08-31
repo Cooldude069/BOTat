@@ -19,6 +19,10 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+@client.command(pass_context=True)
+async def say(ctx, channel:discord.TextChannel , *, message):
+	await channel.send(message)
 
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
