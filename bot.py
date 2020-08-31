@@ -9,7 +9,7 @@ import shutil
 import asyncio
 from discord.utils import get
 
-client = commands.Bot(command_prefix="jarvis","Jarvis")
+client = commands.Bot(command_prefix="jarvis")
 client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice'])
 global g
