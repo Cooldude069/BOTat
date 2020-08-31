@@ -20,7 +20,7 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Say', 'SAY'])
 async def say(ctx, channel:discord.TextChannel , *, message):
 	if ctx.message.author.guild_permissions.administrator:
 		await channel.send(message)
@@ -36,20 +36,20 @@ async def help(ctx):
 async def hello(ctx):
 	await ctx.send("Hi there!")
 	
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Addrole', 'ADDROLE'])
 async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.name} by {ctx.message.author.name}")
 		
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.name} by {ctx.message.author.name}")
 		
 		
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Mute', 'MUTE'])
 async def mute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
 		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
@@ -58,7 +58,7 @@ async def mute(ctx, member:discord.Member):
 		await member.add_roles(Mrole)
 		await ctx.send(f"{member.name} has been muted by {ctx.message.author.name}")
 	
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Unmute', 'UNMUTE'])
 async def unmute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
 		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
@@ -94,7 +94,7 @@ async def dmsend(ctx, member:discord.Member, *, note):
 async def pop(ctx):
 	await ctx.send("||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||\n||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||||pop||")
      
-@client.command()
+@client.command(aliases=['Unban', 'UNBAN'])
 async def unban(ctx, *, member):
 	if ctx.message.author.guild_permissions.ban_members:
 		banned_users = await ctx.guild.bans()
@@ -118,7 +118,7 @@ async def ping(ctx):
 async def oof(ctx):
 	await ctx.send("OOF!")
 
-@client.command()
+@client.command(aliases=['Timer', 'TIMER'])
 async def timer(ctx, *, Tm):
 	if Tm.endswith('r'):
 		tmr, un = Tm.split('h')
@@ -174,7 +174,7 @@ async def popgame(ctx, length=5):
 			await ctx.send("||pop ||")
 		r = r + 1
 
-@client.command()
+@client.command(aliases=['Guess', 'GUESS'])
 async def guess(ctx):
 	global g
 	g = 4	
@@ -182,7 +182,7 @@ async def guess(ctx):
 	no = random.randint(0, 10)
 	await ctx.send("```Guess The number game created. Enter your number using the command, gnumber (number). You get three chances[Note: The number should lie between 0 and 10]```")
 
-@client.command()
+@client.command(aliases=['Gnumber', 'GNUMBER'])
 async def gnumber(ctx, gnum):
 	global g
 	if g > 2:
@@ -206,7 +206,7 @@ async def gnumber(ctx, gnum):
 		await ctx.send("```Guess the number game not created```")
 
 
-@client.command()
+@client.command(aliases=['Kick', 'KICK'])
 async def kick(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.kick_members:
 		await member.kick(reason=reason)
@@ -214,7 +214,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 	else:
 		ctx.send("You are not authorized to use this command")
 
-@client.command()
+@client.command(aliases=['Ban', 'BAN'])
 async def ban(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.ban_members:
 		await member.ban(reason=reason)
