@@ -34,7 +34,7 @@ async def help(ctx):
 	
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
 async def hello(ctx):
-	await ctx.send("Hi there!")
+	await ctx.send("Hello Sir!")
 	
 @client.command(pass_context=True, aliases=['Addrole', 'ADDROLE'])
 async def addrole(ctx, member:discord.Member , *, role:discord.Role):
