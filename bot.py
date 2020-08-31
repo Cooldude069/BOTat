@@ -104,6 +104,8 @@ async def clear(ctx, amount=5):
 		await ctx.send(f"`{amount}` messages deleted")
 		time.sleep(2)
 		await ctx.channel.purge(limit = 1)
+	else:
+		await ctx.send("You cannot use this command")
 
 @client.command(aliases=['ssd', 'SSD', 'Ssd', 'Dilip', 'DILIP'])
 async def dilip(ctx):
