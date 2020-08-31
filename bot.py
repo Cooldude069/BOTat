@@ -44,13 +44,7 @@ async def dmsend(ctx, member:discord.Member, *, note):
 		await ctx.send("DM sent successfully")
 	else:
 		ctx.send("You are not authorized to use this command")
-		
-@client.command()
-async def addrole(ctx, member:discord.Member, * , role):
-	if ctx.message.author.guild_permissions.manage_roles:
-		await member.add_roles(role, atomic=True)
-	else:
-		await ctx.send("Your are not authorised to use this command")
+	
 
 @client.command(aliases=['Pop', 'POP'])
 async def pop(ctx):
