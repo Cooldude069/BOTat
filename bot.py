@@ -19,7 +19,7 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
-	return 
+	
 async def runtime_background_task():
 	colours = [0xFF0000, 0x00FF00, 0x0000FF0]
 	i = 0
@@ -27,7 +27,7 @@ async def runtime_background_task():
 	server = client.get_server("723435494578323476")
 	role = discord.utils.get(server.roles, name="Moderator")
 	
-	while not bot.is_closed:
+	while not client.is_closed:
 		i = (i + 1) % 3
 		await client.edit_role(server=server, role=role, colour=discord.Colour(colours[i]))
 		await asyncio.sleep(5)
