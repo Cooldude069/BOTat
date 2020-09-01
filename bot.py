@@ -9,6 +9,8 @@ import shutil
 import asyncio
 from discord.utils import get
 
+os.chdir("C:\\Users\\91982\\Desktop\\BOTat")
+
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice'])
@@ -19,6 +21,57 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+@client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
+async def ty(ctx , member:discord.Member):
+	await open_account(member)
+
+	users = await get_bank_data()
+	user = member
+
+	users[str(user.id)]["wallet"] += 1
+
+	with open("thank.json", "w") as f:
+		json.dump(users,f)
+
+
+
+@client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
+async def rep(ctx, member:discord.Member):
+	await open_account(member)
+	user = member
+	users = await get_bank_data()
+
+	wallet_amt = users[str(user.id)]["wallet"]
+
+	em = discord.Embed(title = f"{user.display_name}'s reputation ",color = discord.Color.red())
+	em.add_field(name = "Helps", value = wallet_amt)
+	await ctx.send(embed = em)
+
+
+
+async def open_account(user):
+
+	users = await get_bank_data()
+
+	with open("thank.json", "r") as f:
+		users = json.load(f)
+
+	if str(user.id) in users:
+		return False
+	else:
+		users[str(user.id)] = {}
+		users[str(user.id)]["wallet"] = 0
+
+	with open("thank.json", "w") as f:
+		json.dump(users,f)
+	return True
+
+async def get_bank_data():
+	with open("thank.json", "r") as f:
+		users = json.load(f)
+
+	return users
 	
 @client.command(pass_context=True, aliases=['Say', 'SAY'])
 async def say(ctx, channel:discord.TextChannel , *, message):
