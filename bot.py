@@ -224,7 +224,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 
 @client.command(aliases=['F'])
 async def f(ctx):
-	await ctx.send(f'{ctx.message.author.name} has paid their respects')
+	await ctx.send(f'{ctx.message.author.display_name} has paid their respects')
 
 @tasks.loop(minutes=15)
 async def change_status():
