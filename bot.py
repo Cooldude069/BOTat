@@ -28,18 +28,21 @@ async def say(ctx, channel:discord.TextChannel , *, message):
 		
 @client.command()
 async def reboot(ctx):
-	print(f'{ctx.message.author.display_name} initialised reboot')
-	ctx.send(f'{ctx.message.author.display_name} initialised reboot')
-	ctx.send("Test complete. Preparing to power down and begin diagnostics...")
-	time.sleep(1)
-	ctx.send("Verifying command")
-	time.sleep(1)
-	ctx.send("Clearing all data...")
-	ctx.send("shutting down...")
-	ctx.send("Turning on..")
-	time.sleep(1)
-	ctx.send("Reboot finished...")
-	ctx.send("Good to see you again sir!")
+	if ctx.message.author.guild_permissions.manage_roles:
+		print(f'{ctx.message.author.display_name} initialised reboot')
+		await ctx.send(f'{ctx.message.author.display_name} initialised reboot')
+		await ctx.send("Test complete. Preparing to power down and begin diagnostics...")
+		time.sleep(1)
+		await ctx.send("Verifying command")
+		time.sleep(1)
+		await ctx.send("Clearing all data...")
+		await ctx.send("shutting down...")
+		await ctx.send("Turning on..")
+		time.sleep(1)
+		await ctx.send("Reboot finished...")
+		await ctx.send("Good to see you again sir!")
+	else:
+		await ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
@@ -56,12 +59,16 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
+	else:
+		await ctx.send("You are not authorized to use this command")
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
+	else:
+		await ctx.send("You are not authorized to use this command")
 		
 		
 @client.command(pass_context=True, aliases=['Mute', 'MUTE'])
@@ -72,6 +79,8 @@ async def mute(ctx, member:discord.Member):
 		await member.remove_roles(Grole)
 		await member.add_roles(Mrole)
 		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+	else:
+		await ctx.send("You are not authorized to use this command")
 	
 @client.command(pass_context=True, aliases=['Unmute', 'UNMUTE'])
 async def unmute(ctx, member:discord.Member):
@@ -81,6 +90,8 @@ async def unmute(ctx, member:discord.Member):
 		await member.remove_roles(Mrole)
 		await member.add_roles(Grole)
 		await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
+	else:
+		await ctx.send("You are not authorized to use this command")
 		
 @client.command(aliases=['AJO','Ajo'])
 async def ajo(ctx):
@@ -102,7 +113,7 @@ async def dmsend(ctx, member:discord.Member, *, note):
 		await member.dm_channel.send(note)
 		await ctx.send("DM sent successfully")
 	else:
-		ctx.send("You are not authorized to use this command")
+		await ctx.send("You are not authorized to use this command")
 	
 
 @client.command(aliases=['Pop', 'POP'])
@@ -123,7 +134,7 @@ async def unban(ctx, *, member):
 				await ctx.send(f'Unbanned {user.mention}')
 				return
 	else:
-		ctx.send("You are not authorized to use this command")
+		await ctx.send("You are not authorized to use this command")
 
 @client.command()
 async def ping(ctx):
@@ -171,7 +182,7 @@ async def clear(ctx, amount=5):
 		time.sleep(2)
 		await ctx.channel.purge(limit = 1)
 	else:
-		await ctx.send("You cannot use this command")
+		await ctx.send("You are not authorized to use this command")
 
 
 @client.command(aliases=['Guess', 'GUESS'])
@@ -212,7 +223,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
 	else:
-		ctx.send("You are not authorized to use this command")
+		await ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['Ban', 'BAN'])
 async def ban(ctx, member : discord.Member, *, reason=None):
@@ -220,7 +231,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 		await member.ban(reason=reason)
 		await ctx.send(f'Banned {member.mention}')
 	else:
-		ctx.send("You are not authorized to use this command")
+		await ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['F'])
 async def f(ctx):
