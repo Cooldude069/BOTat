@@ -26,7 +26,7 @@ async def say(ctx, channel:discord.TextChannel , *, message):
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 		
-@client.command()
+@client.command(aliases=['Reboot', 'REBOOT', 'restart', 'Restart', 'RESTART'])
 async def reboot(ctx):
 	if ctx.message.author.guild_permissions.manage_roles:
 		print(f'{ctx.message.author.display_name} initialised reboot')
