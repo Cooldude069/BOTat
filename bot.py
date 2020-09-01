@@ -25,6 +25,21 @@ async def say(ctx, channel:discord.TextChannel , *, message):
 	if ctx.message.author.guild_permissions.administrator:
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
+		
+@client.command()
+async def reboot(ctx):
+	print(f'{ctx.message.author.display_name} initialised reboot')
+	ctx.send(f'{ctx.message.author.display_name} initialised reboot')
+	ctx.send("Test complete. Preparing to power down and begin diagnostics...")
+	time.sleep(1)
+	ctx.send("Verifying command")
+	time.sleep(1)
+	ctx.send("Clearing all data...")
+	ctx.send("shutting down...")
+	ctx.send("Turning on..")
+	time.sleep(1)
+	ctx.send("Reboot finished...")
+	ctx.send("Good to see you again sir!")
 
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
