@@ -40,13 +40,13 @@ async def hello(ctx):
 async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.add_roles(role)
-		await ctx.send(f"{role.name} has been added to {member.name} by {ctx.message.author.name}")
+		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.manage_roles:
 		await member.remove_roles(role)
-		await ctx.send(f"{role.name} has been removed from {member.name} by {ctx.message.author.name}")
+		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
 		
 		
 @client.command(pass_context=True, aliases=['Mute', 'MUTE'])
@@ -56,7 +56,7 @@ async def mute(ctx, member:discord.Member):
 		Grole = discord.utils.get(member.guild.roles, name = "Members")
 		await member.remove_roles(Grole)
 		await member.add_roles(Mrole)
-		await ctx.send(f"{member.name} has been muted by {ctx.message.author.name}")
+		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
 	
 @client.command(pass_context=True, aliases=['Unmute', 'UNMUTE'])
 async def unmute(ctx, member:discord.Member):
@@ -65,7 +65,7 @@ async def unmute(ctx, member:discord.Member):
 		Grole = discord.utils.get(member.guild.roles, name = "Members")
 		await member.remove_roles(Mrole)
 		await member.add_roles(Grole)
-		await ctx.send(f"{member.name} has been unmuted by {ctx.message.author.name}")
+		await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
 		
 @client.command(aliases=['AJO','Ajo'])
 async def ajo(ctx):
@@ -78,7 +78,7 @@ async def noice(ctx):
 @client.event
 async def on_member_join(member):
     await member.create_dm()
-    await member.dm_channel.send(f'Hi {member.name}, welcome to The server!')
+    await member.dm_channel.send(f'Hi {member.display_name}, welcome to The server!')
 
 @client.command(aliases = ['Dmsend' , 'DMSEND'])
 async def dmsend(ctx, member:discord.Member, *, note):
