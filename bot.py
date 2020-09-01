@@ -9,7 +9,7 @@ import shutil
 import asyncio
 from discord.utils import get
 
-os.chdir("C:\\Users\\91982\\Desktop\\BOTat")
+os.chdir("C:\Users\91982\Desktop\BOTat")
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
