@@ -9,7 +9,7 @@ import shutil
 import asyncio
 from discord.utils import get
 
-os.chdir("C:\Users\91982\Desktop\BOTat")
+os.chdir("C:/Users/91982/Desktop/BOTat")
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -33,8 +33,8 @@ async def ty(ctx , member:discord.Member):
 
 	with open("thank.json", "w") as f:
 		json.dump(users,f)
-
-
+		
+	await ctx.send(f"Added +1 rep to {member.display_name}")
 
 @client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
 async def rep(ctx, member:discord.Member):
