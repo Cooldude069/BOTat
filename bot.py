@@ -158,21 +158,6 @@ async def clear(ctx, amount=5):
 	else:
 		await ctx.send("You cannot use this command")
 
-@client.command(aliases=['ssd', 'SSD', 'Ssd', 'Dilip', 'DILIP'])
-async def dilip(ctx):
-	await ctx.send("Fodo!!")
-
-@client.command()
-async def popgame(ctx, length=5):
-	len = int(length)
-	row = random.randint(0, len - 1)
-	r = 0
-	while r < len:
-		if r == row:
-			await ctx.send("||POP||")
-		else:
-			await ctx.send("||pop ||")
-		r = r + 1
 
 @client.command(aliases=['Guess', 'GUESS'])
 async def guess(ctx):
