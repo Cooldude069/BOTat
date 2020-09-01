@@ -9,8 +9,6 @@ import shutil
 import asyncio
 from discord.utils import get
 
-os.chdir("C:\\Users\\91982\\Documents\\GitHub\\BOTat\\thank.json")
-
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice'])
