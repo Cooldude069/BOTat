@@ -47,18 +47,32 @@ async def rep(ctx, member:discord.Member):
 	em.add_field(name = "Helps", value = wallet_amt)
 	await ctx.send(embed = em)
 
-@client.command()
-async def rank(ctx):
-	users = await get_bank_data()
-	users.sort(key=lambda x: x[1])
-	j = 2
-	for peg in users:
-		while j > 0:
-			wallet_amt = peg[str(user.id)]["wallet"]
-			em = discord.Embed(title = "Most Helped",color = discord.Color.red())
-			em.add_field(name = f"{peg.id}", value = wallet_amt)
-			await ctx.send(embed = em)
-			j = j - 1
+@client.command(aliases = ["lb", "Leaderboard", "LB", "LEADERBOARD", "LB"])
+async def leaderboard(ctx,x = 1):
+    users = await get_bank_data()
+    leader_board = {}
+    total = []
+    for user in users:
+        name = int(user)
+        total_amount = users[user]["wallet"]
+        leader_board[total_amount] = name
+        total.append(total_amount)
+
+    total = sorted(total,reverse=True)    
+
+    em = discord.Embed(title = f"Top {x} Most helped people" , description = "This is decided on the basis of number of thanks given to the user",color = discord.Color(0xfa43ee))
+    index = 1
+    for amt in total:
+        id_ = leader_board[amt]
+        member = client.get_user(id_)
+        name = member.name
+        em.add_field(name = f"{index}. {name}" , value = f"{amt}",  inline = False)
+        if index == x:
+            break
+        else:
+            index += 1
+
+    await ctx.send(embed = em)
 		
 
 async def open_account(user):
