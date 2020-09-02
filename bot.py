@@ -22,7 +22,7 @@ async def on_ready():
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
-	Channel = discord.utils.get(member.guild.roles, name = "l🔔l-staff-notes")
+	Channel = discord.utils.get(ctx.message.author.guild.channels, name = "l🔔l-staff-notes")
 	offe  = discord.Embed(title = f"{complain}" , color = discord.Color.blue())
 	offe.add_field(name = f"by {ctx.message.author.display_name}" ,inline = False)
 	
