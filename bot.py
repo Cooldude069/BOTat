@@ -49,6 +49,7 @@ async def rep(ctx, member:discord.Member):
 
 @client.command()
 async def rank(ctx):
+	users = await get_bank_data()
 	users.sort(key=lambda x: x[1])
 	j = 2
 	for peg in users:
