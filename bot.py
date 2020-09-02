@@ -86,12 +86,12 @@ async def leaderboard(ctx,x = 1):
 
     total = sorted(total,reverse=True)    
 
-    em = discord.Embed(title = f"Most helped person" , description = "This is decided on the basis of number of thanks given to the user",color = discord.Color(0xfa43ee))
+    em = discord.Embed(title = f"Most helpful person" , description = "This is decided on the basis of number of thanks given to the user",color = discord.Color(0xfa43ee))
     index = 1
     for amt in total:
         id_ = leader_board[amt]
         member = client.get_user(id_)
-        name = member.name
+        name = member.display_name
         em.add_field(name = f"**{name}**" , value = f"Helps -> {amt}",  inline = False)
         if index == x:
             break
