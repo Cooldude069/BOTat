@@ -20,10 +20,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command()
+@client.command(aliases=['Handjob', "HANDJOB"])
 async def handjob(ctx):
 	if ctx.message.author.guild_permissions.administrator:
 		await ctx.send("8==:fist:==D:sweat_drops:")
+	else:
+		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
 async def ty(ctx , member:discord.Member):
