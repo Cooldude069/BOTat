@@ -20,6 +20,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
+async def offence(ctx, * ,complain):
+	Channel = discord.utils.get(member.guild.roles, name = "l🔔l-staff-notes")
+	offe  = discord.Embed(title = f"{complain}" , color = discord.Color.blue())
+	offe.add_field(name = f"by {ctx.message.author.display_name}" ,inline = False)
+	
 @client.command(aliases=['Handjob', "HANDJOB"])
 async def handjob(ctx):
 	if ctx.message.author.guild_permissions.administrator:
