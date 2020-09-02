@@ -8,8 +8,6 @@ import os
 import shutil
 import asyncio
 from discord.utils import get
-from tkinter import *
-import math
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -21,185 +19,7 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
-	
-@client.command(aliases=['calcy','Calcy'])
-async def calculator(ctx):
-	root = Tk()
-	root.title("Simple Calculator")
 
-	e = Entry(root, width=40, borderwidth=7)
-	e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
-
-
-	def button_click(number):
-		#e.delete(0, END)
-		current = e.get()
-		e.delete(0, END)
-		e.insert(0, str(current) + str(number))
-
-
-	def button_clear():
-		e.delete(0, END)
-
-
-	def button_add():
-		global fn
-		global f_num
-		first_add = e.get()
-		f_num = int(first_add)
-		e.delete(0, END)
-		fn = 1
-
-	def button_sub():
-		global fn
-		global f_num
-		first_sub = e.get()
-		f_num = int(first_sub)
-		e.delete(0, END)
-		fn = 2
-
-	def button_multiply():
-		global fn
-		global f_num
-		first_mult = e.get()
-		f_num = int(first_mult)
-		e.delete(0, END)
-		fn = 3
-
-	def button_divide(): 
-		global fn
-		global f_num
-		first_div = e.get()
-		f_num = int(first_div)
-		e.delete(0, END)
-		fn = 4
-
-	def button_sqrt():
-		global fn
-		global f_num
-		first_sqrt = e.get()
-		f_num = int(first_sqrt)
-		e.delete(0, END)
-		e.insert(0, pow(f_num,1.0/2))
-	def button_cbrt():
-		global fn
-		global f_num
-		first_cbrt = e.get()
-		f_num = int(first_cbrt)
-		e.delete(0, END)
-		e.insert(0, pow(f_num,1.0/3))
-
-	def button_tan():
-		global fn
-		global f_num
-		first_tan = e.get()
-		f_num = int(first_tan)
-		e.delete(0, END)
-		angle = math.pi * f_num / 180
-		e.insert(0, math.tan(angle))
-
-	def button_sine():
-		global fn
-		global f_num
-		first_sine = e.get()
-		f_num = int(first_sine)
-		e.delete(0, END)
-		angle = math.pi * f_num / 180
-		e.insert(0, math.sin(angle))
-
-	def button_cos():
-		global fn
-		global f_num
-		first_cos = e.get()
-		f_num = int(first_cos)
-		e.delete(0, END)
-		angle = math.pi * f_num / 180
-		e.insert(0, math.cos(angle))
-
-	def button_log():
-		global fn
-		global f_num
-		first_log = e.get()
-		f_num = int(first_log)
-		e.delete(0, END)
-		e.insert(0, math.log(f_num))
-
-
-	def button_equal():
-		if(fn == 1):
-			second_number = e.get()
-			e.delete(0, END)
-			e.insert(0, f_num + int(second_number))
-		elif(fn == 4):
-			second_number = e.get()
-			e.delete(0, END)
-			e.insert(0, f_num / int(second_number))
-		elif(fn == 3):
-			second_number = e.get()
-			e.delete(0, END)
-			e.insert(0, f_num * int(second_number))
-		else:
-			second_number = e.get()
-			e.delete(0, END)
-			e.insert(0, f_num - int(second_number))
-
-
-
-		#define buttons
-
-	button_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_click(1), bg="white", fg="black")
-	button_2 = Button(root, text="2", padx=40, pady=20, command=lambda: button_click(2), bg="white", fg="black")
-	button_3 = Button(root, text="3", padx=40, pady=20, command=lambda: button_click(3), bg="white", fg="black")
-	button_4 = Button(root, text="4", padx=40, pady=20, command=lambda: button_click(4), bg="white", fg="black")
-	button_5 = Button(root, text="5", padx=40, pady=20, command=lambda: button_click(5), bg="white", fg="black")
-	button_6 = Button(root, text="6", padx=40, pady=20, command=lambda: button_click(6), bg="white", fg="black")
-	button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: button_click(7), bg="white", fg="black")
-	button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8), bg="white", fg="black")
-	button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9), bg="white", fg="black")
-	button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0), bg="white", fg="black")
-	button_add = Button(root, text="+", padx=39, pady=20, command=button_add, bg="white", fg="red")
-	button_equal = Button(root, text="=", padx=87, pady=20, command=button_equal, bg="white", fg="red")
-	button_clear = Button(root, text="Clear", padx=77, pady=20, command=button_clear, bg="white", fg="red")
-	button_sub = Button(root, text="-", padx=40, pady=20, command=button_sub, bg="white", fg="red")
-	button_multiply = Button(root, text="x", padx=40, pady=20, command=button_multiply, bg="white", fg="red")
-	button_divide = Button(root, text="/", padx=40, pady=20, command=button_divide, bg="white", fg="red")
-	button_sqrt = Button(root, text="√x", padx=35, pady=20, command=button_sqrt, bg="white", fg="red")
-	button_cbrt = Button(root, text="∛x", padx=35, pady=20, command=button_cbrt, bg="white", fg="red")
-	button_tan = Button(root, text="tan", padx=35, pady=20, command=button_tan, bg="white", fg="red")
-	button_sine = Button(root, text="sine", padx=35, pady=20, command=button_sine, bg="white", fg="red")
-	button_cos = Button(root, text="cos", padx=35, pady=20, command=button_cos, bg="white", fg="red")
-	button_log = Button(root, text="ln", padx=35, pady=20, command=button_log, bg="white", fg="red")
-
-	#put buttons on screen
-	button_1.grid(row=5, column=0)
-	button_2.grid(row=5, column=1)
-	button_3.grid(row=5, column=2)
-
-	button_4.grid(row=4, column=0)
-	button_5.grid(row=4, column=1)
-	button_6.grid(row=4, column=2)
-
-	button_7.grid(row=3, column=0)
-	button_8.grid(row=3, column=1)
-	button_9.grid(row=3, column=2)
-
-	button_0.grid(row=6, column=0)
-	button_add.grid(row=7,column=0)
-	button_clear.grid(row=6,column=1, columnspan=2)
-	button_equal.grid(row=7,column=1, columnspan=2)
-	button_sub.grid(row=8,column=0)
-	button_divide.grid(row=8, column=1)
-	button_multiply.grid(row=8, column=2)
-
-	button_sqrt.grid(row=2, column=0)
-	button_cbrt.grid(row=2, column=1)
-	button_tan.grid(row=2, column=2)
-
-	button_sine.grid(row=1, column=0)
-	button_cos.grid(row=1, column=1)
-	button_log.grid(row=1, column=2)
-
-	root.mainloop()
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
 async def ty(ctx , member:discord.Member):
@@ -227,7 +47,18 @@ async def rep(ctx, member:discord.Member):
 	em.add_field(name = "Helps", value = wallet_amt)
 	await ctx.send(embed = em)
 
-
+@client.command()
+async def rank(ctx):
+	users.sort(key=lambda x: x[1])
+	j = 2
+	for peg in users:
+		while j > 0:
+			wallet_amt = peg[str(user.id)]["wallet"]
+			em = discord.Embed(title = "Most Helped",color = discord.Color.red())
+			em.add_field(name = f"{peg.id}", value = wallet_amt)
+			await ctx.send(embed = em)
+			j = j - 1
+		
 
 async def open_account(user):
 
