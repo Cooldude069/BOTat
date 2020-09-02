@@ -22,17 +22,20 @@ async def on_ready():
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
 async def ty(ctx , member:discord.Member):
-	await open_account(member)
+	if member != ctx.message.author
+		await open_account(member)
 
-	users = await get_bank_data()
-	user = member
+		users = await get_bank_data()
+		user = member
 
-	users[str(user.id)]["wallet"] += 1
+		users[str(user.id)]["wallet"] += 1
 
-	with open("thank.json", "w") as f:
-		json.dump(users,f)
-		
-	await ctx.send(f"Added +1 rep to {member.display_name}")
+		with open("thank.json", "w") as f:
+			json.dump(users,f)
+
+		await ctx.send(f"Added +1 rep to {member.display_name}")
+	else:
+		ctx.send("You cannot add reputation to yourself sir!")
 
 @client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
 async def rep(ctx, member:discord.Member):
