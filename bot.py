@@ -28,7 +28,7 @@ async def handjob(ctx):
 		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
-async def ty(ctx , member:discord.Member):
+async def ty(ctx , member:discord.Member , amount = 1):
 	if member != ctx.message.author:
 		await open_account(member)
 
@@ -36,6 +36,23 @@ async def ty(ctx , member:discord.Member):
 		user = member
 
 		users[str(user.id)]["wallet"] += 1
+
+		with open("thank.json", "w") as f:
+			json.dump(users,f)
+
+		await ctx.send(f"Added +1 rep to {member.display_name}")
+	else:
+		await ctx.send("You cannot add reputation to yourself sir!")
+		
+@client.command(aliases=['Takerep', 'TAKEREP'])
+async def takerep(ctx , member:discord.Member , amount = 1):
+	if member != ctx.message.author:
+		await open_account(member)
+
+		users = await get_bank_data()
+		user = member
+
+		users[str(user.id)]["wallet"] -= 1
 
 		with open("thank.json", "w") as f:
 			json.dump(users,f)
