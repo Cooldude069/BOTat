@@ -22,7 +22,7 @@ async def on_ready():
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
 async def ty(ctx , member:discord.Member):
-	if member != ctx.message.author
+	if member != ctx.message.author:
 		await open_account(member)
 
 		users = await get_bank_data()
