@@ -47,7 +47,7 @@ async def rep(ctx, member:discord.Member):
 	em.add_field(name = "Helps", value = wallet_amt)
 	await ctx.send(embed = em)
 
-@client.command(aliases = ["lb", "Leaderboard", "LB", "LEADERBOARD", "LB"])
+@client.command(aliases = ["lb", "Leaderboard", "LEADERBOARD", "LB"])
 async def leaderboard(ctx,x = 1):
     users = await get_bank_data()
     leader_board = {}
