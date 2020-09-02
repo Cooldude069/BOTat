@@ -28,6 +28,14 @@ async def offence(ctx, * ,complain):
 	await Channel.send(embed = offe)
 	await ctx.send("Your complain has successfully been posted sir!, Thank you")
 	
+@client.command(aliases= ['Suggestion', 'SUGGESTION'])
+async def suggestion(ctx, * ,suggestion):
+	Channel = discord.utils.get(ctx.message.author.guild.channels, name = "l🔔l-staff-notes")
+	sugg  = discord.Embed(title = f"{suggestion}" , color = discord.Color.blue())
+	sugg.add_field(name = f"by {ctx.message.author.display_name}", value = None ,inline = False)
+	await Channel.send(embed = sugg)
+	await ctx.send("Your suggestion has successfully been posted sir!, Thank you")
+	
 @client.command(aliases=['Handjob', "HANDJOB"])
 async def handjob(ctx):
 	if ctx.message.author.guild_permissions.administrator:
