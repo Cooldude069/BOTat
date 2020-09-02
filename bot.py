@@ -66,7 +66,7 @@ async def leaderboard(ctx,x = 1):
         id_ = leader_board[amt]
         member = client.get_user(id_)
         name = member.name
-        em.add_field(name = f"{index}. {name}" , value = f"{amt}",  inline = False)
+        em.add_field(name = f"{index}. {name}" , value = f"Helps -> {amt}",  inline = False)
         if index == x:
             break
 
