@@ -21,7 +21,7 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command(pass_context = True, aliases=["Poll" , "POLL"])
-async def poll(self, ctx, question, *options: str):
+async def poll(ctx, question, *options: str):
         author = ctx.message.author
         server = ctx.message.server
 
