@@ -48,7 +48,7 @@ async def poll(ctx, question, *options: str):
         react_message = await ctx.send(embed = embed)
 
         for reaction in reactions[:len(options)]:
-            await ctx.add_reaction(react_message, reaction)
+            await ctx.message.add_reaction(react_message, reaction)
 
         embed.set_footer(text='Poll ID: {}'.format(react_message.id))
 
