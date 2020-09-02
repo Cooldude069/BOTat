@@ -24,7 +24,7 @@ async def on_ready():
 async def offence(ctx, * ,complain):
 	Channel = discord.utils.get(ctx.message.author.guild.channels, name = "l🔔l-staff-notes")
 	offe  = discord.Embed(title = f"{complain}" , color = discord.Color.red())
-	offe.add_field(name = f"by {ctx.message.author.display_name}", value = None ,inline = False)
+	offe.add_field(name = f"by {ctx.message.author.display_name}", value = f"Role : {ctx.message.author.top_role}" ,inline = False)
 	await Channel.send(embed = offe)
 	await ctx.send("Your complain has successfully been posted sir!, Thank you")
 	
@@ -32,7 +32,7 @@ async def offence(ctx, * ,complain):
 async def suggestion(ctx, * ,suggestion):
 	Channel = discord.utils.get(ctx.message.author.guild.channels, name = "l🔔l-staff-notes")
 	sugg  = discord.Embed(title = f"{suggestion}" , color = discord.Color.blue())
-	sugg.add_field(name = f"by {ctx.message.author.display_name}", value = None ,inline = False)
+	sugg.add_field(name = f"by {ctx.message.author.display_name}", value = f"Role : {ctx.message.author.top_role}" ,inline = False)
 	await Channel.send(embed = sugg)
 	await ctx.send("Your suggestion has successfully been posted sir!, Thank you")
 	
