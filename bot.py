@@ -19,6 +19,14 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+@client.command()
+async def poll(ctx, question, *options : str):
+	emb = discord.Embed(title = question , color = discord.Color.red())
+	emb.add_field(name = options[0] , value = ":one:")
+	emb.add_field(name = options[1] , value = ":two:")
+	await message.add_reaction(one)
+	await message.add_reaction(two)
 
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
