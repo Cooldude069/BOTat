@@ -35,7 +35,7 @@ async def ty(ctx , member:discord.Member):
 
 		await ctx.send(f"Added +1 rep to {member.display_name}")
 	else:
-		ctx.send("You cannot add reputation to yourself sir!")
+		await ctx.send("You cannot add reputation to yourself sir!")
 
 @client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
 async def rep(ctx, member:discord.Member):
