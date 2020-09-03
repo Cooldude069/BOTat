@@ -66,57 +66,6 @@ async def handjob(ctx):
 		await ctx.send("8==:fist:==D:sweat_drops:")
 	else:
 		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
-
-@client.command(aliases = ["lb", "Leaderboard", "LEADERBOARD", "LB"])
-async def leaderboard(ctx,x = 1):
-	users = await get_bank_data()
-	leader_board = {}
-	total = []
-	for user in users:
-		name = int(user)
-		total_amount = users[user]["wallet"]
-		leader_board[total_amount] = name
-		total.append(total_amount)
-
-	total = sorted(total,reverse=True)    
-
-	em = discord.Embed(title = f"Top memers" , description = "This is decided on the basis of number of memes by the user",color = discord.Color(0xfa43ee))
-	index = 1
-	for amt in total:
-		id_ = leader_board[amt]
-		member = client.get_user(id_)
-		name = member.name
-		em.add_field(name = f"{index}. {name}" , value = f"{amt}",  inline = False)
-		if index == x:
-			break
-		else:
-			index += 1
-
-	await ctx.send(embed = em)
-		
-
-async def open_account(user):
-
-	users = await get_bank_data()
-
-	with open("memer.json", "r") as f:
-		users = json.load(f)
-
-	if str(user.id) in users:
-		return False
-	else:
-		users[str(user.id)] = {}
-		users[str(user.id)]["wallet"] = 0
-
-	with open("memer.json", "w") as f:
-		json.dump(users,f)
-	return True
-
-async def get_bank_data():
-	with open("memer.json", "r") as f:
-		users = json.load(f)
-
-	return users
 	
 @client.command(pass_context=True, aliases=['Say', 'SAY'])
 async def say(ctx, channel:discord.TextChannel , *, message):
@@ -145,7 +94,7 @@ async def reboot(ctx):
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
 	await ctx.message.author.create_dm()
-	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n giverep/takerep {user} {amount}-> gives/takes the number of reputation points to the user\n ty(or any form of thanks {user})-> adds a reputation point to the user\n leaderboard->shows the user with most reputation points\n rep {user}-> shows the reputation points of the user\n complain {message}-> makes a complain and reports it to the officials\n suggestion {message}-> makes a suggestion and reports it to the officials\n poll {question} {options}-> makes a poll and posts it in the polls channel```")
+	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n complain {message}-> makes a complain and reports it to the officials\n suggestion {message}-> makes a suggestion and reports it to the officials\n poll {question} {options}-> makes a poll and posts it in the polls channel```")
 	await ctx.send("Let me help you via DM")
 	
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
@@ -380,15 +329,6 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
-			await open_account(message.author)
-
-			users = await get_bank_data()
-			user = message.author
-
-			users[str(user.id)]["wallet"] += 1
-
-			with open("thank.json", "w") as f:
-				json.dump(users,f)
 				
 	await client.process_commands(message)
 
