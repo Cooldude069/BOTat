@@ -21,7 +21,7 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command(pass_context = True)
-async def poll(self , ctx, question ):
+async def poll(ctx, * , question ):
 	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 	pol.add_field(name = f"👍 Yes" , value = f"👎 NO" , inline = False)
 	poll_1 = '👍'
