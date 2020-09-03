@@ -126,7 +126,7 @@ async def rep(ctx, member:discord.Member):
 @client.command(aliases = ["lb", "Leaderboard", "LEADERBOARD", "LB"])
 async def leaderboard(ctx,x = 1):
    	users = await get_bank_data()
-	leader_board = {}
+	leader_board = { }
     	total = []
     	for user in users:
         	name = int(user)
