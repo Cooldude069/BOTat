@@ -22,8 +22,8 @@ async def on_ready():
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
-	rxn = client.get_emoji(750926345579528282)
-	await ctx.message.add_reaction(rxn)
+	emoji = discord.utils.get(guild.emojis, name='rofl')
+	await ctx.message.add_reaction(emoji)
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
