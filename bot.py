@@ -23,7 +23,7 @@ async def on_ready():
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, * , question ):
 	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
-	pol.add_field(name = f"👍 Yes" , value = f"👎 NO" , inline = False)
+	pol.add_field(name = f"👍 **YES**" , value = f"👎 **NO**" , inline = False)
 	poll_1 = '👍'
 	poll_2 = '👎'
 	msg = await ctx.send(embed = pol)
