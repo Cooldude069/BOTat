@@ -337,8 +337,8 @@ async def on_raw_reaction_add(reaction):
 	if reaction.channel_id == 750631580837609543:
 		if reaction.user_id == 727539383405772901:
 			if reaction.emoji.id == 751072153813647431:
-				await reaction.message.pin(reason = None)
 				print("Message pinned")
+				await reaction.message.pin(reason = None)
 				return
 
 
