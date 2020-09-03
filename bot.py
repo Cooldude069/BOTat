@@ -333,7 +333,7 @@ async def on_message(message):
 	await client.process_commands(message)
 	
 @client.event
-async def on_reaction_add(reaction , user):
+async def on_raw_reaction_add(reaction , user):
 	if reaction.message.channel.name == '🤣meme-competiton':
 		if user.display_name == 'Samarth':
 			if reaction.emoji == '<:r_fav:751072153813647431>':
