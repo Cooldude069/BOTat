@@ -319,7 +319,7 @@ async def timer(ctx, *, Tm):
 async def clear(ctx, amount=5):
 	if ctx.message.author.guild_permissions.manage_messages:
 		await ctx.channel.purge(limit=amount + 1)
-		print(f'{amount} messages deleted by {ctx.message.author.display_name}')
+		print(f'{amount} messages deleted by {ctx.message.author.display_name} in {ctx.message.channel}')
 		await ctx.send(f"`{amount}` messages deleted")
 		time.sleep(2)
 		await ctx.channel.purge(limit = 1)
