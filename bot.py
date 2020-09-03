@@ -22,7 +22,7 @@ async def on_ready():
 	
 @client.command(pass_context = True)
 async def poll(self , ctx, question , *options : str):
-	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.yellow())
+	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 	pol.add_field(name = f"👍 **{options[0]}**" , value = f"👎 **{options[1]}**" , inline = False)
 	poll_1 = '👍'
 	poll_2 = '👎'
