@@ -335,10 +335,11 @@ async def on_message(message):
 @client.event
 async def on_reaction_add(reaction , user):
 	channel = reaction.message.channel
-	emj = discord.Emoji(name = 'r_fav' , id = '751072153813647431')
+	emj = client.get_emoji(751072153813647431)
 	if channel.name == '🤣meme-competiton' and user.display_name == "Samarth":
 		if reaction.emoji == emj:
-			await reaction.message.pin(reason = None)
+			await reaction.message.pin(*, reason = None)
+			print("Message pinned")
 
 
 client.run("NzQ1OTU1OTkwNzY3NDAzMDM5.Xz5Tpw.EjdNUpcusLZkCXdk8GUTSKfUqDQ")
