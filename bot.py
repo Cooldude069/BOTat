@@ -413,16 +413,6 @@ async def qna(ctx, *, question):
 @client.command(aliases=['Binod', 'BINOD'])
 async def binod(ctx):
 	await ctx.send("BINOD!!")
-	
-@client.event
-async def on_message(message):
-	if len(message.content) == 0:
-		if message.channel.name == '🤣meme-competiton':
-			meme_1 = '🤣'
-			meme_2 = '👍'
-			meme_3 = '👎'
-			await message.add_reaction(meme_1)
-			await message.add_reaction(meme_2)
-			await message.add_reaction(meme_3)
+
 
 client.run("NzQ1OTU1OTkwNzY3NDAzMDM5.Xz5Tpw.EjdNUpcusLZkCXdk8GUTSKfUqDQ")
