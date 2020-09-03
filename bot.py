@@ -21,11 +21,11 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
-async def poll(ctx, * , question ):
+async def poll(ctx, question , *options : str):
 	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
-	pol.add_field(name = f"👍 **YES**" , value = f"👎 **NO**" , inline = False)
-	poll_1 = '👍'
-	poll_2 = '👎'
+	pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+	poll_1 = '1️⃣'
+	poll_2 = '2️⃣'
 	channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
 	msg = await channel.send(embed = pol)
 	await msg.add_reaction(poll_1)
