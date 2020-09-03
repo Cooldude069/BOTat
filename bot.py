@@ -22,7 +22,7 @@ async def on_ready():
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
-	rxn = 'rofl'
+	rxn = client.get_emoji(750926345579528282)
 	await ctx.message.add_reaction(rxn)
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
