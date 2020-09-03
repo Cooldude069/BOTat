@@ -88,9 +88,9 @@ async def leaderboard(ctx,x = 1):
 		name = member.name
 		em.add_field(name = f"{index}. {name}" , value = f"{amt}",  inline = False)
 		if index == x:
-		break
+			break
 		else:
-		index += 1
+			index += 1
 
 	await ctx.send(embed = em)
 		
