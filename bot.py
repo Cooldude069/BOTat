@@ -66,52 +66,6 @@ async def handjob(ctx):
 		await ctx.send("8==:fist:==D:sweat_drops:")
 	else:
 		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
-	
-@client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
-async def ty(ctx , member:discord.Member , amount = 1):
-	if member != ctx.message.author:
-		await open_account(member)
-
-		users = await get_bank_data()
-		user = member
-
-		users[str(user.id)]["wallet"] += amount
-
-		with open("thank.json", "w") as f:
-			json.dump(users,f)
-
-		await ctx.send(f"Added +{amount} rep to {member.display_name}")
-	else:
-		await ctx.send("You cannot add reputation to yourself ")
-		
-@client.command(aliases=['Takerep', 'TAKEREP'])
-async def takerep(ctx , member:discord.Member , amount = 1):
-	if member != ctx.message.author:
-		await open_account(member)
-
-		users = await get_bank_data()
-		user = member
-
-		users[str(user.id)]["wallet"] -= amount
-
-		with open("thank.json", "w") as f:
-			json.dump(users,f)
-
-		await ctx.send(f"removed -{amount} rep from {member.display_name}")
-	else:
-		await ctx.send("You cannot remove reputation from yourself ")
-
-@client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
-async def rep(ctx, member:discord.Member):
-	await open_account(member)
-	user = member
-	users = await get_bank_data()
-
-	wallet_amt = users[str(user.id)]["wallet"]
-
-	em = discord.Embed(title = f"{user.display_name}'s reputation ",color = discord.Color.red())
-	em.add_field(name = "Helps", value = wallet_amt)
-	await ctx.send(embed = em)
 
 @client.command(aliases = ["lb", "Leaderboard", "LEADERBOARD", "LB"])
 async def leaderboard(ctx,x = 1):
@@ -126,15 +80,17 @@ async def leaderboard(ctx,x = 1):
 
     total = sorted(total,reverse=True)    
 
-    em = discord.Embed(title = f"Most helpful person" , description = "This is decided on the basis of number of thanks given to the user",color = discord.Color(0xfa43ee))
+    em = discord.Embed(title = f"Top memers" , description = "This is decided on the basis of number of memes by the user",color = discord.Color(0xfa43ee))
     index = 1
     for amt in total:
         id_ = leader_board[amt]
         member = client.get_user(id_)
         name = member.name
-        em.add_field(name = f"**{name}**" , value = f"Helps -> {amt}",  inline = False)
+        em.add_field(name = f"{index}. {name}" , value = f"{amt}",  inline = False)
         if index == x:
             break
+	else:
+		index += 1
 
     await ctx.send(embed = em)
 		
@@ -143,7 +99,7 @@ async def open_account(user):
 
 	users = await get_bank_data()
 
-	with open("thank.json", "r") as f:
+	with open("memer.json", "r") as f:
 		users = json.load(f)
 
 	if str(user.id) in users:
@@ -152,12 +108,12 @@ async def open_account(user):
 		users[str(user.id)] = {}
 		users[str(user.id)]["wallet"] = 0
 
-	with open("thank.json", "w") as f:
+	with open("memer.json", "w") as f:
 		json.dump(users,f)
 	return True
 
 async def get_bank_data():
-	with open("thank.json", "r") as f:
+	with open("memer.json", "r") as f:
 		users = json.load(f)
 
 	return users
@@ -424,6 +380,16 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
+			await open_account(message.author)
+
+			users = await get_bank_data()
+			user = message.author
+
+			users[str(user.id)]["wallet"] += 1
+
+			with open("thank.json", "w") as f:
+				json.dump(users,f)
+				
 	await client.process_commands(message)
 
 
