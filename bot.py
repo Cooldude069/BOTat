@@ -331,6 +331,14 @@ async def on_message(message):
 			await message.add_reaction(meme_3)
 				
 	await client.process_commands(message)
+	
+@client.event
+async def on_reaction_add(reaction , user):
+	channel = reaction.message.channel
+	emj = discord.Emoji(name = 'r_fav' , id = '751072153813647431')
+	if channel.name == '🤣meme-competiton' and user.display_name == "Samarth":
+		if reaction.emoji == emj:
+			await pin(reaction.message)
 
 
 client.run("NzQ1OTU1OTkwNzY3NDAzMDM5.Xz5Tpw.EjdNUpcusLZkCXdk8GUTSKfUqDQ")
