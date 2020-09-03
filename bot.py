@@ -27,8 +27,9 @@ async def poll(ctx, * , question ):
 	poll_1 = '👍'
 	poll_2 = '👎'
 	await ctx.send(embed = pol)
-	await client.message.add_reaction(poll_1)
-	await client.message.add_reaction(poll_2)
+	rul = pol.url
+	await rul.add_reaction(poll_1)
+	await rul.add_reaction(poll_2)
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
