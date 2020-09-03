@@ -20,15 +20,15 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command(pass_context = True)
+@client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, * , question ):
 	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 	pol.add_field(name = f"👍 Yes" , value = f"👎 NO" , inline = False)
 	poll_1 = '👍'
 	poll_2 = '👎'
 	await ctx.send(embed = pol)
-	await self.message.add_reaction(poll_1)
-	await self.message.add_reaction(poll_2)
+	await self.client.message.add_reaction(poll_1)
+	await self.client.message.add_reaction(poll_2)
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
