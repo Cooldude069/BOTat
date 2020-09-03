@@ -331,15 +331,6 @@ async def on_message(message):
 			await message.add_reaction(meme_3)
 				
 	await client.process_commands(message)
-	
-@client.event
-async def on_raw_reaction_add(reaction):
-	if reaction.channel_id == 750631580837609543:
-		if reaction.user_id == 727539383405772901:
-			if reaction.id == 751072153813647431:
-				print("Message pinned")
-				await reaction.message.pin(reason = None)
-				return
 
 
 client.run("NzQ1OTU1OTkwNzY3NDAzMDM5.Xz5Tpw.EjdNUpcusLZkCXdk8GUTSKfUqDQ")
