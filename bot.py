@@ -22,7 +22,8 @@ async def on_ready():
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
-	await ctx.message.add_reaction(rofl)
+	rxn = discord.PartialEmoji(is_animated (False), rofl, 4c537a5536df74dcb65c6feb2ad3ab44)
+	await ctx.message.add_reaction(rxn)
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
