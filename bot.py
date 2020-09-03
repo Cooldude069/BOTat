@@ -103,7 +103,7 @@ async def hello(ctx):
 	
 @client.command(pass_context=True, aliases=['Addrole', 'ADDROLE'])
 async def addrole(ctx, member:discord.Member , *, role:discord.Role):
-	if ctx.message.author.guild_permissions.manage_roles:
+	if ctx.message.author.guild_permissions.administrator:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
 	else:
@@ -111,7 +111,7 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
-	if ctx.message.author.guild_permissions.manage_roles:
+	if ctx.message.author.guild_permissions.administrator:
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
 	else:
