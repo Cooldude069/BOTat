@@ -20,6 +20,10 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def meme(ctx):
+	ctx.message.add_reaction(rofl)
+	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
 	Channel = discord.utils.get(ctx.message.author.guild.channels, name = "l🔔l-staff-notes")
