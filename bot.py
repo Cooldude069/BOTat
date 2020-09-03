@@ -26,9 +26,11 @@ async def poll(ctx, * , question ):
 	pol.add_field(name = f"👍 **YES**" , value = f"👎 **NO**" , inline = False)
 	poll_1 = '👍'
 	poll_2 = '👎'
-	msg = await ctx.send(embed = pol)
+	channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+	msg = await channel.send(embed = pol)
 	await msg.add_reaction(poll_1)
 	await msg.add_reaction(poll_2)
+	await ctx.send(f"Your poll has successfully posted in {channel}")
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
@@ -45,7 +47,7 @@ async def offence(ctx, * ,complain):
 	offe  = discord.Embed(title = f"{complain}" , color = discord.Color.red())
 	offe.add_field(name = f"by {ctx.message.author.display_name}", value = f"Role : {ctx.message.author.top_role}" ,inline = False)
 	await Channel.send(embed = offe)
-	await ctx.send("Your complain has successfully been posted sir!, Thank you")
+	await ctx.send("Your complain has successfully been posted, Thank you")
 	
 @client.command(aliases= ['Suggestion', 'SUGGESTION'])
 async def suggestion(ctx, * ,suggestion):
@@ -53,7 +55,7 @@ async def suggestion(ctx, * ,suggestion):
 	sugg  = discord.Embed(title = f"{suggestion}" , color = discord.Color.blue())
 	sugg.add_field(name = f"by {ctx.message.author.display_name}", value = f"Role : {ctx.message.author.top_role}" ,inline = False)
 	await Channel.send(embed = sugg)
-	await ctx.send("Your suggestion has successfully been posted sir!, Thank you")
+	await ctx.send("Your suggestion has successfully been posted, Thank you")
 	
 @client.command(aliases=['Handjob', "HANDJOB"])
 async def handjob(ctx):
@@ -77,7 +79,7 @@ async def ty(ctx , member:discord.Member , amount = 1):
 
 		await ctx.send(f"Added +{amount} rep to {member.display_name}")
 	else:
-		await ctx.send("You cannot add reputation to yourself sir!")
+		await ctx.send("You cannot add reputation to yourself ")
 		
 @client.command(aliases=['Takerep', 'TAKEREP'])
 async def takerep(ctx , member:discord.Member , amount = 1):
@@ -94,7 +96,7 @@ async def takerep(ctx , member:discord.Member , amount = 1):
 
 		await ctx.send(f"removed -{amount} rep from {member.display_name}")
 	else:
-		await ctx.send("You cannot remove reputation from yourself sir!")
+		await ctx.send("You cannot remove reputation from yourself ")
 
 @client.command(aliases=['Rep', 'REP', 'Reputation', 'reputation', 'REPUTATION'])
 async def rep(ctx, member:discord.Member):
@@ -310,7 +312,7 @@ async def timer(ctx, *, Tm):
 		return
 
 
-@client.command(aliases=['Clear' , 'CLEAR'])
+@client.command(aliases=['Clear' , 'CLEAR' , 'purge' , 'Purge' , 'PURGE'])
 async def clear(ctx, amount=5):
 	if ctx.message.author.guild_permissions.manage_messages:
 		await ctx.channel.purge(limit=amount + 1)
