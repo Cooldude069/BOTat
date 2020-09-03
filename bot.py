@@ -20,6 +20,17 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.event
+async def on_message(message):
+	if message.channel.name == '🤣meme-competiton':
+		if len(message.content) == 0:
+			meme_1 = '🤣'
+			meme_2 = '👍'
+			meme_3 = '👎'
+			await message.add_reaction(meme_1)
+			await message.add_reaction(meme_2)
+			await message.add_reaction(meme_3) 
+	
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, question , *options : str):
 	if ctx.message.author.top_role == 'Moderator' :
