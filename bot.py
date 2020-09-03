@@ -20,6 +20,16 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command(pass_context = True)
+async def poll(self , ctx, question , *options : str):
+	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.yellow())
+	pol.add_field(name = f"👍 **{options[0]}**" , value = f"👎 **{options[1]}**" , inline = False)
+	poll_1 = '👍'
+	poll_2 = '👎'
+	await ctx.send(embed = pol)
+	await self.message.add_reaction(poll_1)
+	await self.message.add_reaction(poll_2)
+	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
 	emoji_1 = '🤣'
