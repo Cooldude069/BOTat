@@ -20,9 +20,9 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command()
+@client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
-	ctx.message.add_reaction(rofl)
+	await ctx.message.add_reaction(rofl)
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
