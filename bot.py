@@ -22,15 +22,18 @@ async def on_ready():
 	
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, question , *options : str):
-	pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
-	pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
-	poll_1 = '1️⃣'
-	poll_2 = '2️⃣'
-	channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
-	msg = await channel.send(embed = pol)
-	await msg.add_reaction(poll_1)
-	await msg.add_reaction(poll_2)
-	await ctx.send(f"Your poll has successfully posted in {channel}")
+	if ctx.message.author.top_role == 'Moderator' :
+		pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+		pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+		poll_1 = '1️⃣'
+		poll_2 = '2️⃣'
+		channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+		msg = await channel.send(embed = pol)
+		await msg.add_reaction(poll_1)
+		await msg.add_reaction(poll_2)
+		await ctx.send(f"Your poll has successfully posted in {channel}")
+	else:
+		await ctx.send("You are not authorized to use this command")
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
@@ -186,7 +189,7 @@ async def reboot(ctx):
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
 	await ctx.message.author.create_dm()
-	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n giverep/takerep {user} {amount}-> gives/takes the number of reputation points to the user\n ty(or any form of thanks {user})-> adds a reputation point to the user\n leaderboard->shows the user with most reputation points\n rep {user}-> shows the reputation points of the user```")
+	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n giverep/takerep {user} {amount}-> gives/takes the number of reputation points to the user\n ty(or any form of thanks {user})-> adds a reputation point to the user\n leaderboard->shows the user with most reputation points\n rep {user}-> shows the reputation points of the user\n complain {message}-> makes a complain and reports it to the officials\n suggestion {message}-> makes a suggestion and reports it to the officials\n poll {question} {options}-> makes a poll and posts it in the polls channel```")
 	await ctx.send("Let me help you via DM")
 	
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
