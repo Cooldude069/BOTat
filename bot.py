@@ -338,7 +338,7 @@ async def on_reaction_add(reaction , user):
 	emj = client.get_emoji(751072153813647431)
 	if channel.name == '🤣meme-competiton' and user.display_name == "Samarth":
 		if reaction.emoji == emj:
-			await reaction.message.pin(*, reason = None)
+			await reaction.message.pin(reason = None)
 			print("Message pinned")
 
 
