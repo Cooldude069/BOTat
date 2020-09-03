@@ -68,7 +68,7 @@ async def handjob(ctx):
 		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
 	
 @client.command(aliases=['giverep', 'Giverep', 'GIVEREP', 'Thanks', 'thanks', 'THANKS', 'thank', 'Thank', 'THANK', 'Ty', 'TY'])
-async def ty(ctx , member:discord.Member , amount = 1):
+async def ty(ctx , member:discord.Member , amount_1 = 1):
 	if member != ctx.message.author:
 		await open_account(member)
 
@@ -85,7 +85,7 @@ async def ty(ctx , member:discord.Member , amount = 1):
 		await ctx.send("You cannot add reputation to yourself ")
 		
 @client.command(aliases=['Takerep', 'TAKEREP'])
-async def takerep(ctx , member:discord.Member , amount = 1):
+async def takerep(ctx , member:discord.Member , amount_2 = 1):
 	if member != ctx.message.author:
 		await open_account(member)
 
