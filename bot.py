@@ -320,13 +320,6 @@ async def qna(ctx, *, question):
 async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
-async def update_data(users , user):
-	if not user.id in users:
-		users[user.id] =  {}
-		users[user.id]['memes'] = 1
-		
-async def add_meme(users , user):
-	users[user.id]['memes'] += 1
 	
 @client.event
 async def on_message(message):
@@ -338,13 +331,6 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
-			with open('users.json' , 'r') as f:
-				users = json.load(f)
-			await update_data(users , message.author)
-			await add_meme(users , message.author)
-			await message.channel.send("+1 meme has been added to your account")
-			with open('users.json' , 'w') as f:
-				json.dump(users , f)
 				
 	await client.process_commands(message)
 
