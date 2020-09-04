@@ -342,7 +342,7 @@ async def on_message(message):
 				users = json.load(f)
 			await update_data(users , message.author)
 			await add_meme(users , message.author)
-				
+			await message.channel.send("+1 meme has been added to your account")
 			with open('users.json' , 'w') as f:
 				json.dump(users , f)
 				
