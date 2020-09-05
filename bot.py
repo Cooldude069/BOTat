@@ -138,28 +138,54 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 @client.command(pass_context=True, aliases=['Mute', 'MUTE'])
 async def mute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
-		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
-		Grole = discord.utils.get(member.guild.roles, name = "Members")
-		await member.remove_roles(Grole)
-		await member.add_roles(Mrole)
-		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+		if ctx.message.author.guild_id == 723435494578323476:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			Grole = discord.utils.get(member.guild.roles, name = "Members")
+			await member.remove_roles(Grole)
+			await member.add_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+		else:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			await member.add_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
 	elif ctx.message.author.id == 727539383405772901:
-		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
-		Grole = discord.utils.get(member.guild.roles, name = "Members")
-		await member.remove_roles(Grole)
-		await member.add_roles(Mrole)
-		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+		if ctx.message.author.guild_id == 723435494578323476:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			Grole = discord.utils.get(member.guild.roles, name = "Members")
+			await member.remove_roles(Grole)
+			await member.add_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+		else:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			await member.add_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
 	else:
 		await ctx.send("You are not authorized to use this command")
 	
 @client.command(pass_context=True, aliases=['Unmute', 'UNMUTE'])
 async def unmute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
-		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
-		Grole = discord.utils.get(member.guild.roles, name = "Members")
-		await member.remove_roles(Mrole)
-		await member.add_roles(Grole)
-		await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
+		if ctx.message.author.guild_id == 723435494578323476:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			Grole = discord.utils.get(member.guild.roles, name = "Members")
+			await member.remove_roles(Mrole)
+			await member.add_roles(Grole)
+			await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
+		else:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			await member.remove_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
+	elif ctx.message.author.id == 727539383405772901:
+		if ctx.message.author.guild_id == 723435494578323476:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			Grole = discord.utils.get(member.guild.roles, name = "Members")
+			await member.remove_roles(Mrole)
+			await member.add_roles(Grole)
+			await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
+		else:
+			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+			await member.remove_roles(Mrole)
+			await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
 	else:
 		await ctx.send("You are not authorized to use this command")
 		
