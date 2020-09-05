@@ -117,7 +117,7 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.administrator:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
 	else:
@@ -128,7 +128,7 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.administrator:
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
 	else:
@@ -143,7 +143,7 @@ async def mute(ctx, member:discord.Member):
 		await member.remove_roles(Grole)
 		await member.add_roles(Mrole)
 		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 		Grole = discord.utils.get(member.guild.roles, name = "Members")
 		await member.remove_roles(Grole)
@@ -251,7 +251,7 @@ async def clear(ctx, amount=5):
 		await ctx.send(f"`{amount}` messages deleted")
 		time.sleep(2)
 		await ctx.channel.purge(limit = 1)
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await ctx.channel.purge(limit=amount + 1)
 		print(f'{amount} messages deleted by {ctx.message.author.display_name}')
 		await ctx.send(f"`{amount}` messages deleted")
@@ -298,7 +298,7 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.kick_members:
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
 	else:
@@ -309,7 +309,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.ban_members:
 		await member.ban(reason=reason)
 		await ctx.send(f'Banned {member.mention}')
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await member.ban(reason=reason)
 		await ctx.send(f'Banned {member.mention}')
 	else:
