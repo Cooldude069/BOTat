@@ -33,6 +33,16 @@ async def poll(ctx, question , *options : str):
 		await msg.add_reaction(poll_1)
 		await msg.add_reaction(poll_2)
 		await ctx.send(f"Your poll has successfully posted in {channel}")
+	elif ctx.message.author.id == '727539383405772901':
+		pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+		pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+		poll_1 = '1️⃣'
+		poll_2 = '2️⃣'
+		channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+		msg = await channel.send(embed = pol)
+		await msg.add_reaction(poll_1)
+		await msg.add_reaction(poll_2)
+		await ctx.send(f"Your poll has successfully posted in {channel}")
 	else:
 		await ctx.send("You are not authorized to use this command")
 	
@@ -107,12 +117,18 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.administrator:
 		await member.add_roles(role)
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
+	elif ctx.message.author.id == '727539383405772901':
+		await member.add_roles(role)
+		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
 	else:
 		await ctx.send("You are not authorized to use this command")
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 	if ctx.message.author.guild_permissions.administrator:
+		await member.remove_roles(role)
+		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
+	elif ctx.message.author.id == '727539383405772901':
 		await member.remove_roles(role)
 		await ctx.send(f"{role.name} has been removed from {member.display_name} by {ctx.message.author.display_name}")
 	else:
@@ -122,6 +138,12 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 @client.command(pass_context=True, aliases=['Mute', 'MUTE'])
 async def mute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
+		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
+		Grole = discord.utils.get(member.guild.roles, name = "Members")
+		await member.remove_roles(Grole)
+		await member.add_roles(Mrole)
+		await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
+	elif ctx.message.author.id == '727539383405772901':
 		Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 		Grole = discord.utils.get(member.guild.roles, name = "Members")
 		await member.remove_roles(Grole)
@@ -229,6 +251,12 @@ async def clear(ctx, amount=5):
 		await ctx.send(f"`{amount}` messages deleted")
 		time.sleep(2)
 		await ctx.channel.purge(limit = 1)
+	elif ctx.message.author.id == '727539383405772901':
+		await ctx.channel.purge(limit=amount + 1)
+		print(f'{amount} messages deleted by {ctx.message.author.display_name}')
+		await ctx.send(f"`{amount}` messages deleted")
+		time.sleep(2)
+		await ctx.channel.purge(limit = 1)
 	else:
 		await ctx.send("You are not authorized to use this command")
 
@@ -270,12 +298,18 @@ async def kick(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.kick_members:
 		await member.kick(reason=reason)
 		await ctx.send(f'Kicked {member.mention}')
+	elif ctx.message.author.id == '727539383405772901':
+		await member.kick(reason=reason)
+		await ctx.send(f'Kicked {member.mention}')
 	else:
 		await ctx.send("You are not authorized to use this command")
 
 @client.command(aliases=['Ban', 'BAN'])
 async def ban(ctx, member : discord.Member, *, reason=None):
 	if ctx.message.author.guild_permissions.ban_members:
+		await member.ban(reason=reason)
+		await ctx.send(f'Banned {member.mention}')
+	elif ctx.message.author.id == '727539383405772901':
 		await member.ban(reason=reason)
 		await ctx.send(f'Banned {member.mention}')
 	else:
