@@ -33,7 +33,7 @@ async def poll(ctx, question , *options : str):
 		await msg.add_reaction(poll_1)
 		await msg.add_reaction(poll_2)
 		await ctx.send(f"Your poll has successfully posted in {channel}")
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 		pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
 		poll_1 = '1️⃣'
@@ -83,7 +83,7 @@ async def say(ctx, channel:discord.TextChannel , *, message):
 	if ctx.message.author.guild_permissions.administrator:
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
-	elif ctx.message.author.id == '727539383405772901':
+	elif ctx.message.author.id == 727539383405772901:
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 		
