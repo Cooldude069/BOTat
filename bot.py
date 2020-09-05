@@ -83,6 +83,9 @@ async def say(ctx, channel:discord.TextChannel , *, message):
 	if ctx.message.author.guild_permissions.administrator:
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
+	elif ctx.message.author.id == '727539383405772901':
+		await channel.send(message)
+		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 		
 @client.command(aliases=['Reboot', 'REBOOT', 'restart', 'Restart', 'RESTART'])
 async def reboot(ctx):
