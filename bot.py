@@ -138,7 +138,7 @@ async def removerole(ctx, member:discord.Member , *, role:discord.Role):
 @client.command(pass_context=True, aliases=['Mute', 'MUTE'])
 async def mute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
-		if ctx.message.author.guild_id == 723435494578323476:
+		if ctx.message.author.guild.id == 723435494578323476:
 			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 			Grole = discord.utils.get(member.guild.roles, name = "Members")
 			await member.remove_roles(Grole)
@@ -149,7 +149,7 @@ async def mute(ctx, member:discord.Member):
 			await member.add_roles(Mrole)
 			await ctx.send(f"{member.display_name} has been muted by {ctx.message.author.display_name}")
 	elif ctx.message.author.id == 727539383405772901:
-		if ctx.message.author.guild_id == 723435494578323476:
+		if ctx.message.author.guild.id == 723435494578323476:
 			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 			Grole = discord.utils.get(member.guild.roles, name = "Members")
 			await member.remove_roles(Grole)
@@ -165,7 +165,7 @@ async def mute(ctx, member:discord.Member):
 @client.command(pass_context=True, aliases=['Unmute', 'UNMUTE'])
 async def unmute(ctx, member:discord.Member):
 	if ctx.message.author.guild_permissions.manage_roles:
-		if ctx.message.author.guild_id == 723435494578323476:
+		if ctx.message.author.guild.id == 723435494578323476:
 			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 			Grole = discord.utils.get(member.guild.roles, name = "Members")
 			await member.remove_roles(Mrole)
@@ -176,7 +176,7 @@ async def unmute(ctx, member:discord.Member):
 			await member.remove_roles(Mrole)
 			await ctx.send(f"{member.display_name} has been unmuted by {ctx.message.author.display_name}")
 	elif ctx.message.author.id == 727539383405772901:
-		if ctx.message.author.guild_id == 723435494578323476:
+		if ctx.message.author.guild.id == 723435494578323476:
 			Mrole = discord.utils.get(member.guild.roles, name = "Muted")
 			Grole = discord.utils.get(member.guild.roles, name = "Members")
 			await member.remove_roles(Mrole)
