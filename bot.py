@@ -281,12 +281,12 @@ async def clear(ctx, amount=5):
 		await ctx.channel.purge(limit=amount + 1)
 		print(f'{amount} messages deleted by {ctx.message.author.display_name}')
 		clm = await ctx.send(f"`{amount}` messages deleted")
-		await clm.delete(*, delay = 2)
+		await clm.delete(delay = 2)
 	elif ctx.message.author.id == 727539383405772901:
 		await ctx.channel.purge(limit=amount + 1)
 		print(f'{amount} messages deleted by {ctx.message.author.display_name}')
 		clm = await ctx.send(f"`{amount}` messages deleted")
-		await clm.delete(*, delay = 2)
+		await clm.delete(delay = 2)
 	else:
 		await ctx.send("You are not authorized to use this command")
 
