@@ -32,7 +32,7 @@ async def lock(ctx , timer = '0'):
 		if timer == None:
 			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
 		elif timer.startswith('till'):
-			t1 , t2 = timer.split(' ')
+			t1 , t2 = timer.split('l ')
 			t3 , t4 = t2.split(':')
 			t5 , t6 = t4.split(':')
 			tnow = datetime.datetime.now().time()
