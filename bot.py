@@ -23,6 +23,24 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
+async def lock(ctx , timer = 0):
+	if ctx.message.author.guild_permissions.manage_channels:
+		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+		if timer == 0:
+			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
+		else:
+			await ctx.send(f"Locked {ctx.message.channel.mention} for `{timer}`s")
+			async asyncio.sleep(timer - 3)
+			await ctx.channel.set_permissions(ctx.guild.defalut_role , send_messages = True)
+			await ctx.send(f"Unlocked {ctx.message.channel.mention}")
+			
+@client.command(aliases = ['UNLOCK' , 'Unlock'])
+async def unlock(ctx):
+	if ctx.message.author.guild_permissions.manage_channels:
+		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
+		await ctx.send(f"Unlocked {ctx.message.channel.mention}")
+	
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, question , *options : str):
 	if ctx.message.author.top_role == 'Moderator' :
