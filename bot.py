@@ -390,6 +390,7 @@ async def binod(ctx):
 async def rainbow(ctx , member : discord.Member , times = 1):
 	if ctx.message.author.guild_permissions.administrator:
 		i = 0
+		k = 0
 		while i < times:
 			if k == 0:
 				red = discord.utils.get(member.guild.roles, name = "Red")
