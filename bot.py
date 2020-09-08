@@ -419,6 +419,11 @@ async def rainbow(ctx , member : discord.Member , times = 1):
 async def colorstop(ctx):
 	k = 1
 	
+@client.command(aliases = ['Slowmode' , 'SLOWMODE'])
+async def slowmode(ctx, timer = 5):
+	if ctx.message.author.guild_permissions.manage_channels:
+		await ctx.message.channel.slowmode_delay(timer)
+	
 @client.event
 async def on_message(message):
 	if len(message.content) == 0:
