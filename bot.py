@@ -398,23 +398,25 @@ async def rainbow(ctx , member : discord.Member , times = 1):
 				green = discord.utils.get(member.guild.roles, name = "Green")
 				yellow = discord.utils.get(member.guild.roles, name = "Yellow")
 				purple = discord.utils.get(member.guild.roles, name = "Purple")
-				time.sleep(5)
+				await asyncio.sleep(5)
 				await member.add_roles(red)
-				time.sleep(5)
+				await asyncio.sleep(5)(5)
 				await member.add_roles(blue)
 				await member.remove_roles(red)
-				time.sleep(5)
+				await asyncio.sleep(5)
 				await member.add_roles(green)
 				await member.remove_roles(blue)
-				time.sleep(5)
+				await asyncio.sleep(5)
 				await member.add_roles(yellow)
 				await member.remove_roles(green)
-				time.sleep(5)
+				await asyncio.sleep(5)
 				await member.add_roles(purple)
 				await member.remove_roles(yellow)
-				time.sleep(5)
+				await asyncio.sleep(5)
 				await member.remove_roles(purple)
 				i += 1
+			else:
+				break
 @client.command(aliases=['rainstop'])
 async def colorstop(ctx):
 	k = 1
