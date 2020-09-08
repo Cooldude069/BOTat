@@ -390,7 +390,7 @@ async def binod(ctx):
 async def rainbow(ctx , member : discord.Member , times = 1):
 	if ctx.message.author.guild_permissions.administrator:
 		i = 0
-		while i < times and k == 0:
+		while i < times:
 			red = discord.utils.get(member.guild.roles, name = "Red")
 			blue = discord.utils.get(member.guild.roles, name = "Blue")
 			green = discord.utils.get(member.guild.roles, name = "Green")
@@ -413,11 +413,6 @@ async def rainbow(ctx , member : discord.Member , times = 1):
 			time.sleep(5)
 			await member.remove_roles(purple)
 			i += 1
-			
-@client.command()
-async def colorstop(ctx):
-	k = 1
-	
 	
 @client.event
 async def on_message(message):
