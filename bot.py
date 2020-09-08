@@ -434,7 +434,7 @@ async def slowend(ctx):
 @client.command(aliases = ['Lockdown' , 'LOCKDOWN' , 'LOCK' , 'Lock' , 'lockdown'])
 async def lock(ctx , lt = 0):
 	if ctx.message.author.guild_permissions.manage_channels:
-		if ctx.guild.default_role.read_messages == False:
+		if not ctx.guild.default_role.read_messages :
 			await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 			await ctx.channel.set_permissions(ctx.guild.default_role, read_messages=False)
 			if lt > 0:
@@ -459,7 +459,7 @@ async def lock(ctx , lt = 0):
 async def unlock(ctx):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
-		if ctx.guild.default_role.read_messages == False: 
+		if not ctx.guild.default_role.read_messages: 
 			await ctx.channel.set_permissions(ctx.guild.default_role, read_messages=False)
 		else:
 			await ctx.channel.set_permissions(ctx.guild.default_role, read_messages=True)
