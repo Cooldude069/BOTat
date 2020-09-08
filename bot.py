@@ -384,7 +384,7 @@ async def qna(ctx, *, question):
 async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
-@client.command()
+@client.command(aliases = ['Rainbow' , 'RAINBOW'])
 async def rainbow(ctx , member : discord.Member):
 	if ctx.message.author.guild_permissions.administrator: 
 		red = discord.utils.get(member.guild.roles, name = "Red")
@@ -392,21 +392,21 @@ async def rainbow(ctx , member : discord.Member):
 		green = discord.utils.get(member.guild.roles, name = "Green")
 		yellow = discord.utils.get(member.guild.roles, name = "Yellow")
 		purple = discord.utils.get(member.guild.roles, name = "Purple")
-		time.sleep(10)
+		time.sleep(5)
 		await member.add_roles(red)
-		time.sleep(10)
-		await member.remove_roles(red)
+		time.sleep(5)
 		await member.add_roles(blue)
-		time.sleep(10)
-		await member.remove_roles(bllue)
+		await member.remove_roles(red)
+		time.sleep(5)
 		await member.add_roles(green)
-		time.sleep(10)
-		await member.remove_roles(green)
+		await member.remove_roles(blue)
+		time.sleep(5)
 		await member.add_roles(yellow)
-		time.sleep(10)
-		await member.remove_roles(yellow)
+		await member.remove_roles(green)
+		time.sleep(5)
 		await member.add_roles(purple)
-		time.sleep(10)
+		await member.remove_roles(yellow)
+		time.sleep(5)
 		await member.remove_roles(purple)
 	
 	
