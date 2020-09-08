@@ -29,8 +29,7 @@ async def on_ready():
 async def lock(ctx , timer = '0'):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
-		k1 , k2 = timer.split(' ')
-		if float(k2) == 0:
+		if timer == None:
 			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
 		elif timer.startsswith.lower('till'):
 			t1 , t2 = timer.split(' ')
