@@ -98,13 +98,13 @@ async def reboot(ctx):
 		print(f'{ctx.message.author.display_name} initialised reboot')
 		await ctx.send(f'{ctx.message.author.display_name} initialised reboot')
 		await ctx.send("Test complete. Preparing to power down and begin diagnostics...")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send("Verifying command")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send("Clearing all data...")
 		await ctx.send("shutting down...")
 		await ctx.send("Turning on..")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send("Reboot finished...")
 		await ctx.send("Good to see you again sir!")
 	else:
@@ -263,16 +263,16 @@ async def timer(ctx, *, Tm):
 		await ctx.send(f"Timer set for `{tmr}` minutes")
 		tm = float(tmr) * 60
 	if tm > 3.0:
-		time.sleep(tm - 3)
+		await asyncio.sleep(tm - 3)
 		await ctx.send("3")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send("2")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send("1")
-		time.sleep(1)
+		await asyncio.sleep(1)
 		await ctx.send(":alarm_clock:Time Up:alarm_clock:")
 	else:
-		time.sleep(tm)
+		await asyncio.sleep(tm)
 		await ctx.send(":alarm_clock:Time Up:alarm_clock:")
 		return
 
