@@ -387,9 +387,6 @@ async def binod(ctx):
 	
 @client.event
 async def on_message(message):
-	if message.author.id == 707681278178230282 and message.guild_id == 732814409164128277:
-		await ctx.send("Selfish!!")
-		return
 	if len(message.content) == 0:
 		if message.channel.name == '🤣meme-competiton':
 			meme_1 = '🤣'
