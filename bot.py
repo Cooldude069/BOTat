@@ -31,7 +31,7 @@ async def lock(ctx , timer = 0):
 			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
 		else:
 			await ctx.send(f"Locked {ctx.message.channel.mention} for `{timer}`s")
-			async asyncio.sleep(timer - 3)
+			await asyncio.sleep(timer - 3)
 			await ctx.channel.set_permissions(ctx.guild.defalut_role , send_messages = True)
 			await ctx.send(f"Unlocked {ctx.message.channel.mention}")
 			
