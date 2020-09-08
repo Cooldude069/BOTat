@@ -415,7 +415,7 @@ async def rainbow(ctx , member : discord.Member , times = 1):
 				time.sleep(5)
 				await member.remove_roles(purple)
 				i += 1
-@client.command(aliases='rainstop')
+@client.command(aliases=['rainstop'])
 async def colorstop(ctx):
 	k = 1
 	
