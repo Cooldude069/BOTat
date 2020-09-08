@@ -433,9 +433,15 @@ async def slowend(ctx):
 		
 @client.command()
 async def lock(ctx , lt = 0):
-	await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
-	if lt > 0:
-		await asyncio.sleep(lt)
+	if ctx.message.author.guild_permissions.manage_channels:
+		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+		if lt > 0:
+			await asyncio.sleep(lt)
+			await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
+		
+@client.command(aliases = ['UNLOCK' , 'Unlock'])
+async def unlock(ctx):
+	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
 	
 @client.event
