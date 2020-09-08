@@ -431,7 +431,7 @@ async def slowend(ctx):
 		await ctx.message.channel.edit(slowmode_delay = 0)
 		await ctx.send("Slowmode removed")
 		
-@client.command()
+@client.command(aliases = ['Lockdown' , 'LOCKDOWN' , 'LOCK' , 'Lock'])
 async def lock(ctx , lt = 0):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
