@@ -8,6 +8,7 @@ import os
 import shutil
 import asyncio
 from discord.utils import get
+import datetime
 
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
@@ -22,6 +23,10 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+@client.command()
+async def time(ctx):
+	ctx.send(datetime.datetime.now().time())
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
 async def lock(ctx , timer = 0):
