@@ -34,7 +34,6 @@ async def lock(ctx , timer = '0'):
 		elif timer.startswith('upto'):
 			t1 , t2 = timer.split('o')
 			t3 , t4 = t2.split(':')
-			t5 , t6 = t4.split(':')
 			tnow = datetime.datetime.now().time()
 			t7 , t8 = tnow.split(':')
 			t9 , t0 = t8.split(':')
