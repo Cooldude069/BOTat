@@ -430,6 +430,13 @@ async def slowend(ctx):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.message.channel.edit(slowmode_delay = 0)
 		await ctx.send("Slowmode removed")
+		
+@client.command()
+async def lock(ctx , lt = 0):
+	await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+	if lt > 0:
+		await asyncio.sleep(lt)
+		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
 	
 @client.event
 async def on_message(message):
