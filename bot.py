@@ -26,7 +26,7 @@ async def on_ready():
 	
 @client.command()
 async def time(ctx):
-	ctx.send(datetime.datetime.now().time())
+	await ctx.send(datetime.datetime.now().time())
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
 async def lock(ctx , timer = 0):
