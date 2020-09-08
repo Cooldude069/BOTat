@@ -386,7 +386,7 @@ async def binod(ctx):
 	
 @client.command()
 async def rainbow(ctx , member : discord.Member):
-		if ctx.message.author.guild_permissions.administrator: 
+	if ctx.message.author.guild_permissions.administrator: 
 		red = discord.utils.get(member.guild.roles, name = "Red")
 		blue = discord.utils.get(member.guild.roles, name = "Blue")
 		green = discord.utils.get(member.guild.roles, name = "Green")
