@@ -436,18 +436,18 @@ async def lock(ctx , lt = 0):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if lt > 0:
-			await ctx.send(f"Locked {ctx.message.channel.name} for `{lt}`s")
+			await ctx.send(f"Locked {ctx.message.channel.mention} for `{lt}`s")
 			await asyncio.sleep(lt)
 			await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
 			await ctx.send("Lockdown Ended")
 		else:
-			await ctx.send(f"Locked {ctx.message.channel.name} Indefinitely")
+			await ctx.send(f"Locked {ctx.message.channel.mention} Indefinitely")
 		
 @client.command(aliases = ['UNLOCK' , 'Unlock'])
 async def unlock(ctx):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
-		await ctx.send(f"Unlocked {ctx.message.channel.name}")
+		await ctx.send(f"Unlocked {ctx.message.channel.mention}")
 	
 @client.event
 async def on_message(message):
