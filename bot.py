@@ -423,6 +423,12 @@ async def colorstop(ctx):
 async def slowmode(ctx, timer = 5):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.message.channel.slowmode_delay(timer)
+		
+@client.command(aliases = ['Slowend' , 'SLOWEND'])
+async def slowend(ctx):
+	if ctx.message.author.guild_permissions.manage_channels:
+		await ctx.message.channel.slowmode_delay(0)
+		
 	
 @client.event
 async def on_message(message):
