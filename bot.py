@@ -32,7 +32,7 @@ async def lock(ctx , timer = 0):
 		else:
 			await ctx.send(f"Locked {ctx.message.channel.mention} for `{timer}`s")
 			await asyncio.sleep(timer - 3)
-			await ctx.channel.set_permissions(ctx.guild.defalut_role , send_messages = True)
+			await ctx.channel.set_permissions(ctx.guild.default_role , send_messages = True)
 			await ctx.send(f"Unlocked {ctx.message.channel.mention}")
 			
 @client.command(aliases = ['UNLOCK' , 'Unlock'])
