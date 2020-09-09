@@ -420,7 +420,7 @@ async def rainbow(ctx , member : discord.Member , times = 1):
 				purple = discord.utils.get(member.guild.roles, name = "Purple")
 				await asyncio.sleep(5)
 				await member.add_roles(red)
-				await asyncio.sleep(5)(5)
+				await asyncio.sleep(5)
 				await member.add_roles(blue)
 				await member.remove_roles(red)
 				await asyncio.sleep(5)
