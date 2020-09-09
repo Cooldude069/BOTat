@@ -42,7 +42,7 @@ async def server_lock(ctx , timer = 0):
 	for channel in ctx.message.guild.text_channels:
 		await channel.set_permissions(ctx.guild.default_role, send_messages=False)
 	if timer == 0:
-		ctx.send(f"Locked {ctx.message.guild.name}")
+		await ctx.send(f"Locked {ctx.message.guild.name}")
 	else:
 		await asyncio.sleep(timer - 3)
 		for channel in ctx.message.guild.text_channels:
