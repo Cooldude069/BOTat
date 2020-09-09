@@ -407,36 +407,38 @@ async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
 @client.command(aliases = ['Rainbow' , 'RAINBOW'])
-async def rainbow(ctx , member : discord.Member , times = 1):
+async def rainbow(ctx , role : discord.Role, times = 1):
 	if ctx.message.author.guild_permissions.administrator:
-		i = 0
-		k = 0
-		while i < times:
-			if k == 0:
-				red = discord.utils.get(member.guild.roles, name = "Red")
-				blue = discord.utils.get(member.guild.roles, name = "Blue")
-				green = discord.utils.get(member.guild.roles, name = "Green")
-				yellow = discord.utils.get(member.guild.roles, name = "Yellow")
-				purple = discord.utils.get(member.guild.roles, name = "Purple")
-				await asyncio.sleep(5)
-				await member.add_roles(red)
-				await asyncio.sleep(5)
-				await member.add_roles(blue)
-				await member.remove_roles(red)
-				await asyncio.sleep(5)
-				await member.add_roles(green)
-				await member.remove_roles(blue)
-				await asyncio.sleep(5)
-				await member.add_roles(yellow)
-				await member.remove_roles(green)
-				await asyncio.sleep(5)
-				await member.add_roles(purple)
-				await member.remove_roles(yellow)
-				await asyncio.sleep(5)
-				await member.remove_roles(purple)
-				i += 1
-			else:
-				break
+		for member in ctx.message.server.members:
+        		if role in member.roles:
+				i = 0
+				k = 0
+				while i < times:
+					if k == 0:
+						red = discord.utils.get(member.guild.roles, name = "Red")
+						blue = discord.utils.get(member.guild.roles, name = "Blue")
+						green = discord.utils.get(member.guild.roles, name = "Green")
+						yellow = discord.utils.get(member.guild.roles, name = "Yellow")
+						purple = discord.utils.get(member.guild.roles, name = "Purple")
+						await asyncio.sleep(5)
+						await member.add_roles(red)
+						await asyncio.sleep(5)
+						await member.add_roles(blue)
+						await member.remove_roles(red)
+						await asyncio.sleep(5)
+						await member.add_roles(green)
+						await member.remove_roles(blue)
+						await asyncio.sleep(5)
+						await member.add_roles(yellow)
+						await member.remove_roles(green)
+						await asyncio.sleep(5)
+						await member.add_roles(purple)
+						await member.remove_roles(yellow)
+						await asyncio.sleep(5)
+						await member.remove_roles(purple)
+						i += 1
+					else:
+						break
 @client.command(aliases=['rainstop'])
 async def colorstop(ctx):
 	k = 1
