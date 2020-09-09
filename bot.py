@@ -26,7 +26,7 @@ async def on_ready():
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
-async def lock(ctx ,*,timer):
+async def lock(ctx ,*,timer = None):
 	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == None:
