@@ -39,17 +39,26 @@ async def lock(ctx , timer = 0):
 			
 @client.command(aliases = ['Server_lock'  , 'Server_lockdown' , 'server_lockdown'])
 async def server_lock(ctx , timer = 0):
-	for channel in ctx.message.guild.text_channels:
-		await channel.set_permissions(ctx.guild.default_role, send_messages=False)
-	if timer == 0:
-		await ctx.send(f"Locked {ctx.message.guild.name}")
-	else:
-		await asyncio.sleep(timer - 3)
+	if ctx.message.author.guild_permissions.administrator: 
 		for channel in ctx.message.guild.text_channels:
-			await channel.set_permissions(ctx.guild.default_role , send_messages = True)
-			await ctx.send(f"Unlocked {ctx.message.channel.mention}")
+			await channel.set_permissions(ctx.guild.default_role, send_messages=False)
+		if timer == 0:
+			await ctx.send(f"Locked {ctx.message.guild.name}")
+		else:
+			await asyncio.sleep(timer - 3)
+			for channel in ctx.message.guild.text_channels:
+				await channel.set_permissions(ctx.guild.default_role , send_messages = True)
 			
 	print(f"{ctx.message.author} has locked down {ctx.message.guild.name}")
+	
+@client.command(aliases = ['Server_unlock'])
+async def server_unlock(ctx):
+	if ctx.message.author.guild_permissions.administrator: 
+		for channel in ctx.message.guild.text_channels:
+			await channel.set_permissions(ctx.guild.default_role , send_messages = True)
+			await ctx.send(f"Unlocked {ctx.message.guild.name}")
+			
+	print(f"{ctx.message.author} has unlocked {ctx.message.guild.name}")
 			
 @client.command(aliases = ['UNLOCK' , 'Unlock'])
 async def unlock(ctx):
