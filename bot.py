@@ -34,8 +34,8 @@ async def lock(ctx ,*,timer):
 		elif timer.startswith('upto'):
 			t1 , t2 = timer.split('o')
 			t3 , t4 = t2.split(':')
-			t5 = datetime.datetime.now().hour()
-			t7 = datetime.datetime.now().minute()
+			t5 = datetime.datetime.now().hour
+			t7 = datetime.datetime.now().minute
 			tmr = (float(t5) - float(t3) - 11)*3600 + (float(t7) - float(t4))*60
 			await ctx.send(f'Locked {ctx.message.channel.mention}')
 			await asyncio.sleep(tmr)
