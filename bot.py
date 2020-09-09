@@ -36,7 +36,14 @@ async def lock(ctx ,*,timer):
 			t3 , t4 = t2.split(':')
 			t5 = datetime.datetime.now().hour
 			t7 = datetime.datetime.now().minute
-			tmr = (float(t5) - float(t3) - 11)*3600 + (float(t7) - float(t4) + 1)*60
+			if int(t5) - int(t3) - 11 == 0:
+				if int(t4) > int(t7):
+					tmr = (float(t3) - float(t5) - 11)*3600 + (float(t4) - float(t7))*60
+				else:
+					tmr = (float(t3) - float(t5) - 11)*3600 + (float(t7) - float(t4))*60
+			else:
+				tmr = (float(t3) - float(t5) - 11)*3600 + (float(t4) - float(t7))*60
+		
 			await ctx.send(f'Locked {ctx.message.channel.mention}')
 			await asyncio.sleep(tmr)
 			await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
