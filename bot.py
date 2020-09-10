@@ -179,7 +179,7 @@ async def help(ctx):
 	helpm.add_field(name = ":one::six: clear {amount} -> Deletes the specified amount of messages" , value = "Have a good time cleaning" , inline = False)
 	helpm.add_field(name = ":one::seven: rainbow {role} -> creates a rainbow effect for that role" , value = "Looks dope" , inline = False)
 	helpm.add_field(name = ":one::eight: 8ball {question} -> gives a random answer to your question" , value = "the fun command" , inline = False)
-	helpm.add_field(name = f"by {ctx.message.author.display_name}", value = f"Role : {ctx.message.author.top_role}" ,inline = False)
+	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
 	await ctx.send("You've got mail!!")
 	
