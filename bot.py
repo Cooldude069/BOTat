@@ -157,7 +157,7 @@ async def reboot(ctx):
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
 	await ctx.message.author.create_dm()
-	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n complain {message}-> makes a complain and reports it to the officials\n suggestion {message}-> makes a suggestion and reports it to the officials\n poll {question} {options}-> makes a poll and posts it in the polls channel```")
+	await ctx.message.author.dm_channel.send("``` My prefix is jarvis eg. jarvis clear \n addrole/removerole {user} {role name}-> adds or removes a role from the mentioned user \n mute/unmute {user}-> mutes/unmutes a user \n kick {user} {reason}-> kick a user from the server \n ban/unban {user} {reason}-> Bans/unbans a user from a server \n clear {number}-> deletes the number of messages \n dmsend {user} {message}-> send a dm message to the user \n ping-> show the bot's ping \n pop -> make a bubble wrap \n timer {amount} {unit}-> sets a timer, the units can be s, m or hr\n complain {message}-> makes a complain and reports it to the officials\n suggestion {message}-> makes a suggestion and reports it to the officials\n poll {question} {options}-> makes a poll and posts it in the polls channel\n lock/unlock-> Locks/Unlocks the channel\n server_lock/server_unlock->locks/unlocks the entire server```")
 	await ctx.send("Let me help you via DM")
 	
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
@@ -431,33 +431,23 @@ async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
 @client.command(aliases = ['Rainbow' , 'RAINBOW'])
-async def rainbow(ctx , member:discord.Member, times = 1):
+async def rainbow(ctx , Role:discord.Role, times = 1):
 	if ctx.message.author.guild_permissions.administrator:
+		incolor = Role.color()
 		i = 0
 		k = 0
 		while i < times:
-			red = discord.utils.get(member.guild.roles, name = "Red")
-			blue = discord.utils.get(member.guild.roles, name = "Blue")
-			green = discord.utils.get(member.guild.roles, name = "Green")
-			yellow = discord.utils.get(member.guild.roles, name = "Yellow")
-			purple = discord.utils.get(member.guild.roles, name = "Purple")
-			await asyncio.sleep(5)
-			await member.add_roles(red)
-			await asyncio.sleep(5)
-			await member.add_roles(blue)
-			await member.remove_roles(red)
-			await asyncio.sleep(5)
-			await member.add_roles(green)
-			await member.remove_roles(blue)
-			await asyncio.sleep(5)
-			await member.add_roles(yellow)
-			await member.remove_roles(green)
-			await asyncio.sleep(5)
-			await member.add_roles(purple)
-			await member.remove_roles(yellow)
-			await asyncio.sleep(5)
-			await member.remove_roles(purple)
-			i += 1
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.red())
+			await asyncio.sleep(1)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.green())
+			await asyncio.sleep(1)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.blue())
+			await asyncio.sleep(1)
+			if k==0:
+				i += 1
+			else:
+				i = times
+		await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
 					
 @client.command(aliases=['rainstop'])
 async def colorstop(ctx):
