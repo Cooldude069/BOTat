@@ -70,7 +70,7 @@ async def unlock(ctx):
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, question , *options : str):
 	if ctx.message.guild.id == 723435494578323476:
-		if ctx.message.author.guild_permission.manage_messages :
+		if ctx.message.author.guild_permissions.manage_messages :
 			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
 			poll_1 = '1️⃣'
@@ -93,7 +93,7 @@ async def poll(ctx, question , *options : str):
 		else:
 			await ctx.send("You are not authorized to use this command")
 	else:
-		if ctx.message.author.guild_permission.manage_messages :
+		if ctx.message.author.guild_permissions.manage_messages :
 			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
 			poll_1 = '1️⃣'
