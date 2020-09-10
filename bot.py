@@ -275,7 +275,7 @@ async def noice(ctx):
 @client.event
 async def on_member_join(member):
     await member.create_dm()
-    await member.dm_channel.send(f'Hi {member.display_name}, welcome to The server!')
+    await member.dm_channel.send(f"Hi {member.display_name}, welcome to {ctx.message.guild.name}!, We'll make sure that you have fun")
 
 @client.command(aliases = ['Dmsend' , 'DMSEND'])
 async def dmsend(ctx, member:discord.Member, *, note):
