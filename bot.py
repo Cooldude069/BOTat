@@ -79,7 +79,7 @@ async def poll(ctx, question , *options : str):
 			msg = await channel.send(embed = pol)
 			await msg.add_reaction(poll_1)
 			await msg.add_reaction(poll_2)
-			await ctx.send(f"Your poll has successfully posted in {channel}")
+			await ctx.send(f"Your poll has successfully been posted in {channel}")
 		elif ctx.message.author.id == 727539383405772901:
 			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
 			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
@@ -89,7 +89,7 @@ async def poll(ctx, question , *options : str):
 			msg = await channel.send(embed = pol)
 			await msg.add_reaction(poll_1)
 			await msg.add_reaction(poll_2)
-			await ctx.send(f"Your poll has successfully posted in {channel}")
+			await ctx.send(f"Your poll has successfully been posted in {channel}")
 		else:
 			await ctx.send("You are not authorized to use this command")
 	else:
