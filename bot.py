@@ -469,12 +469,14 @@ async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
 @client.command(aliases = ['Rainbow' , 'RAINBOW'])
-async def rainbow(ctx , Role:discord.Role, delay = 1.5):
+async def rainbow(ctx , Role:discord.Role, delay = 3):
 	if ctx.message.author.guild_permissions.administrator:
 		i = 0
 		k = 0
 		incolor = Role.color.value
-		if delay > 0:
+		if delay < 3:
+			delay = 3
+		if delay > 2:
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.teal())
 			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_teal())
