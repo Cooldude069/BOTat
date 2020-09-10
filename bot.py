@@ -69,28 +69,49 @@ async def unlock(ctx):
 	
 @client.command(pass_context = True , aliases = ['POLL' , 'Poll'])
 async def poll(ctx, question , *options : str):
-	if ctx.message.author.top_role == 'Moderator' :
-		pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
-		pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
-		poll_1 = '1️⃣'
-		poll_2 = '2️⃣'
-		channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
-		msg = await channel.send(embed = pol)
-		await msg.add_reaction(poll_1)
-		await msg.add_reaction(poll_2)
-		await ctx.send(f"Your poll has successfully posted in {channel}")
-	elif ctx.message.author.id == 727539383405772901:
-		pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
-		pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
-		poll_1 = '1️⃣'
-		poll_2 = '2️⃣'
-		channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
-		msg = await channel.send(embed = pol)
-		await msg.add_reaction(poll_1)
-		await msg.add_reaction(poll_2)
-		await ctx.send(f"Your poll has successfully posted in {channel}")
+	if ctx.message.guild.id == 723435494578323476:
+		if ctx.message.author.guild_permission.manage_messages :
+			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+			poll_1 = '1️⃣'
+			poll_2 = '2️⃣'
+			channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+			msg = await channel.send(embed = pol)
+			await msg.add_reaction(poll_1)
+			await msg.add_reaction(poll_2)
+			await ctx.send(f"Your poll has successfully posted in {channel}")
+		elif ctx.message.author.id == 727539383405772901:
+			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+			poll_1 = '1️⃣'
+			poll_2 = '2️⃣'
+			channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+			msg = await channel.send(embed = pol)
+			await msg.add_reaction(poll_1)
+			await msg.add_reaction(poll_2)
+			await ctx.send(f"Your poll has successfully posted in {channel}")
+		else:
+			await ctx.send("You are not authorized to use this command")
 	else:
-		await ctx.send("You are not authorized to use this command")
+		if ctx.message.author.guild_permission.manage_messages :
+			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+			poll_1 = '1️⃣'
+			poll_2 = '2️⃣'
+			msg = await ctx.send(embed = pol)
+			await msg.add_reaction(poll_1)
+			await msg.add_reaction(poll_2)
+		elif ctx.message.author.id == 727539383405772901:
+			pol = discord.Embed(title = f'**POLL**{question}' , color = discord.Color.blue())
+			pol.add_field(name = f"1️⃣  {options[0]}" , value = f"2️⃣  {options[1]}" , inline = False)
+			poll_1 = '1️⃣'
+			poll_2 = '2️⃣'
+			channel = discord.utils.get(ctx.message.author.guild.channels , name = 'l🗽l-polls')
+			msg = await ctx.send(embed = pol)
+			await msg.add_reaction(poll_1)
+			await msg.add_reaction(poll_2)
+		else:
+			await ctx.send("You are not authorized to use this command")
 	
 @client.command(aliases = ['MEME', 'Meme'])
 async def meme(ctx):
@@ -117,12 +138,6 @@ async def suggestion(ctx, * ,suggestion):
 	await Channel.send(embed = sugg)
 	await ctx.send("Your suggestion has successfully been posted, Thank you")
 	
-@client.command(aliases=['Handjob', "HANDJOB"])
-async def handjob(ctx):
-	if ctx.message.author.guild_permissions.administrator:
-		await ctx.send("8==:fist:==D:sweat_drops:")
-	else:
-		await ctx.send("Sir!, I cannot let you do that(Masturbation makes vision blurry)")
 	
 @client.command(pass_context=True, aliases=['Say', 'SAY'])
 async def say(ctx, channel:discord.TextChannel , *, message):
@@ -161,7 +176,7 @@ async def help(ctx):
 	helpm.add_field(name = "Hey! I am Jarvis, as you might be knowing from Marvel. Well now, I am on Discord" , value = "So Enjoy!!" , inline = False)
 	helpm.add_field(name = "My prefix is Jarvis " , value = "Example:- jarvis help" , inline = False)
 	helpm.add_field(name = "So, lets go through my commands" , value = "Remember they are great" , inline = False)
-	helpm.add_field(name = ":one: poll {question} {option 1} {optoin 2} -> Sets up a poll" , value = "Currently limited to Shirodov" , inline = False)
+	helpm.add_field(name = ":one: poll {question} {option 1} {optoin 2} -> Sets up a poll" , value = "Enjoy your polls" , inline = False)
 	helpm.add_field(name = ":two: addrole {member} {role name} -> gives the specified role to the User" , value = "Jarvis should be above that role in heirarchy" , inline = False)
 	helpm.add_field(name = ":three: removerole {member} {role name} -> removes the specified role from the User" , value = "Jarvis should be above that role in heirarchy" , inline = False)
 	helpm.add_field(name = ":four: lock {time} -> locks the channel for the specified time" , value = "If time is not provided, it is indefinitely" , inline = False)
