@@ -157,7 +157,7 @@ async def reboot(ctx):
 @client.command(aliases=['HELP', 'Help'])
 async def help(ctx):
 	await ctx.message.author.create_dm()
-	helpm  = discord.Embed(title = f"{Jarvis Help!}" , color = discord.Color.purple())
+	helpm  = discord.Embed(title = f"Jarvis Help!" , color = discord.Color.purple())
 	helpm.add_field(name = "Hey! I am Jarvis, as you might be knowing from Marvel. Well now, I am on Discord, So Enjoy!!" , value = None , inline = False)
 	helpm.add_field(name = "My prefix is Jarvis " , value = None , inline = False)
 	helpm.add_field(name = "So, lets go through my commands" , value = None , inline = False)
