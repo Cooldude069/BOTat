@@ -469,49 +469,45 @@ async def binod(ctx):
 	await ctx.send("BINOD!!")
 	
 @client.command(aliases = ['Rainbow' , 'RAINBOW'])
-async def rainbow(ctx , Role:discord.Role, times = 1):
+async def rainbow(ctx , Role:discord.Role, delay = 1.5):
 	if ctx.message.author.guild_permissions.administrator:
 		i = 0
 		k = 0
 		incolor = Role.color.value
-		while i < times:
+		if delay > 0:
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.teal())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_teal())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.green())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_green())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.blue())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_blue())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.purple())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_purple())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.magenta())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_magenta())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.gold())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_gold())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.orange())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_orange())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.red())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_red())
-			await asyncio.sleep(1.5)
+			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
-			if k==0:
-				i += 1
-			else:
-				i = times
 					
 @client.command(aliases=['rainstop'])
 async def colorstop(ctx):
