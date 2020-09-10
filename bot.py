@@ -435,6 +435,7 @@ async def rainbow(ctx , Role:discord.Role, times = 1):
 	if ctx.message.author.guild_permissions.administrator:
 		i = 0
 		k = 0
+		incolor = Role.color()
 		while i < times:
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.teal())
 			await asyncio.sleep(1.5)
@@ -467,6 +468,8 @@ async def rainbow(ctx , Role:discord.Role, times = 1):
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.red())
 			await asyncio.sleep(1.5)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_red())
+			await asyncio.sleep(1.5)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
 			if k==0:
 				i += 1
 			else:
