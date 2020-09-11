@@ -192,7 +192,7 @@ async def help(ctx):
 	helpm.add_field(name = ":one::four: timer {time} -> sets a timer" , value = "hour -> hr , minutes -> m, seconds -> s" , inline = False)
 	helpm.add_field(name = ":one::five: ping -> Shows the bot's ping" , value = "pong!" , inline = False)
 	helpm.add_field(name = ":one::six: clear {amount} -> Deletes the specified amount of messages" , value = "Have a good time cleaning" , inline = False)
-	helpm.add_field(name = ":one::seven: rainbow {role} -> creates a rainbow effect for that role" , value = "Looks dope" , inline = False)
+	helpm.add_field(name = ":one::seven: rainbow {role} {delay}-> continuously changes the color of that role after the given delay" , value = "Delya should be in seconds and must be greater than 3" , inline = False)
 	helpm.add_field(name = ":one::eight: 8ball {question} -> gives a random answer to your question" , value = "the fun command" , inline = False)
 	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
