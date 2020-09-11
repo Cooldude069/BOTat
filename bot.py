@@ -224,19 +224,19 @@ async def temprole(ctx , member:discord.Member , role:discord.Role ,* , timer):
 		if timer.endswith('r'):
 			tmr, un = timer.split('h')
 			tm = float(tmr) * 3600
-			await ctx.send(f"Timer set for `{tmr}` hours")
+			await ctx.send(f"{role.name} added to {member.mention} for `{tmr}` hours")
 		elif timer.endswith('s'):
 			tmr, un = timer.split('s')
 			tm = float(tmr)
-			await ctx.send(f"Timer set for `{tmr}` seconds")
+			await ctx.send(f"{role.name} added to {member.mention} for `{tmr}` seconds")
 		elif timer.endswith('m'):
 			tmr, un = timer.split('m')
-			await ctx.send(f"Timer set for `{tmr}` minutes")
+			await ctx.send(f"{role.name} added to {member.mention} for `{tmr}` minutes")
 			tm = float(tmr) * 60
 		await member.add_roles(role)
 		await asyncio.sleep(tm)
 		await member.remove_roles(role)
-		await ctx.send(f"{role.name} has been timed out and removed from {member.display_name}")
+		await ctx.send(f"{role.name} has been timed out and removed from {member.mention}")
 	
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
