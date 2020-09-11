@@ -215,7 +215,7 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 		await ctx.send("You are not authorized to use this command")
 		
 @client.command(aliases = ['TR' , 'Tr' , 'tr' , 'Temprole' , 'TEMPROLE'])
-async def temprole(ctx , member:discord.Member , role:discord.Role ,* , timer):
+async def temprole(ctx , member:discord.Member , role:discord.Role ,* , timer = None):
 	if ctx.message.author.guild_permissions.administrator:
 		if timer == None:
 			await ctx.send("Time should be specified")
