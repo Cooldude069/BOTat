@@ -219,7 +219,8 @@ async def temprole(ctx , member:discord.Member , role:discord.Role ,* , timer):
 	if ctx.message.author.guild_permissions.administrator:
 		if timer == None:
 			await ctx.send("Time should be specified")
-			break
+			return
+		
 		if timer.endswith('r'):
 			tmr, un = timer.split('h')
 			tm = float(tmr) * 3600
