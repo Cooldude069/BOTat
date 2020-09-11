@@ -194,6 +194,7 @@ async def help(ctx):
 	helpm.add_field(name = ":one::six: clear {amount} -> Deletes the specified amount of messages" , value = "Have a good time cleaning" , inline = False)
 	helpm.add_field(name = ":one::seven: rainbow {role} {delay}-> continuously changes the color of that role after the given delay" , value = "Delay should be in seconds and must be greater than 3" , inline = False)
 	helpm.add_field(name = ":one::eight: 8ball {question} -> gives a random answer to your question" , value = "the fun command" , inline = False)
+	helpm.add_field(name = ":one::nine: temprole {user} {role name} {time} -> adds the role to the user for specified time" , value = "hour->hr , minute->m , seconds->s" , inline = False)
 	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
 	await ctx.send("You've got mail!!")
@@ -212,6 +213,30 @@ async def addrole(ctx, member:discord.Member , *, role:discord.Role):
 		await ctx.send(f"{role.name} has been added to {member.display_name} by {ctx.message.author.display_name}")
 	else:
 		await ctx.send("You are not authorized to use this command")
+		
+@client.command(aliases = ['TR' , 'Tr' , 'tr' , 'Temprole' , 'TEMPROLE'])
+async def temprole(ctx , member:discord.Member , role:discord.Role ,* , timer):
+	if ctx.message.author.guild_permissions.administrator:
+		if timer == None:
+			await ctx.send("Time should be specified")
+			break
+		if timer.endswith('r'):
+			tmr, un = timer.split('h')
+			tm = float(tmr) * 3600
+			await ctx.send(f"Timer set for `{tmr}` hours")
+		elif timer.endswith('s'):
+			tmr, un = timer.split('s')
+			tm = float(tmr)
+			await ctx.send(f"Timer set for `{tmr}` seconds")
+		elif timer.endswith('m'):
+			tmr, un = timer.split('m')
+			await ctx.send(f"Timer set for `{tmr}` minutes")
+			tm = float(tmr) * 60
+		await member.add_roles(role)
+		await asyncio.sleep(tm)
+		await member.remove_roles(role)
+		await ctx.send(f"{role.name} has been timed out and removed from {member.display_name}")
+	
 		
 @client.command(pass_context=True, aliases=['Removerole', 'REMOVEROLE'])
 async def removerole(ctx, member:discord.Member , *, role:discord.Role):
