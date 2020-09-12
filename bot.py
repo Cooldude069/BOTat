@@ -27,7 +27,7 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command(aliases = ['Reactrole' , 'REACTROLE' , 'react_role'  , 'React_role' , 'rr' , 'Rr'])
-async def reactrole(ctx , rRole:discord.Role):
+async def reactrole(self, ctx , rRole:discord.Role):
 	r = 1
 	msg = await ctx.send("Add your reaction here")
 	client.chenel = msg.id
@@ -39,7 +39,7 @@ async def reactrole(ctx , rRole:discord.Role):
 
 	
 @client.event
-async def on_raw_reaction_add(self , payload):
+async def on_raw_reaction_add(payload):
 	print("reached here! 2")
 	if payload.message_id == client.chenel:
 		print("Reached here! 3")
