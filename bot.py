@@ -42,7 +42,7 @@ async def reactrole(ctx , rRole:discord.Role):
 	
 @client.event
 async def on_raw_reaction_add(payload):
-	await ctx.send("reached here!")
+	print("reached here!")
 	if payload.message_id == chenel:
 		print("Reached here!")
 		for reaction in rxs:
