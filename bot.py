@@ -39,7 +39,7 @@ asyn def reactrole(ctx , rRole:discord.Role):
 
 	
 @client.event
-asyn def on_reaction_add(reaction , user):
+async def on_reaction_add(reaction , user):
 	if reaction.message.channel.id != chenel
 	return
 	if reaction in rxn:
