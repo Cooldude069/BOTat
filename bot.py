@@ -31,8 +31,8 @@ async def on_ready():
 @client.command(aliases = ['Reactrole' , 'REACTROLE' , 'react_role'  , 'React_role' , 'rr' , 'Rr'])
 async def reactrole(ctx , rRole:discord.Role):
 	r = 1
-	chenel = ctx.message.channel.id
 	msg = await ctx.send("Add your reaction here")
+	chenel = msg.id
 	await asyncio.sleep(10)
 	rxn = msg.reactions
 	return r , chenel , rxn , rRole
@@ -40,10 +40,12 @@ async def reactrole(ctx , rRole:discord.Role):
 	
 @client.event
 async def on_reaction_add(reaction , user):
-	if reaction.message.channel.id != chenel:
-		return
-	if reaction in rxn:
-		await user.add_roles(rRole)
+	if r == 1:
+		if reaction.message.id != chenel:
+			return
+		if reaction in rxn:
+			await user.add_roles(rRole)
+			await ctx.send("Role added")
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
