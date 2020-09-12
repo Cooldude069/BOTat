@@ -33,7 +33,7 @@ async def perms(ctx , Role:discord.Role):
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
 async def lock(ctx , timer = 0):
-	if ctx.message.author.guild_permissions.manage_channels or ctx.message.author.id == 727539383405772901:
+	if ctx.message.author.guild_permissions.manage_channels:
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
 			await ctx.send(f"Locked {ctx.message.channel.mention} indefinitely")
@@ -45,7 +45,7 @@ async def lock(ctx , timer = 0):
 			
 @client.command(aliases = ['Server_lock'  , 'Server_lockdown' , 'server_lockdown'])
 async def server_lock(ctx , timer = 0):
-	if ctx.message.author.guild_permissions.administrator or ctx.message.author.id == 727539383405772901: 
+	if ctx.message.author.guild_permissions.administrator: 
 		for channel in ctx.message.guild.text_channels:
 			await channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
@@ -57,6 +57,30 @@ async def server_lock(ctx , timer = 0):
 			await ctx.send(f"Locked down {ctx.message.guild.name} for `{timer}`s")
 			
 	print(f"{ctx.message.author} has locked down {ctx.message.guild.name}")
+	
+@client.command(aliases = ['Category_lock' , 'CATEGORY_LOCK' , 'C_lock' , 'c_lock' ,'C_LOCK'])
+async def category_lock(ctx , category : discord.CategoryChannel , timer = 0):
+	if ctx.message.author.guild_permissions.administrator: 
+		for channel in category.text_channels:
+			await channel.set_permissions(ctx.guild.default_role, send_messages=False)
+		if timer == 0:
+			await ctx.send(f"Locked down {category.mention}")
+		else:
+			await asyncio.sleep(timer - 3)
+			for channel in category.text_channels:
+				await channel.set_permissions(ctx.guild.default_role , send_messages = True)
+			await ctx.send(f"Locked down {category.mention} for `{timer}`s")
+			
+	print(f"{ctx.message.author} has locked down {category.mention}")
+	
+@client.command(aliases = ['Category_unlock' , 'CATEGORY_UNLOCK' , 'C_unlock' , 'C_UNLOCK' , 'c_unlock'])
+async def category_unlock(ctx , cat : discord.CategoryChannel):
+	if ctx.message.author.guild_permissions.administrator: 
+		for channel in cat.text_channels:
+			await channel.set_permissions(ctx.guild.default_role , send_messages = True)
+			
+	await ctx.send(f"Unlocked {cat.mention}")		
+	print(f"{ctx.message.author} has unlocked {cat.mention}")
 	
 @client.command(aliases = ['Server_unlock'])
 async def server_unlock(ctx):
