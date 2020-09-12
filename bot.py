@@ -29,7 +29,7 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command(aliases = ['Reactrole' , 'REACTROLE' , 'react_role'  , 'React_role' , 'rr' , 'Rr'])
-asyn def reactrole(ctx , rRole:discord.Role):
+async def reactrole(ctx , rRole:discord.Role):
 	r = 1
 	chenel = ctx.message.channel.id
 	msg = await ctx.send("Add your reaction here")
