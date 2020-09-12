@@ -16,8 +16,6 @@ client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice' , 'SKRIBBL'])
 global g
 global k
-client.chenel = 0
-client.r = 0
 k = 0
 g = 0
 
@@ -26,28 +24,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command(aliases = ['Reactrole' , 'REACTROLE' , 'react_role'  , 'React_role' , 'rr' , 'Rr'])
-async def reactrole(self, ctx , rRole:discord.Role):
-	r = 1
-	msg = await ctx.send("Add your reaction here")
-	client.chenel = msg.id
-	await asyncio.sleep(10)
-	client.rxn = msg.reactions
-	client.guildr = ctx.message.guild
-	print("Reached here! 1")
-	return r , chenel , rxn , rRole , guildr
-
-	
-@client.event
-async def on_raw_reaction_add(payload):
-	print("reached here! 2")
-	if payload.message_id == client.chenel:
-		print("Reached here! 3")
-		for reaction in client.rxn:
-			if payload.emoji == reaction:
-				print("Reached here! final")
-				member = discord.utils.get(lambda m : m.id == payload.user_id , client.guildr.members)
-				await member.add_roles(rRole)
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
