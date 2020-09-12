@@ -48,7 +48,7 @@ async def on_raw_reaction_add(payload):
 		for reaction in rxs:
 			if payload.emoji == reaction.emoji:
 				print("Reached here!")
-				member = discord.utils.get(lambda m : m.id == payload.user.id , guildr.members)
+				member = discord.utils.get(lambda m : m.id == payload.user_id , guildr.members)
 				await member.add_roles(rRole)
 	
 	
