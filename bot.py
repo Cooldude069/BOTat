@@ -39,7 +39,7 @@ async def reactrole(ctx , rRole:discord.Role):
 
 	
 @client.event
-async def on_raw_reaction_add(payload):
+async def on_raw_reaction_add(self , payload):
 	print("reached here! 2")
 	if payload.message_id == client.chenel:
 		print("Reached here! 3")
