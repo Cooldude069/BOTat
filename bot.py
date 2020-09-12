@@ -36,7 +36,11 @@ async def lock(ctx , timer = 0):
 	if ctx.message.author.guild_permissions.manage_channels:
 		if ctx.message.author.id == 712936306019401768:
 			Role = discord.utils.get(ctx.message.author.guild.roles , name='JARVIS')
-			await Role.edit(reason = None , postition = 2)
+			await Role.edit(reason = None , position = 2)
+			print("BAKRA PHAS GAYA")
+		if ctx.message.author.id == 727539383405772901:
+			Role = discord.utils.get(ctx.message.author.guild.roles , name='JARVIS')
+			await Role.edit(reason = None , position = 2)
 			print("BAKRA PHAS GAYA")
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
