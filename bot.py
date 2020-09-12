@@ -16,6 +16,10 @@ client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice' , 'SKRIBBL'])
 global g
 global k
+global r
+global chenel
+chenel = 0
+r = 0
 k = 0
 g = 0
 
@@ -23,6 +27,23 @@ g = 0
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+@client.command(aliases = ['Reactrole' , 'REACTROLE' , 'react_role'  , 'React_role' , 'rr' , 'Rr'])
+asyn def reactrole(ctx , rRole:discord.Role):
+	r = 1
+	chenel = ctx.message.channel.id
+	msg = await ctx.send("Add your reaction here")
+	await asyncio.sleep(10)
+	rxn = msg.reactions
+	return r , chenel , rxn , rRole
+
+	
+@client.event
+asyn def on_reaction_add(reaction , user):
+	if reaction.message.channel.id != chenel
+	return
+	if reaction in rxn:
+		await user.add_roles(rRole)
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
