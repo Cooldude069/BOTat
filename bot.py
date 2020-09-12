@@ -35,18 +35,21 @@ async def reactrole(ctx , rRole:discord.Role):
 	chenel = msg.id
 	await asyncio.sleep(10)
 	rxn = msg.reactions
-	return r , chenel , rxn , rRole
+	guildr = ctx.message.guild
+	return r , chenel , rxn , rRole , guildr
 
 	
 @client.event
-async def on_reaction_add(reaction , user):
+async def on_raw_reaction_add(payload):
 	if r == 1:
 		await ctx.send("reached here!")
-		if reaction.message_id != chenel:
-			return
-		if reaction in rxn:
-			await user.add_roles(rRole)
-			await ctx.send("Role added")
+		if payload.message_id == chenel:
+			print("Reached here!")
+			for reaction in rxs:
+				if payload.emoji == reaction.emoji:
+					print("Reached here!")
+					member = discord.utils.get(lambda m : m.id == payload.user.id , guildr.members)
+					await member.add_roles(rRole)
 	
 	
 @client.command(aliases = ['Lockdown' , 'lockdown' , 'LOCKDOWN' , 'Lock' , 'LOCK'])
