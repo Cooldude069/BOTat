@@ -41,7 +41,8 @@ async def reactrole(ctx , rRole:discord.Role):
 @client.event
 async def on_reaction_add(reaction , user):
 	if r == 1:
-		if reaction.message.id != chenel:
+		await ctx.send("reached here!")
+		if reaction.message_id != chenel:
 			return
 		if reaction in rxn:
 			await user.add_roles(rRole)
