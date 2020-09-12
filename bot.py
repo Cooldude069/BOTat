@@ -225,6 +225,7 @@ async def help(ctx):
 	helpm.add_field(name = ":one::seven: rainbow {role} {delay}-> continuously changes the color of that role after the given delay" , value = "Delay should be in seconds and must be greater than 3" , inline = False)
 	helpm.add_field(name = ":one::eight: 8ball {question} -> gives a random answer to your question" , value = "the fun command" , inline = False)
 	helpm.add_field(name = ":one::nine: temprole {user} {role name} {time} -> adds the role to the user for specified time" , value = "hour->hr , minute->m , seconds->s" , inline = False)
+	helpm.add_field(name = ":two::zero: c_lock/c_unlock {category name} {time} -> locks the category for specific time or unlocks it", value = "If time is not provided, it is indefinitely" ,inline = False)
 	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
 	await ctx.send("You've got mail!!")
