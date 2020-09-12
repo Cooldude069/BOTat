@@ -16,10 +16,8 @@ client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice' , 'SKRIBBL'])
 global g
 global k
-global r
-global chenel
-chenel = 0
-r = 0
+client.chenel = 0
+client.r = 0
 k = 0
 g = 0
 
@@ -32,10 +30,10 @@ async def on_ready():
 async def reactrole(ctx , rRole:discord.Role):
 	r = 1
 	msg = await ctx.send("Add your reaction here")
-	chenel = msg.id
+	client.chenel = msg.id
 	await asyncio.sleep(10)
-	rxn = msg.reactions
-	guildr = ctx.message.guild
+	client.rxn = msg.reactions
+	client.guildr = ctx.message.guild
 	print("Reached here! 1")
 	return r , chenel , rxn , rRole , guildr
 
@@ -43,12 +41,12 @@ async def reactrole(ctx , rRole:discord.Role):
 @client.event
 async def on_raw_reaction_add(payload):
 	print("reached here! 2")
-	if payload.message_id == chenel:
+	if payload.message_id == client.chenel:
 		print("Reached here! 3")
-		for reaction in rxn:
+		for reaction in client.rxn:
 			if payload.emoji == reaction:
 				print("Reached here! final")
-				member = discord.utils.get(lambda m : m.id == payload.user_id , guildr.members)
+				member = discord.utils.get(lambda m : m.id == payload.user_id , client.guildr.members)
 				await member.add_roles(rRole)
 	
 	
