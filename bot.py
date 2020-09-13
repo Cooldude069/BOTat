@@ -26,7 +26,7 @@ async def on_ready():
 	
 @client.command()
 async def server_count(ctx):
-	ctx.send(f"I am in {len(client.guilds)} servers!!")
+	await ctx.send(f"I am in {len(client.guilds)} servers!!")
 	
 @client.command()
 async def perms(ctx , Role:discord.Role):
