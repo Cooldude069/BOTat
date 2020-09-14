@@ -25,6 +25,13 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def among_us(ctx):
+	au = discord.utils.get(ctx.author.guild.roles , name="Among Us")
+	await ctx.author.add_role(au)
+	await ctx.author.create_dm()
+	await ctx.author.dm_channel.send("Welcome to the Among Us community!!")
+	
 			
 @client.command()
 async def server_count(ctx):
