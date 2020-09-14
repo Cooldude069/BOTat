@@ -32,7 +32,7 @@ class MyMenu(menus.Menu):
 
 	@menus.button('⏪')
 	async def on_thumbs_up(self, payload):
-		await self.message.edit(content='Previous')
+		await self.message.edit(content='Prev')
 		await asyncio.sleep(30)
 		self.stop()
 
