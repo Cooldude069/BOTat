@@ -30,10 +30,7 @@ async def server_count(ctx):
 	
 @client.command(aliases = ['Activity' , 'ACTIVITY'])
 async def activity(ctx , user:discord.Member=None):
-	if not user:
-		user = ctx.message.author
-		
-		
+	user = user or ctx.message.author
 	for activity in user.activities:
 		if isinstance(activity, Spotify):
 			spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
