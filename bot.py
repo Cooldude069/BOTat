@@ -9,7 +9,7 @@ import shutil
 import asyncio
 from discord.utils import get
 import datetime
-
+from discord import Spotify
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -32,13 +32,13 @@ async def server_count(ctx):
 async def activity(ctx , user:discord.Member=None):
 	if not user:
 		user = ctx.message.author
-		spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
-		spot.add_field(name = f"{discord.Spotify.title} By:" , value = f"{discord.Spotify.artists}" , inline = False)
-		await ctx.send(embed = spot)
-	else:
-		spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
-		spot.add_field(name = f"{discord.Spotify.title} By:" , value = f"{discord.Spotify.artists}" , inline = False)
-		await ctx.send(embed = spot)
+		
+		
+	for activity in user.activities:
+        	if isinstance(activity, Spotify):
+			spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
+			spot.add_field(name = f"{activity.title} By:" , value = f"{activity.artists}" , inline = False)
+			await ctx.send(embed = spot)
 	
 @client.command()
 async def perms(ctx , Role:discord.Role):
