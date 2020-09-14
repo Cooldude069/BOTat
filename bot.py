@@ -27,10 +27,11 @@ async def on_ready():
 	
 @client.command(aliases = ['Among_us' , 'AMONG_US'])
 async def among_us(ctx):
-	au = discord.utils.get(ctx.author.guild.roles , name="Among Us")
-	await ctx.author.add_roles(au)
-	await ctx.author.create_dm()
-	await ctx.author.dm_channel.send("Welcome to the Among Us community!!")
+	if ctx.message.author.guild.id == 723435494578323476:
+		au = discord.utils.get(ctx.author.guild.roles , name="Among Us")
+		await ctx.author.add_roles(au)
+		await ctx.author.create_dm()
+		await ctx.author.dm_channel.send("Welcome to the Among Us community!!")
 	
 			
 @client.command()
