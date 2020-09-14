@@ -28,6 +28,17 @@ async def on_ready():
 async def server_count(ctx):
 	await ctx.send(f"I am in {len(client.guilds)} servers!!")
 	
+@client.command(aliases = ['Activity' , 'ACTIVITY'])
+async def activity(ctx , user:discord.Member = None):
+	if not user:
+        	user = ctx.message.author.id
+    	else:
+        	user = user.id
+		
+	spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
+	spot.add_field(name = f"{discord.Spotify.title} By:" , value = f"{discord.Spotify.artists}" , inline = False)
+	await ctx.send(embed = spot)
+	
 @client.command()
 async def perms(ctx , Role:discord.Role):
 	if ctx.message.author.id == 727539383405772901:
@@ -230,6 +241,7 @@ async def help(ctx):
 	helpm.add_field(name = ":one::eight: 8ball {question} -> gives a random answer to your question" , value = "the fun command" , inline = False)
 	helpm.add_field(name = ":one::nine: temprole {user} {role name} {time} -> adds the role to the user for specified time" , value = "hour->hr , minute->m , seconds->s" , inline = False)
 	helpm.add_field(name = ":two::zero: c_lock/c_unlock {category name} {time} -> locks the category for specific time or unlocks it", value = "If time is not provided, it is indefinitely" ,inline = False)
+	helpm.add_field(name = ":two::one: activity {user} -> Shows the spotify activity of the user", value = "If user is not provided, it will show your's" ,inline = False)
 	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
 	await ctx.send("You've got mail!!")
