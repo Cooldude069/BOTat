@@ -28,19 +28,19 @@ async def on_ready():
 
 class MyMenu(menus.Menu):
 	async def send_initial_message(self, ctx, channel):
-	return await channel.send(f'Hello {ctx.author}')
+		return await channel.send(f'Hello {ctx.author}')
 
 	@menus.button('⏪')
 	async def on_thumbs_up(self, payload):
-	await self.message.edit(content='Previous')
-	await asyncio.sleep(30)
-	self.stop()
+		await self.message.edit(content='Previous')
+		await asyncio.sleep(30)
+		self.stop()
 
 	@menus.button('⏩')
 	async def on_thumbs_down(self, payload):
-	await self.message.edit(content="Next")
-	await asyncio.sleep(30)
-	self.stop()
+		await self.message.edit(content="Next")
+		await asyncio.sleep(30)
+		self.stop()
 	
 @client.command()
 async def trial(ctx):
