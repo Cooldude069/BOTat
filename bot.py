@@ -42,7 +42,7 @@ async def on_raw_reaction_add(payload):
 	if payload.user_id == i:
 		if payload.emoji.name == 'next_track' or 'track_next':
 			await payload.member.dm_channel.send("Next")
-		elif payload.emoji == 'previous_track' or 'track_previous':
+		elif payload.emoji.name == 'previous_track' or 'track_previous':
 			await payload.member.dm_channel.send("Previous")
 			
 @client.command()
