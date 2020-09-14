@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands, tasks , menus
 import random
 from itertools import cycle
 import time
@@ -25,25 +25,27 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+
+class MyMenu(menus.Menu):
+	async def send_initial_message(self, ctx, channel):
+	return await channel.send(f'Hello {ctx.author}')
+
+	@menus.button('⏪')
+	async def on_thumbs_up(self, payload):
+	await self.message.edit(content='Previous')
+	await asyncio.sleep(30)
+	self.stop()
+
+	@menus.button('⏩')
+	async def on_thumbs_down(self, payload):
+	await self.message.edit(content="Next")
+	await asyncio.sleep(30)
+	self.stop()
+	
 @client.command()
 async def trial(ctx):
-	global i
-	await ctx.author.create_dm()
-	msg = await ctx.author.dm_channel.send("Hello, testing the bot")
-	i = ctx.author.id
-	r1 = '⏩'
-	r2 = '⏪'
-	await msg.add_reaction(r1)
-	await msg.add_reaction(r2)
-
-@client.event
-async def on_raw_reaction_add(payload):
-	global i
-	if payload.user_id == i:
-		if payload.emoji.name == 'next_track' or 'track_next':
-			await payload.member.dm_channel.send("Next")
-		elif payload.emoji.name == 'previous_track' or 'track_previous':
-			await payload.member.dm_channel.send("Previous")
+	m = MyMenu()
+	await m.start(ctx)
 			
 @client.command()
 async def server_count(ctx):
