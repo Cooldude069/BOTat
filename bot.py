@@ -591,6 +591,50 @@ async def rainbow(ctx , Role:discord.Role, delay = 3):
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_red())
 			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
+			
+@client.command(aliases = ['RGB' , 'Rgb'])
+async def rgb(ctx):
+	if ctx.message.author.id == 707669314261745725:
+		Role = discord.utils.get(ctx.author.guild.roles , name = "RGB")
+		await ctx.send(f"Rgb effect started by {ctx.message.author.mention}")
+		delay = 900
+		i = 0
+		while i<2:
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.teal())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_teal())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.green())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_green())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.blue())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_blue())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.purple())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_purple())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.magenta())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_magenta())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.gold())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_gold())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.orange())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_orange())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.red())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.dark_red())
+			await asyncio.sleep(delay)
+			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
+	else:
+		await ctx.send("The command is exclusively made for Rudresh")
 					
 @client.command(aliases=['rainstop'])
 async def colorstop(ctx):
