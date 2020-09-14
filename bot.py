@@ -16,6 +16,7 @@ client.remove_command('help')
 status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice' , 'SKRIBBL'])
 global g
 global k
+global i
 k = 0
 g = 0
 
@@ -26,18 +27,23 @@ async def on_ready():
 	
 @client.command()
 async def trial(ctx):
+	global i
 	await ctx.author.create_dm()
 	msg = await ctx.author.dm_channel.send("Hello, testing the bot")
+	i = ctx.author.id
 	r1 = '⏩'
 	r2 = '⏪'
 	await msg.add_reaction(r1)
 	await msg.add_reaction(r2)
-	@client.event
-	async def on_raw_reaction_add(payload):
-		if payload.user_id == ctx.author.id and payload.emoji == '⏩':
-			await ctx.author.dm_channel.send("Next")
-		elif payload.user_id == ctx.author.id and payload.emoji == '⏪':
-			await ctx.author.dm_channel.send("Previous")
+
+@client.event
+async def on_raw_reaction_add(payload):
+	global i
+	if payload.user_id == i:
+		if payload.emoji == '⏩':
+			await payload.member.dm_channel.send("Next")
+		elif payload.emoji == '⏪':
+			await payload.member.dm_channel.send("Previous")
 			
 @client.command()
 async def server_count(ctx):
