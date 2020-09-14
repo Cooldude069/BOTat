@@ -35,7 +35,7 @@ async def activity(ctx , user:discord.Member=None):
 		
 		
 	for activity in user.activities:
-        	if isinstance(activity, Spotify):
+		if isinstance(activity, Spotify):
 			spot = discord.Embed(title = f'{user.display_name} is Listening to' , color = discord.Color.green())
 			spot.add_field(name = f"{activity.title} By:" , value = f"{activity.artists}" , inline = False)
 			await ctx.send(embed = spot)
