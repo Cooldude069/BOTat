@@ -597,7 +597,7 @@ async def rgb(ctx):
 	if ctx.message.author.id == 707669314261745725:
 		Role = discord.utils.get(ctx.author.guild.roles , name = "RGB")
 		await ctx.send(f"Rgb effect started by {ctx.message.author.mention}")
-		delay = 900
+		delay = 450
 		i = 0
 		while i<2:
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color.teal())
