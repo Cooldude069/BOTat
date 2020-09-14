@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands, tasks , menus
+from discord.ext import commands, tasks
 import random
 from itertools import cycle
 import time
@@ -25,27 +25,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-
-class MyMenu(menus.Menu):
-	async def send_initial_message(self, ctx, channel):
-		return await channel.send(f'Hello {ctx.author}')
-
-	@menus.button('⏪')
-	async def on_thumbs_up(self, payload):
-		await self.message.edit(content='Prev')
-		await asyncio.sleep(30)
-		self.stop()
-
-	@menus.button('⏩')
-	async def on_thumbs_down(self, payload):
-		await self.message.edit(content="Next")
-		await asyncio.sleep(30)
-		self.stop()
-	
-@client.command()
-async def trial(ctx):
-	m = MyMenu()
-	await m.start(ctx)
 			
 @client.command()
 async def server_count(ctx):
