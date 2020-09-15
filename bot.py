@@ -755,8 +755,9 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
-	elif afkuser in message and afkuser != None:
-		await message.channel.send(mkg)
+	elif afkuser in message.content:
+		if len(akfuser) != 0:
+			await message.channel.send(mkg)
 				
 	await client.process_commands(message)
 
