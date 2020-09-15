@@ -20,7 +20,7 @@ global i
 k = 0
 g = 0
 global owners
-owners = ["727539383405772901"]
+owners = ["727539383405772901" , "712936306019401768"]
 
 @client.event
 async def on_ready():
@@ -30,6 +30,7 @@ async def on_ready():
 	
 @client.command()
 async def tts(ctx , channel : discord.TextChannel , * , note):
+	global owners
 	if ctx.message.author.id  in owners:
 		await ctx.send(f"{ctx.message.author.mention} sending your tts message")
 		await channel.send(content = note , tts = True)
