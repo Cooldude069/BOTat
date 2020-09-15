@@ -26,7 +26,7 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
-async def tts(ctx , channel : discord.Text_channel , * , note):
+async def tts(ctx , channel : discord.TextChannel , * , note):
 	await ctx.send(f"{ctx.message.author.mention} sending your tts message")
 	await channel.send(content = note , tts = True)
 	
