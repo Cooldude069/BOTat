@@ -20,7 +20,7 @@ global i
 k = 0
 g = 0
 global owners
-owners = ["727539383405772901" , "712936306019401768"]
+owners = [727539383405772901,712936306019401768]
 
 @client.event
 async def on_ready():
