@@ -532,7 +532,7 @@ async def guess(ctx):
 		g = 4	
 		global no
 		no = random.randint(0, 10)
-		await ctx.send("```Guess The number game created. Enter your number using the command, gnumber (number). You get three chances[Note: The number should lie between 0 and 10]```")
+		await ctx.send("`Guess The number game created. Enter your number using the command, gnumber (number). You get three chances[Note: The number should lie between 0 and 10]`")
 
 @client.command(aliases=['Gnumber', 'GNUMBER'])
 async def gnumber(ctx, gnum):
@@ -553,10 +553,10 @@ async def gnumber(ctx, gnum):
 				await ctx.send(":partying_face: Congratulations!, You won :partying_face:")
 				g = 1
 		elif g == 1:
-			await ctx.send("```You have used all of your chances```")
+			await ctx.send("`You have used all of your chances`")
 			g = 0
 		else:
-			await ctx.send("```Guess the number game not created```")
+			await ctx.send("`Guess the number game not created`")
 
 
 @client.command(aliases=['Kick', 'KICK'])
