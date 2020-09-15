@@ -19,13 +19,14 @@ global k
 global i
 k = 0
 g = 0
+global owners
+owners = ["727539383405772901"]
 
 @client.event
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-owners = ["727539383405772901"]
 	
 @client.command()
 async def tts(ctx , channel : discord.TextChannel , * , note):
