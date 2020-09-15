@@ -25,6 +25,11 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def tts(ctx , channel : discord.Text_channel , * , note):
+	await ctx.send(f"{ctx.message.author.mention} sending your tts message")
+	await channel.send(content = note , tts = True)
+	
 @client.command(aliases = ['Among_us' , 'AMONG_US'])
 async def among_us(ctx):
 	if ctx.message.author.guild.id == 723435494578323476:
