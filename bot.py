@@ -33,6 +33,7 @@ async def tts(ctx , channel : discord.TextChannel , * , note):
 	global owners
 	if ctx.message.author.id  in owners:
 		await ctx.send(f"{ctx.message.author.mention} sending your tts message")
+		await asyncio.sleep(1)
 		await channel.send(content = note , tts = True)
 	
 @client.command(aliases = ['Among_us' , 'AMONG_US'])
