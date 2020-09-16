@@ -29,6 +29,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command(aliases = ["Guide" , "GUIDE"])
+async def guide(ctx):
+	guide = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
+	guide.add_field(name = ":map:Full Guide     :robot:Crewmate     :detective:Imposter" , value = "https://bit.ly/2ZHsF2A || https://bit.ly/3khxtU6 || https://bit.ly/2ZHsF2A")
+	guide.set_thumbnail(url = "https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
+	
 
 @client.command(aliases = ['Maps' , 'MAPS'])
 async def maps(ctx):
