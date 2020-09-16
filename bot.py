@@ -48,6 +48,7 @@ async def gstart(ctx , time = 0 ,*, prize = None):
 	await em.add_reaction(emj)
 	gv = em.id
 	print("Reached here!")
+	tin = 0
 	while tin < time:
 		await asyncio.sleep(1)
 		gve.clear_fields()
