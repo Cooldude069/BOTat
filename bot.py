@@ -20,7 +20,7 @@ global i
 k = 0
 g = 0
 global banned
-banned = []
+banned = [681912108002050070 , 290589163772706826]
 
 
 @client.event
