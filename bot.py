@@ -35,6 +35,7 @@ async def on_raw_reaction_add(payload):
 		if payload.message_id == gv:
 			if payload.emoji.name == 'tada':
 				parts.append(payload.member.mention)
+				return parts
 			
 	
 	
