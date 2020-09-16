@@ -80,6 +80,7 @@ async def among_us(ctx):
 		await ctx.author.add_roles(au)
 		await ctx.author.create_dm()
 		emb = discord.Embed(title = f"{ctx.author.display_name}, Welcome to the Among Us  community!!" , color = discord.Color.orange())
+		emb.add_field(name = 'To learn more type, jarvis maps, or jarvis help is always there' , value = 'Hope to play together -Samarth')
 		emb.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
 		await ctx.author.dm_channel.send(embed = emb)
 
@@ -302,6 +303,8 @@ async def help(ctx):
 	helpm.add_field(name = ":one::nine: temprole {user} {role name} {time} -> adds the role to the user for specified time" , value = "hour->hr , minute->m , seconds->s" , inline = False)
 	helpm.add_field(name = ":two::zero: c_lock/c_unlock {category name} {time} -> locks the category for specific time or unlocks it", value = "If time is not provided, it is indefinitely" ,inline = False)
 	helpm.add_field(name = ":two::one: activity {user} -> Shows the spotify activity of the user", value = "If user is not provided, it will show your's" ,inline = False)
+	helpm.add_field(name = ":two::two: instant_invite {code} {server} -> sends DM to all Among us players", value = "Exclusive to Shirodov ki Jai" ,inline = False)
+	helpm.add_field(name = ":two::three: maps -> To get a blueprint of an Among Us map", value = "The command will guide you further" ,inline = False)
 	helpm.add_field(name = f"Created by:", value = f"Samarth(Sammy Sins#7753)" ,inline = False)
 	await ctx.message.author.dm_channel.send(embed = helpm)
 	await ctx.send("You've got mail!!")
