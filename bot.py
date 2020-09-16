@@ -29,6 +29,14 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def spaces(ctx , emoji:discord.Emoji , * , message):
+	words = message.split()
+	line = None
+	for word in words:
+		line = word + ":emoji.name:"
+	await ctx.send(line)
+	
 @client.command(aliases = ["Guide" , "GUIDE"])
 async def guide(ctx):
 	guide = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
