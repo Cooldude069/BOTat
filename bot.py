@@ -29,37 +29,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.event
-async def on_raw_reaction_add(payload):
-	if gv != 0:
-		if payload.message_id == gv:
-			if payload.emoji.name == 'tada':
-				parts.append(payload.member.mention)
-				return parts
-			
-	
-	
-	
+
 @client.command()
-async def gstart(ctx , time = 0 ,*, prize = None):
-	gve = discord.Embed(title = f"{prize}" , color = discord.Color.green())
-	gve.add_field(name = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
-	em = await ctx.send(embed = gve)
-	emj = '🎉'
-	await em.add_reaction(emj)
-	gv = em.id
-	print("Reached here!")
-	tin = 0
-	while tin < time:
-		await asyncio.sleep(1)
-		gve.clear_fields()
-		gve.add_field(name = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
-		tin += 1
-	await ctx.send(f"The winner is {random.choice(parts)} , Congratulations :tada::tada:")
-		
-	
-		
-	
+async def guide(ctx):
+	among = discord.Embed(title = "test")
+	among.set_image("https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
+	await ctx.send(embed = among)
 	
 @client.command()
 async def tts(ctx , channel : discord.TextChannel , * , note):
