@@ -30,16 +30,15 @@ async def on_ready():
 	
 @client.command()
 async def bot_ban(ctx , member : discord.Member , time = 0):
-	if ctx.message.author.id in owners:
-		if time == 0:
-			banned.append(member.id)
-			await ctx.send(f"{member.mention} has been bot banned indefinitely")
-		else:
-			banned.append(member.id)
-			await ctx.send(f"{member.mention} has been bot banned for {time}s")
-			await asyncio.sleep(time)
-			await ctx.send(f"Bot ban from {member.mention} has been removed")
-			for i in range(len(banned)):
+	if time == 0:
+		banned.append(member.id)
+		await ctx.send(f"{member.mention} has been bot banned indefinitely")
+	else:
+		banned.append(member.id)
+		await ctx.send(f"{member.mention} has been bot banned for {time}s")
+		await asyncio.sleep(time)
+		await ctx.send(f"Bot ban from {member.mention} has been removed")
+		for i in range(len(banned)):
 				if banned[i] == member.id:
 					del banned[i]
 					
@@ -47,10 +46,11 @@ async def bot_ban(ctx , member : discord.Member , time = 0):
 
 @client.command()
 async def bot_unban(ctx , member : discord.Member):
-	for i in range(len(banned)):
-		if banned[i] == member.id:
-			del banned[i]
-	await ctx.send(f"Bot ban from {member.mention} has been removed")
+	if ctx.message.author.id == 727539383405772901:
+		for i in range(len(banned)):
+			if banned[i] == member.id:
+				del banned[i]
+		await ctx.send(f"Bot ban from {member.mention} has been removed")
 	
 	
 @client.command()
