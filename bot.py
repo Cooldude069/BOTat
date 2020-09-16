@@ -61,6 +61,7 @@ async def instant_invite(ctx, code = None , server = None):
 		await member.create_dm()
 		embed = discord.Embed(title = f'You have been invited to An Among Us game by {ctx.message.author.display_name}' , color = discord.Color.orange())
 		embed.add_field(name = f'CODE: {code}' , value = f"Server: {server}")
+		embed.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
 		await member.dm_channel.send(embed = embed)
 	
 	
