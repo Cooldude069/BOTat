@@ -63,6 +63,7 @@ async def instant_invite(ctx, code = None , server = None):
 		embed.add_field(name = f'CODE: {code}' , value = f"Server: {server}")
 		embed.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
 		await member.dm_channel.send(embed = embed)
+	await ctx.send("Instant invite sent successfully")
 	
 	
 @client.command()
