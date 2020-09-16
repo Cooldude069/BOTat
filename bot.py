@@ -34,7 +34,7 @@ async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
 	line = None
 	for word in words:
-		line = line + word + emoji
+		line += word + emoji
 	end = string(line) - string(emoji)
 	await ctx.send(end)
 	
