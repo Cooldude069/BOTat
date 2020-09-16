@@ -32,13 +32,13 @@ async def on_ready():
 
 @client.command(aliases = ['Maps' , 'MAPS'])
 async def maps(ctx):
-	among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld" , color = discord.Color.yellow())
+	among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld" , color = discord.Color.orange())
 	among.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
 	await ctx.send(embed = among)
 	
 @client.command(aliases = ['Info_skeld' , 'INFO_SKELD'])
 async def info_skeld(ctx):
-	skeld = discord.Embed(title = 'Skeld' , color = discord.Color.yellow())
+	skeld = discord.Embed(title = 'Skeld' , color = discord.Color.orange())
 	skeld.set_image(url = 'https://preview.redd.it/tv8ef4iqszh41.png?auto=webp&s=46faf550020fd59c8d8bab29705b0fcb80521850')
 	await ctx.send(embed = skeld)
 	
