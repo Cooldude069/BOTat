@@ -19,8 +19,6 @@ global k
 global i
 k = 0
 g = 0
-global owners
-owners = []
 global banned
 banned = []
 
@@ -45,28 +43,6 @@ async def bot_ban(ctx , member : discord.Member , time = 0):
 				if banned[i] == member.id:
 					del banned[i]
 					
-@client.command()
-async def owners(ctx):
-	if ctx.message.author.id == 727539383405772901:
-		own = discord.Embed(title = "Jarvis owners" , color = discord.Color.blue())
-		for i in range(len(owners)):
-			user = client.get_user(owner[i])
-			own.add_field(name = f"{i+1}. {user.mention}" , value = f"{user.name}" , inline = False)
-		await ctx.send(embed = own)
-					
-@client.command()
-async def add_master(ctx , member : discord.Member):
-	if ctx.message.author.id == 727539383405772901:
-		owners.append(member.id)
-		await ctx.send(f"Added {member.mention} to masters")
-		
-@client.command()
-async def remove_master(ctx , member : discord.Member):
-	if ctx.message.author.id == 727539383405772901:
-		for i in range(len(owners)):
-			if owners[i] == member.id:
-				del  owners[i]
-			await ctx.send(f"Removed {member.mention} from masters")
 
 
 @client.command()
@@ -81,10 +57,9 @@ async def bot_unban(ctx , member : discord.Member):
 async def tts(ctx , channel : discord.TextChannel , * , note):
 	global owners
 	if not ctx.message.author.id in banned:
-		if ctx.message.author.id  in owners:
-			await ctx.send(f"{ctx.message.author.mention} sending your tts message")
-			await asyncio.sleep(1)
-			await channel.send(content = note , tts = True)
+		await ctx.send(f"{ctx.message.author.mention} sending your tts message")
+		await asyncio.sleep(1)
+		await channel.send(content = note , tts = True)
 	
 @client.command(aliases = ['Among_us' , 'AMONG_US'])
 async def among_us(ctx):
