@@ -30,11 +30,12 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
-async def spaces(ctx , emoji:discord.Emoji , * , message):
+async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
 	line = None
 	for word in words:
-		line = word + ":emoji.name:"
+		line = word + emoji
+		
 	await ctx.send(line)
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
