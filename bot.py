@@ -42,6 +42,16 @@ async def bot_ban(ctx , member : discord.Member , time = 0):
 				if banned[i] == member.id:
 					del banned[i]
 					
+@client.command()
+async def banned(ctx):
+	if ctx.message.author.id == 727539383405772901:
+		ben = discord.Embed(title = "**Banned**" , color = discord.Color.red())
+		for i in range(len(banned)):
+			benuser = discord.utils.get_user(banned[i])
+			ben.add_field(name = f"{benuser.mention}"  , value = "{benuser.name}")
+			
+		await ctx.send(embed = ben)
+					
 
 
 @client.command()
