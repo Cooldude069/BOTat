@@ -33,7 +33,7 @@ async def on_ready():
 @client.command()
 async def guide(ctx):
 	among = discord.Embed(title = "test")
-	among.set_image("https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
+	among.set_image(https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO)
 	await ctx.send(embed = among)
 	
 @client.command()
