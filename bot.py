@@ -279,6 +279,7 @@ async def reboot(ctx):
 async def help(ctx):
 	await ctx.message.author.create_dm()
 	helpm  = discord.Embed(title = f"Jarvis Help!" , color = discord.Color.darker_grey())
+	helpm.set_thumbnail(url = 'https://cdn.discordapp.com/attachments/746394605574029362/755747135651315712/Jarvis.jpg')
 	helpm.add_field(name = "Hey! My prefix is jarvis, So lets go throught my commands" , value = "So Enjoy!!" , inline = False)
 	helpm.add_field(name = ":one: poll {question} {option 1} {option 2} -> Sets up a poll" , value = "Enjoy your polls" , inline = False)
 	helpm.add_field(name = ":two: addrole {member} {role name} -> gives the specified role to the User" , value = "Jarvis should be above that role in heirarchy" , inline = False)
