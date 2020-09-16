@@ -79,7 +79,9 @@ async def among_us(ctx):
 		au = discord.utils.get(ctx.author.guild.roles , name="Among Us")
 		await ctx.author.add_roles(au)
 		await ctx.author.create_dm()
-		await ctx.author.dm_channel.send("Welcome to the Among Us community!!")
+		emb = discord.Embed(title = f"{ctx.author.display_name}, Welcome to the Among Us  community!!" , color = discord.Color.orange())
+		emb.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
+		await ctx.author.dm_channel.send(embed = emb)
 
 			
 @client.command()
