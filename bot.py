@@ -48,7 +48,7 @@ async def info_polus(ctx):
 	polus.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/4/4c/Polus.png/revision/latest?cb=20200907133344')
 	await ctx.send(embed = polus)
 	
-@client.command()
+@client.command(aliases = ['Info_mirahq' , 'INFO_MIRAHQ'])
 async def info_mirahq(ctx):
 	mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
 	mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
