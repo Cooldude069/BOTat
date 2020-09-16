@@ -50,7 +50,7 @@ async def gstart(ctx , time = 0 ,*, prize = None):
 	while tin < time:
 		await asyncio.sleep(1)
 		gve.clear_fields()
-		gve.add_field(title = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
+		gve.add_field(name = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
 		tim += 1
 	await ctx.send(f"The winner is {random.choice(parts)} , Congratulations :tada::tada:")
 		
