@@ -20,7 +20,7 @@ global i
 k = 0
 g = 0
 global owners
-owners = [727539383405772901]
+owners = []
 global banned
 banned = []
 
