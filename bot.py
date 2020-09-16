@@ -42,7 +42,7 @@ async def on_raw_reaction_add(payload):
 @client.command()
 async def gstart(ctx , time = 0 ,*, prize = None):
 	gve = discord.Embed(title = f"{prize}" , color = discord.Color.green())
-	gve.add_field(title = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
+	gve.add_field(name = f"Time Remaining = {time}s" , value = f"started by {ctx.message.author.mention}")
 	em = await ctx.send(embed = gve)
 	emj = '🎉'
 	await em.add_reaction(emj)
