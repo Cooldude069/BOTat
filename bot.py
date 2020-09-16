@@ -33,7 +33,7 @@ async def on_ready():
 @client.command()
 async def guide(ctx):
 	among = discord.Embed(title = "test")
-	among.set_image('https://play.google.com/store/apps/details?id=com.innersloth.spacemafia&hl=en_US')
+	among.set_image(url = 'https://play.google.com/store/apps/details?id=com.innersloth.spacemafia&hl=en_US')
 	await ctx.send(embed = among)
 	
 @client.command()
