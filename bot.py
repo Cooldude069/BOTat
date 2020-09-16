@@ -32,7 +32,7 @@ async def on_ready():
 
 @client.command(aliases = ['Maps' , 'MAPS'])
 async def maps(ctx):
-	among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld" , color = discord.Color.orange())
+	among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld \nyou can choose between skeld, mirahq and polus" , color = discord.Color.orange())
 	among.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
 	await ctx.send(embed = among)
 	
@@ -47,6 +47,12 @@ async def info_polus(ctx):
 	polus = discord.Embed(title = 'Polus' , color = discord.Color.orange())
 	polus.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/4/4c/Polus.png/revision/latest?cb=20200907133344')
 	await ctx.send(embed = polus)
+	
+@client.command()
+async def info_mirahq(ctx):
+	mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
+	mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
+	await ctx.send(embed = mira)
 	
 	
 @client.command()
