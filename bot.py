@@ -46,6 +46,15 @@ async def bot_ban(ctx , member : discord.Member , time = 0):
 					del banned[i]
 					
 @client.command()
+async def owners(ctx):
+	if ctx.message.author.id in owners:
+		own = discord.Embed(title = "Jarvis owners" , color = discord.Color.blue())
+		for i in range(len(owners)):
+			user = client.get_user(owner[i])
+			own.add_field(name = f"{i+1}. {user.mention}" , value = f"{user.name}" , inline = False)
+		await ctx.send(embed = own)
+					
+@client.command()
 async def add_master(ctx , member : discord.Member):
 	if ctx.message.author.id == 727539383405772901:
 		owners.append(member.id)
