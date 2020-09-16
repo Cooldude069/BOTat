@@ -20,7 +20,7 @@ global i
 k = 0
 g = 0
 global owners
-owners = [727539383405772901,712936306019401768]
+owners = [727539383405772901]
 global banned
 banned = []
 
@@ -32,17 +32,34 @@ async def on_ready():
 	
 @client.command()
 async def bot_ban(ctx , member : discord.Member , time = 0):
-	if time == 0:
-		banned.append(member.id)
-		await ctx.send(f"{member.mention} has been bot banned indefinitely")
-	else:
-		banned.append(member.id)
-		await ctx.send(f"{member.mention} has been bot banned for {time}s")
-		await asyncio.sleep(time)
-		await ctx.send(f"Bot ban from {member.mention} has been removed")
-		for i in range(len(banned)):
-			if banned[i] == member.id:
-				del banned[i]
+	if ctx.message.author.id in owners:
+		if time == 0:
+			banned.append(member.id)
+			await ctx.send(f"{member.mention} has been bot banned indefinitely")
+		else:
+			banned.append(member.id)
+			await ctx.send(f"{member.mention} has been bot banned for {time}s")
+			await asyncio.sleep(time)
+			await ctx.send(f"Bot ban from {member.mention} has been removed")
+			for i in range(len(banned)):
+				if banned[i] == member.id:
+					del banned[i]
+					
+@client.command()
+async def add_master(ctx , member : discord.Member):
+	if ctx.message.author.id == 727539383405772901:
+		owners.append(member.id)
+		await ctx.send(f"Added {member.mention} to masters")
+		
+@client.command()
+async def remove_master(ctx , member : discord.Member):
+	if ctx.message.author.id == 727539383405772901:
+		for i in range(len(owners)):
+			if owners[i] == member.id:
+				del  owners[i]
+			await ctx.send(f"Removed {member.mention} from masters")
+
+
 @client.command()
 async def bot_unban(ctx , member : discord.Member):
 	for i in range(len(banned)):
