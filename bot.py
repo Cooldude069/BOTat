@@ -54,7 +54,7 @@ async def info_mirahq(ctx):
 	mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
 	await ctx.send(embed = mira)
 	
-@client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' . 'ii', 'Ii'])
+@client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
 async def instant_invite(ctx, code = None , server = None):
 	role = discord.utils.get(ctx.author.guild.roles , name = 'Among Us')
 	for member in role.members:
