@@ -47,7 +47,7 @@ async def bot_ban(ctx , member : discord.Member , time = 0):
 					
 @client.command()
 async def owners(ctx):
-	if ctx.message.author.id in owners:
+	if ctx.message.author.id == 727539383405772901:
 		own = discord.Embed(title = "Jarvis owners" , color = discord.Color.blue())
 		for i in range(len(owners)):
 			user = client.get_user(owner[i])
