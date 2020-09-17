@@ -55,7 +55,7 @@ async def rps(ctx , result = ""):
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
 		async with ctx.message.channel.typing():
-			await ctx.send(embed = rps)
+			await ctx.message.channel.send(embed = rps)
 	elif out == "Paper":
 		if result.lower() == "paper":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
@@ -66,7 +66,7 @@ async def rps(ctx , result = ""):
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
 		async with ctx.message.channel.typing():
-			await ctx.send(embed = rps)
+			await ctx.message.channel.send(embed = rps)
 	elif out == "Scissors":
 		if result.lower() == "paper":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
@@ -77,7 +77,7 @@ async def rps(ctx , result = ""):
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
 		async with ctx.message.channel.typing():
-			await ctx.send(embed = rps)
+			await ctx.message.channel.send(embed = rps)
 	else:
 		await ctx.send("Haven't You ever played Rock,Paper&Scissors before??")
 	
@@ -636,7 +636,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 @client.command(aliases=['F'])
 async def f(ctx):
 	async with ctx.message.channel.typing():
-		await ctx.send(f'{ctx.message.author.display_name} has paid their respects')
+		await ctx.message.channel.send(f'{ctx.message.author.display_name} has paid their respects')
 
 @tasks.loop(minutes=15)
 async def change_status():
