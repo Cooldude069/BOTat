@@ -592,8 +592,8 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 
 @client.command(aliases=['F'])
 async def f(ctx):
-	async with ctx.message.channel.typing()
-	await ctx.send(f'{ctx.message.author.display_name} has paid their respects')
+	async with ctx.message.channel.typing():
+		await ctx.send(f'{ctx.message.author.display_name} has paid their respects')
 
 @tasks.loop(minutes=15)
 async def change_status():
@@ -623,7 +623,8 @@ async def qna(ctx, *, question):
 		 "Concentrate and ask again.",
 		 "Very doubtful.",
 		 "Na na tahse nhu te"]
-	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
+	async with ctx.message.channel.typing():
+		await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 
 @client.command(aliases=['Binod', 'BINOD'])
