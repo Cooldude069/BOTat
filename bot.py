@@ -35,7 +35,10 @@ async def spaces(ctx , emoji = None , * , message):
 	line = ""
 	for word in words:
 		line = line + word + emoji
+	async with ctx.message.channel.typing()
 	await ctx.send(line)
+	
+
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
 async def guide(ctx):
@@ -89,6 +92,7 @@ async def tts(ctx , channel : discord.TextChannel , * , note):
 	global owners
 	await ctx.send(f"{ctx.message.author.mention} sending your tts message")
 	await asyncio.sleep(1)
+	async with channel.typing()
 	await channel.send(content = note , tts = True)
 	
 @client.command(aliases = ['Among_us' , 'AMONG_US'])
@@ -266,12 +270,15 @@ async def suggestion(ctx, * ,suggestion):
 @client.command(pass_context=True, aliases=['Say', 'SAY'])
 async def say(ctx, channel:discord.TextChannel , *, message):
 	if ctx.message.author.guild_permissions.administrator:
+		async with channel.typing()
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 	elif ctx.message.author.id == 727539383405772901:
+		async with channel.typing()
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 	elif ctx.message.author.id == 707681278178230282:
+		async with channel.typing()
 		await channel.send(message)
 		await ctx.send(f"{ctx.message.author.mention} sending message.....")
 		
@@ -328,6 +335,7 @@ async def help(ctx):
 
 @client.command(aliases=['hi' , 'Hi' , 'Hola' , 'Sup', 'sup', 'hola', 'Hello'])
 async def hello(ctx):
+	async with ctx.message.channel.typing()
 	await ctx.send("Hello Sir!")
 	
 @client.command(pass_context=True, aliases=['Addrole', 'ADDROLE'])
@@ -584,6 +592,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 
 @client.command(aliases=['F'])
 async def f(ctx):
+	async with ctx.message.channel.typing()
 	await ctx.send(f'{ctx.message.author.display_name} has paid their respects')
 
 @tasks.loop(minutes=15)
