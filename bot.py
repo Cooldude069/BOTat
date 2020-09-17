@@ -54,7 +54,7 @@ async def rps(ctx , result = ""):
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
-		async with typing():
+		async with ctx.message.channel.typing():
 			await ctx.send(embed = rps)
 	elif out == "Paper":
 		if result.lower() == "paper":
@@ -65,7 +65,7 @@ async def rps(ctx , result = ""):
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
-		async with typing():
+		async with ctx.message.channel.typing():
 			await ctx.send(embed = rps)
 	elif out == "Scissors":
 		if result.lower() == "paper":
@@ -76,7 +76,7 @@ async def rps(ctx , result = ""):
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
 		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
-		async with typing():
+		async with ctx.message.channel.typing():
 			await ctx.send(embed = rps)
 	else:
 		await ctx.send("Haven't You ever played Rock,Paper&Scissors before??")
