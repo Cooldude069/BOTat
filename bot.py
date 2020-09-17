@@ -35,7 +35,7 @@ async def spaces(ctx , emoji = None , * , message):
 	line = ""
 	for word in words:
 		line = line + word + emoji
-	end = string(line) - string(emoji)
+	end = line - emoji
 	await ctx.send(end)
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
