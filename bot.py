@@ -46,35 +46,35 @@ async def rps(ctx , result = ""):
 	rps.set_thumbnail(url = ctx.author.avatar_url)
 	rps.add_field(name = f"{ctx.author.display_name} showed {result} Jarvis showed {out}" , value = "" , inline = False)
 	if out == "Rock":
-		if result.lower == "paper":
+		if result.lower() == "paper":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
-		elif result.lower == "rock":
+		elif result.lower() == "rock":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
-		elif result.lower == "stone":
+		elif result.lower() == "stone":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
-		elif result.lower == "scissors":
+		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
 		async with typing():
 			await ctx.send(embed = rps)
 	elif out == "Paper":
-		if result.lower == "paper":
+		if result.lower() == "paper":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
-		elif result.lower == "rock":
+		elif result.lower() == "rock":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
-		elif result.lower == "stone":
+		elif result.lower() == "stone":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
-		elif result.lower == "scissors":
+		elif result.lower() == "scissors":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
 		async with typing():
 			await ctx.send(embed = rps)
 	elif out == "Scissors":
-		if result.lower == "paper":
+		if result.lower() == "paper":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Lost" , value = "" , inline = False)
-		elif result.lower == "rock":
+		elif result.lower() == "rock":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
-		elif result.lower == "stone":
+		elif result.lower() == "stone":
 			rps.add_field(name = f"And in this was {ctx.author.display_name} Has Won!!" , value = "" , inline = False)
-		elif result.lower == "scissors":
+		elif result.lower() == "scissors":
 			rps.add_field(name = f"And The game ended in a draw, Oof!" , value = "" , inline = False)
 		async with typing():
 			await ctx.send(embed = rps)
