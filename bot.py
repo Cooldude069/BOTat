@@ -32,9 +32,9 @@ async def on_ready():
 @client.command()
 async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
-	line = None
+	len(line) = 0
 	for word in words:
-		line = string(line) + string(word) + string(emoji)
+		line = line + word + emoji
 	end = string(line) - string(emoji)
 	await ctx.send(end)
 	
@@ -44,6 +44,7 @@ async def guide(ctx):
 	guide.add_field(name = ":map:Full Guide" , value = "https://bit.ly/2ZHsF2A")
 	guide.add_field(name = "<:among_us:755993889508163655>Crewmate" , value = "https://bit.ly/3khxtU6")
 	guide.add_field(name = ":detective:Imposter" , value = "https://bit.ly/2ZHsF2A")
+	guide.add_field(name = "To learn about maps use the below command" , value = "jarvis maps" , inline = False)
 	guide.set_thumbnail(url = "https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
 	await ctx.send(embed = guide)
 	
