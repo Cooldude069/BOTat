@@ -32,7 +32,7 @@ async def on_ready():
 @client.command()
 async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
-	len(line) = 0
+	line = ""
 	for word in words:
 		line = line + word + emoji
 	end = string(line) - string(emoji)
