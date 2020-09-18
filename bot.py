@@ -49,11 +49,13 @@ async def hit(ctx , user:discord.Member):
 async def afk_on(ctx):
 	temp = ctx.message.author.id
 	await ctx.send(f"You are now AFK")
+	return temp
 	
 @client.command()
 async def afk_off(ctx):
 	temp = 0
 	await ctx.send(f"You exited AFK")
+	return temp
 	
 @client.command(aliases = ["Coin_flip" , "COIN_FLIP" , "Flip_coin" , "flip_coin" , "FLIP_COIN"])
 async def coin_flip(ctx):
