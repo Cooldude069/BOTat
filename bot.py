@@ -70,6 +70,8 @@ async def display(ctx , user:discord.Member):
 	embed.add_field(name = "Has the Roles:" , inline = False)
 	for role in user.roles:
 		embed.add_field(name = "" , value = f"{role.mention}")
+		
+	await ctx.send(embed = embed)
 	
 @client.command()
 async def spaces(ctx , emoji = None , * , message):
