@@ -32,7 +32,7 @@ async def on_ready():
 	
 @client.command()
 async def gstart(ctx , time=0 , * ,prize = None):
-	embed = discord.embed(title = "Giveaway time!!" , color = discord.Color.green())
+	embed = discord.Embed(title = "Giveaway time!!" , color = discord.Color.green())
 	embed.add_field(name = f"{prize} by {ctx.author.display_name}" , calue = "Vote with the below reaction")
 	msg = await ctx.send(embed = embed)
 	rxn = "🎉"
