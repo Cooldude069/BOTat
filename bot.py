@@ -49,6 +49,7 @@ async def hit(ctx , user:discord.Member):
 @client.command(aliases = ["Coin_flip" , "COIN_FLIP" , "Flip_coin" , "flip_coin" , "FLIP_COIN"])
 async def coin_flip(ctx):
 	embed = discord.Embed(title = f"{ctx.author.display_name} Has flipped a coin" , color = discord.Color.orange())
+	embed.set_thumbnail(url = ctx.author.avatar_url)
 	embed.set_image(url = "https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
 	links = ["https://cdn.discordapp.com/attachments/730075471269593150/756389061450793010/Screenshot_1045.png" , "https://cdn.discordapp.com/attachments/730075471269593150/756389088705118258/Screenshot_1044.png"]
 	msg = await ctx.send(embed = embed)
