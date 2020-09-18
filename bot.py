@@ -786,11 +786,10 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
-	else:
+	elif temp!= 0:
 		for mention in message.raw_mentions:
-			if temp!=0:
-				if mention == temp:
-					await message.channel.send("They have gone AFK")
+			if mention == temp:
+				await message.channel.send("They have gone AFK")
 					
 	await client.process_commands(message)
 
