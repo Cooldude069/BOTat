@@ -58,7 +58,18 @@ async def coin_flip(ctx):
 	await asyncio.sleep(8)
 	await msg.edit(embed = nembed)
 	
-
+@client.command(aliases = ['Display' , 'DISPLAY'])
+async def display(ctx , user:discord.Member):
+	embed = discord.Embed(title = f"{user.display_name}'s ID Card" , color = discord.Color.magenta())
+	embed.set_thumbnail(url = user.avatar_url)
+	embed.add_field(name = f"Currently {user.status}" , value = "")
+	if user.is_on_mobile():
+		embed.add_field(name = "Using a Smartphone" , value = "" , inline = False)
+	else:
+		embed.add_field(name = "Using a Desktop" , value = "" , inline = False)
+	embed.add_field(name = "Has the Roles:" , inline = False)
+	for role in user.roles:
+		embed.add_field(name = "" , value = f"{role.mention}")
 	
 @client.command()
 async def spaces(ctx , emoji = None , * , message):
