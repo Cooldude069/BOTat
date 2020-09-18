@@ -43,7 +43,7 @@ async def hit(ctx , user:discord.Member):
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
 	
-@client.command()
+@client.command(aliases = ["Coin_flip" , "COIN_FLIP" , "Flip_coin" , "flip_coin" , "FLIP_COIN"])
 async def coin_flip(ctx):
 	embed = discord.Embed(title = f"{ctx.author.display_name} Has flipped a coin" , color = discord.Color.orange())
 	embed.set_image(url = "https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
@@ -51,8 +51,8 @@ async def coin_flip(ctx):
 	msg = await ctx.send(embed = embed)
 	nembed = discord.Embed(title = f"And the result is ....." , color = discord.Color.orange())
 	nembed.set_image(url = random.choice(links)) 
-	await asyncio.sleep(5)
-	msg.edit(embed = nembed)
+	await asyncio.sleep(8)
+	await msg.edit(embed = nembed)
 	
 
 	
