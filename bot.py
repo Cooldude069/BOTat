@@ -121,6 +121,11 @@ async def instant_invite(ctx, code = None , server = None):
 		await member.dm_channel.send(embed = embed)
 	await ctx.send("Instant invite sent successfully")
 	
+@client.command()
+async def testing(ctx):
+	channel = discord.utils.get(ctx.author.guild.voice_channels , id = 731380921307234394)
+	await channel.edit(name = works!)
+	
 	
 @client.command()
 async def tts(ctx , channel : discord.TextChannel , * , note):
