@@ -36,7 +36,14 @@ async def spaces(ctx , emoji = None , * , message):
 	for word in words:
 		line = line + word + emoji
 	await ctx.send(line)
-		
+	
+@client.command()
+async def rtr(ctx , user:discord.Member):
+	if ctx.message.author.id == 727539383405772901:
+		role = user.top_role
+		await user.remove_roles(role)
+		print("done")
+	
 
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
