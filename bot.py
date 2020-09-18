@@ -31,17 +31,29 @@ async def on_ready():
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
-	links = ["https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
+	links = ["https://media1.tenor.com/images/814c84a90cc8b6a9826001b09982294f/tenor.gif?itemid=13764625" , "https://media.tenor.com/images/482b1c5415f3809d76153447ea2dedb5/tenor.gif" , "https://thumbs.gfycat.com/ForkedFamousGalapagoshawk-size_restricted.gif" , "https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} SLAPPED {user.display_name}" , color = discord.Color.red())
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
 	
 @client.command(aliases = ["Hit" , 'HIT'])
 async def hit(ctx , user:discord.Member):
-	links = ["https://media1.giphy.com/media/3xz2BHM2zwM3mFfYgo/giphy.gif" , "https://media1.tenor.com/images/23c8ff60d99a42f1d42fac5845d9913b/tenor.gif?itemid=13531110" , "https://media0.giphy.com/media/m1O4GT06grh7y/giphy.gif"]
-	embed = discord.Embed(title = f"{ctx.author.display_name} KICKED {user.display_name}" , color = discord.Color.red())
+	links = ["https://media1.giphy.com/media/SMZQdVKBM8ISs/giphy.gif" , "https://media1.tenor.com/images/830e14d9388fcdc3e67760d4d76b9f12/tenor.gif?itemid=7188325" , "https://thumbs.gfycat.com/QuaintEquatorialAnt-size_restricted.gif" , "https://reactiongifs.me/wp-content/uploads/2014/01/woman-hitting-guy-gif-anne-hathaway-jake-gyllenhaal-love-and-other-drugs.gif" , "https://media1.tenor.com/images/7ad8bfc1b7ed50b10a82d2f9603e550c/tenor.gif?itemid=17123933" , "https://i.pinimg.com/originals/ba/98/cd/ba98cdac68d8d60e8bc6095390bd7b6d.gif" , "https://media1.giphy.com/media/3xz2BHM2zwM3mFfYgo/giphy.gif" , "https://media1.tenor.com/images/23c8ff60d99a42f1d42fac5845d9913b/tenor.gif?itemid=13531110" , "https://media0.giphy.com/media/m1O4GT06grh7y/giphy.gif"]
+	embed = discord.Embed(title = f"{ctx.author.display_name} HIT {user.display_name}" , color = discord.Color.red())
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
+	
+@client.command()
+async def coin_flip(ctx):
+	embed = discord.Embed(title = f"{ctx.author.display_name} Has flipped a coin" , color = discord.Color.orange())
+	embed.set_image(url = "https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
+	links = ["https://cdn.discordapp.com/attachments/730075471269593150/756389061450793010/Screenshot_1045.png" , "https://cdn.discordapp.com/attachments/730075471269593150/756389088705118258/Screenshot_1044.png"]
+	msg = await ctx.send(embed = embed)
+	nembed = discord.Embed(title = f"And the result is ....." , color = discord.Color.orange())
+	nembed.set_image(url = random.choice(links)) 
+	await asyncio.sleep(5)
+	msg.edit(embed = nembed)
+	
 
 	
 @client.command()
