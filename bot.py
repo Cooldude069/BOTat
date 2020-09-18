@@ -30,6 +30,19 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def gstart(ctx , time=0 , * ,prize = None):
+	embed = discord.embed(title = "Giveaway time!!" , color = discord.Color.green())
+	embed.add_field(name = f"{prize} by {ctx.author.display_name}" , calue = "Vote with the below reaction")
+	msg = await ctx.send(embed = embed)
+	rxn = "🎉"
+	await msg.add_reaction(rxn)
+	await asyncio.sleep(time)
+	for rcn in msg.reactions:
+		rlist = await client.get_reaction_users(rcn)
+		
+	await ctx.send(f"The winner is {random.choice(rlist).mention}!!!")
+	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
 	links = ["https://media1.tenor.com/images/814c84a90cc8b6a9826001b09982294f/tenor.gif?itemid=13764625" , "https://media.tenor.com/images/482b1c5415f3809d76153447ea2dedb5/tenor.gif" , "https://thumbs.gfycat.com/ForkedFamousGalapagoshawk-size_restricted.gif" , "https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
