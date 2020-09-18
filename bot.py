@@ -30,21 +30,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command(pass_context=True)
-async def gstart(ctx , time=0 , * ,prize = None):
-	embed = discord.Embed(title = "Giveaway time!!" , color = discord.Color.green())
-	embed.add_field(name = f"{prize} by {ctx.author.display_name}" , value = "Vote with the below reaction")
-	msg = await ctx.send(embed = embed)
-	rxn = "🎉"
-	users = []
-	await msg.add_reaction(rxn)
-	await asyncio.sleep(time)
-	for rcn in msg.reactions:
-		if rcn == rxn:
-			users = await rcn.users().flatten()
-			
-	winner = random.choice(users)
-	await ctx.send(f"The winner is {winner.mention}")
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
