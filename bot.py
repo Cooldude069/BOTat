@@ -30,11 +30,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command()
+@client.command(pass_context=True)
 async def gstart(ctx , time=0 , * ,prize = None):
 	embed = discord.Embed(title = "Giveaway time!!" , color = discord.Color.green())
 	embed.add_field(name = f"{prize} by {ctx.author.display_name}" , value = "Vote with the below reaction")
 	msg = await ctx.send(embed = embed)
+	rlist = []
 	rxn = "🎉"
 	await msg.add_reaction(rxn)
 	await asyncio.sleep(time)
