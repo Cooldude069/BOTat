@@ -36,8 +36,8 @@ async def slap(ctx , user:discord.Member):
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
 	
-@client.command(aliases = ["Kick" , 'KICK'])
-async def kick(ctx , user:discord.Member):
+@client.command(aliases = ["Hit" , 'HIT'])
+async def hit(ctx , user:discord.Member):
 	links = ["https://media1.giphy.com/media/3xz2BHM2zwM3mFfYgo/giphy.gif" , "https://media1.tenor.com/images/23c8ff60d99a42f1d42fac5845d9913b/tenor.gif?itemid=13531110" , "https://media0.giphy.com/media/m1O4GT06grh7y/giphy.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} KICKED {user.display_name}" , color = discord.Color.red())
 	embed.set_image(url = random.choice(links))
