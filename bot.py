@@ -116,7 +116,7 @@ async def instant_invite(ctx, code = None , server = None):
 	for member in role.members:
 		await member.create_dm()
 		channel = discord.utils.get(ctx.author.guild.voice_channels , id = 731380921307234394)
-		await channel.edit(name = f"CODE:{code} & SERVER:{server}")
+		await channel.edit(name = f"<:among_us:755993889508163655>{code} -> {server}")
 		embed = discord.Embed(title = f'You have been invited to An Among Us game by {ctx.message.author.display_name}' , color = discord.Color.orange())
 		embed.add_field(name = f'CODE: {code}' , value = f"Server: {server}")
 		embed.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
