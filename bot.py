@@ -23,6 +23,8 @@ global gv
 gv = 0
 global parts
 parts = []
+global temp
+temp = 0
 
 @client.event
 async def on_ready():
@@ -42,6 +44,16 @@ async def hit(ctx , user:discord.Member):
 	embed = discord.Embed(title = f"{ctx.author.display_name} HIT {user.display_name}" , color = discord.Color.red())
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
+	
+@client.command()
+async def afk_on(ctx):
+	temp = ctx.message.author.id
+	await ctx.send(f"You are now AFK")
+	
+@client.command()
+async def afk_off(ctx):
+	temp = 0
+	await ctx.send(f"You exited AFK")
 	
 @client.command(aliases = ["Coin_flip" , "COIN_FLIP" , "Flip_coin" , "flip_coin" , "FLIP_COIN"])
 async def coin_flip(ctx):
@@ -774,11 +786,10 @@ async def on_message(message):
 			await message.add_reaction(meme_3)
 	else:
 		for mention in message.raw_mentions:
-			if mention == 727539383405772901:
-				if message.author.id == 707582024403255317:
-					await message.channel.send("Dont you dare ping him again")
-
-
+			if temp!=0:
+				if mention == temp:
+					await message.channel.send("They have gone AFK")
+					
 	await client.process_commands(message)
 
 
