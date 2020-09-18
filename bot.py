@@ -30,6 +30,13 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
+async def slap(ctx , user:discord.Member):
+	links = ["https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
+	embed = discord.Embed(title = f"{ctx.author.mention} Slapped {user.mention}" , color = discord.Color.red())
+	embed.set_image(url = random.choice(links))
+	await ctx.send(embed = embed)
+	
+@client.command()
 async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
 	line = ""
