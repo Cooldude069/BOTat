@@ -33,7 +33,6 @@ async def on_ready():
 async def slap(ctx , user:discord.Member):
 	links = ["https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} SLAPPED {user.display_name}" , color = discord.Color.red())
-	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/746394605574029362/755748542404100106/Jarvis_2.jpg")
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
 	
@@ -41,7 +40,6 @@ async def slap(ctx , user:discord.Member):
 async def hit(ctx , user:discord.Member):
 	links = ["https://media1.giphy.com/media/3xz2BHM2zwM3mFfYgo/giphy.gif" , "https://media1.tenor.com/images/23c8ff60d99a42f1d42fac5845d9913b/tenor.gif?itemid=13531110" , "https://media0.giphy.com/media/m1O4GT06grh7y/giphy.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} KICKED {user.display_name}" , color = discord.Color.red())
-	embbed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/746394605574029362/755748542404100106/Jarvis_2.jpg")
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
 
