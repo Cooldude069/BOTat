@@ -772,6 +772,12 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
+	else:
+		for mention in message.raw_mentions:
+			if mention == 727539383405772901:
+				if member.author.id == 707582024403255317:
+					await message.channel.send("Dont you dare ping him again")
+
 
 	await client.process_commands(message)
 
