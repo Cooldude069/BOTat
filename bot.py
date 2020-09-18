@@ -67,7 +67,7 @@ async def display(ctx , user:discord.Member):
 		embed.add_field(name = "Using a Smartphone" , value = "" , inline = False)
 	else:
 		embed.add_field(name = "Using a Desktop" , value = "" , inline = False)
-	embed.add_field(name = "Has the Roles:" , inline = False)
+	embed.add_field(name = "Has the Roles:" , value = "" , inline = False)
 	for role in user.roles:
 		embed.add_field(name = "" , value = f"{role.mention}")
 		
