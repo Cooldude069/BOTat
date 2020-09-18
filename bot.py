@@ -38,8 +38,9 @@ async def gstart(ctx , time=0 , * ,prize = None):
 	rlist = []
 	rxn = "🎉"
 	await msg.add_reaction(rxn)
+	mrxn = discord.utils.get(client.messages , id = msg.id)
 	await asyncio.sleep(time)
-	for rcn in msg.reactions:
+	for rcn in mrxn:
 		rlist = await client.get_reaction_users(rcn)
 		
 	await ctx.send(f"The winner is {random.choice(rlist).mention}!!!")
