@@ -775,7 +775,7 @@ async def on_message(message):
 	else:
 		for mention in message.raw_mentions:
 			if mention == 727539383405772901:
-				if member.author.id == 707582024403255317:
+				if message.author.id == 707582024403255317:
 					await message.channel.send("Dont you dare ping him again")
 
 
