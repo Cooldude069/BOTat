@@ -30,6 +30,17 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.commmand(aliases = ['Warn' , "WARN"])
+async def warn(ctx , user:discord.Member , * , message = None):
+	if ctx.message.author.guild_permissions.manage_server:
+		embed = discord.Embed(title = "You have been warned!" , color = discord.Color.red())
+		embed.add_field(name = f"Reason : {message}" , value = f"By : {ctx.author.display_name}")
+		await user.create_dm()
+		await user.dm_channel.send(embed = embed)
+		E2 = discord.Embed(title = f"Warned {user.display_name} | Reason -> {message}")
+	else:
+		await ctx.send("You are not authorized to use this command")
+	
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
