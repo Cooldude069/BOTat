@@ -30,6 +30,12 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def testing(ctx):
+	embed = discord.Embed(title = "Testing Video" , color = discord.Color.green())
+	embed.set_image(url = "https://www.youtube.com/watch?v=sYvKjZKunyo")
+	await ctx.send(embed = embed)
+	
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
