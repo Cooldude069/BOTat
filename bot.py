@@ -86,9 +86,9 @@ async def display(ctx , user:discord.Member = None):
 	embed.set_thumbnail(url = user.avatar_url)
 	embed.add_field(name = f"Currently:" , value = f"{user.status}")
 	if user.is_on_mobile():
-		embed.add_field(name = "Using:" , value = "Smartphone" , inline = False)
+		embed.add_field(name = "Using:" , value = "Smartphone")
 	else:
-		embed.add_field(name = "Using:" , value = "Desktop" , inline = False)
+		embed.add_field(name = "Using:" , value = "Desktop")
 	embed.add_field(name = "Has the Roles" , value = "shown below" , inline = False)
 	for role in user.roles:
 		embed.add_field(name = "->" , value = f"{role.mention}")
