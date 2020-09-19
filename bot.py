@@ -62,14 +62,14 @@ async def coin_flip(ctx):
 async def display(ctx , user:discord.Member):
 	embed = discord.Embed(title = f"{user.display_name}'s ID Card" , color = discord.Color.magenta())
 	embed.set_thumbnail(url = user.avatar_url)
-	embed.add_field(name = f"Currently {user.status}" , value = "")
+	embed.add_field(name = f"Currently:" , value = f"{user.status}")
 	if user.is_on_mobile():
-		embed.add_field(name = "Using a Smartphone" , value = "" , inline = False)
+		embed.add_field(name = "Using a Smartphone" , value = "idk Android or Ios" , inline = False)
 	else:
-		embed.add_field(name = "Using a Desktop" , value = "" , inline = False)
-	embed.add_field(name = "Has the Roles:" , value = "" , inline = False)
+		embed.add_field(name = "Using a Desktop" , value = "idk Windows or MacOs" , inline = False)
+	embed.add_field(name = "Has the Roles" , value = "shown below" , inline = False)
 	for role in user.roles:
-		embed.add_field(name = "" , value = f"{role.mention}")
+		embed.add_field(name = "->" , value = f"{role.mention}")
 		
 	await ctx.send(embed = embed)
 	
