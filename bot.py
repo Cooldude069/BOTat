@@ -51,7 +51,9 @@ async def warn(ctx , user:discord.Member , * , message = None):
 async def slap(ctx , user:discord.Member):
 	links = ["https://thumbs.gfycat.com/ColdChillyApe-max-1mb.gif","https://i.imgur.com/lGIlmT1.gif","https://i.pinimg.com/originals/e9/97/1d/e9971da9158f49c65c6292464d215dcd.gif","https://i.pinimg.com/originals/68/de/67/68de679cc20000570e8a7d9ed9218cd3.gif","https://media1.tenor.com/images/9ea4fb41d066737c0e3f2d626c13f230/tenor.gif?itemid=7355956","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://i.imgur.com/fm49srQ.gif","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://data.whicdn.com/images/226944712/original.gif" , "https://media3.giphy.com/media/srD8JByP9u3zW/200.gif" , "https://media1.tenor.com/images/814c84a90cc8b6a9826001b09982294f/tenor.gif?itemid=13764625" , "https://media.tenor.com/images/482b1c5415f3809d76153447ea2dedb5/tenor.gif" , "https://thumbs.gfycat.com/ForkedFamousGalapagoshawk-size_restricted.gif" , "https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} SLAPPED {user.display_name}" , color = discord.Color.red())
-	embed.set_image(url = random.choice(links))
+	link = random.choice(links)
+	embed.set_image(url =link)
+	print(f"Link-> {link})
 	await ctx.send(embed = embed)
 	
 @client.command(aliases = ["Hit" , 'HIT'])
