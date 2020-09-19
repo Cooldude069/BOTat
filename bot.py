@@ -32,7 +32,7 @@ async def on_ready():
 	
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
-	if ctx.message.author.guild_permissions.manage_server:
+	if ctx.message.author.guild_permissions.manage_roles:
 		embed = discord.Embed(title = "You have been warned!" , color = discord.Color.red())
 		embed.add_field(name = f"Reason : {message}" , value = f"By : {ctx.author.display_name}")
 		embed.set_thumbnail(url = ctx.author.guild.banner_url)
