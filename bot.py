@@ -35,9 +35,11 @@ async def warn(ctx , user:discord.Member , * , message = None):
 	if ctx.message.author.guild_permissions.manage_server:
 		embed = discord.Embed(title = "You have been warned!" , color = discord.Color.red())
 		embed.add_field(name = f"Reason : {message}" , value = f"By : {ctx.author.display_name}")
+		embed.set_thumbnail(url = ctx.author.guild.banner_url)
 		await user.create_dm()
 		await user.dm_channel.send(embed = embed)
-		E2 = discord.Embed(title = f"Warned {user.display_name} | Reason -> {message}")
+		E2 = discord.Embed(title = f"Warned {user.display_name} | Reason -> {message}" , color = discord.Color.green())
+		await ctx.send(embed = E2)
 	else:
 		await ctx.send("You are not authorized to use this command")
 	
