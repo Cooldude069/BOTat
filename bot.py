@@ -30,6 +30,11 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def testing(ctx):
+	if ctx.author.id == 727539383405772901:
+		await ctx.send(f"Joined the server on {ctx.author.joined_at.day} {ctx.author.joined_at.month} {ctx.author.joined_at.year}")
+	
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
