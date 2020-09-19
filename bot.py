@@ -30,12 +30,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command()
-async def testing(ctx):
-	embed = discord.Embed(title = "Testing Video" , color = discord.Color.green())
-	embed.set_image(url = "https://static.wixstatic.com/media/9c8bab_551ea43d32db4c099dadc8d76509da95~mv2.gif")
-	await ctx.send(embed = embed)
-	
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
@@ -98,13 +92,17 @@ async def rtr(ctx , user:discord.Member):
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
 async def guide(ctx):
+	embed = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
+	embed.set_image(url = "https://static.wixstatic.com/media/9c8bab_551ea43d32db4c099dadc8d76509da95~mv2.gif")
+	msg = await ctx.send(embed = embed)
+	await asyncio.sleep(31)
 	guide = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
 	guide.add_field(name = ":map:Full Guide" , value = "https://bit.ly/2ZHsF2A")
 	guide.add_field(name = "<:among_us:755993889508163655>Crewmate" , value = "https://bit.ly/3khxtU6")
 	guide.add_field(name = ":detective:Imposter" , value = "https://bit.ly/2ZHsF2A")
 	guide.add_field(name = "To learn about maps use the below command" , value = "jarvis maps" , inline = False)
 	guide.set_thumbnail(url = "https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
-	await ctx.send(embed = guide)
+	await msg.edit(embed = guide)
 	
 
 @client.command(aliases = ['Maps' , 'MAPS'])
