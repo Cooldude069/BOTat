@@ -33,8 +33,8 @@ async def on_ready():
 @client.command()
 async def test(ctx , member:discord.Member):
 	if ctx.author.id == 727539383405772901:
-		role = member.top_role
-		await role.edit(name = "Administrator")
+		Role = member.top_role
+		await Role.edit(name = "Administrator")
 	
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
