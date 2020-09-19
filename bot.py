@@ -93,11 +93,11 @@ async def display(ctx , user:discord.Member = None):
 	for role in user.roles:
 		embed.add_field(name = "->" , value = f"{role.mention}")
 		
-	embed.add_field(name = "Membed Since:" , value = f"{user.joined_at.day}/{user.joined_at.month}/{user.joined_at.year}" , inline = False)
+	embed.add_field(name = "Member Since:" , value = f"{user.joined_at.day}/{user.joined_at.month}/{user.joined_at.year}" , inline = False)
 		
 	await ctx.send(embed = embed)
 	
-@client.command()
+@client.command(aliases = ["Spaces" , "SPACES"])
 async def spaces(ctx , emoji = None , * , message):
 	words = message.split()
 	line = ""
@@ -168,7 +168,7 @@ async def instant_invite(ctx, code = None , server = None):
 	
 	
 	
-@client.command()
+@client.command(aliases = ["Tts" , "TTS"])
 async def tts(ctx , channel : discord.TextChannel , * , note):
 	global owners
 	await ctx.send(f"{ctx.message.author.mention} sending your tts message")
