@@ -10,7 +10,6 @@ import asyncio
 from discord.utils import get
 import datetime
 from discord import Spotify
-import praw
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -31,18 +30,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-reddit = praw.Reddit(client_id='745955990767403039',
-                     client_secret='Ytzza_FDncU5dxlnwqJFCwFQgRoIvhyi',
-                     user_agent='https://developers.whatismybrowser.com/useragents/parse/572332-discord-bot')
-	
-@client.command()
-async def meme(ctx):
-	memes_submissions = reddit.subreddit('memes').hot()
-	post_to_pick = random.randint(1, 10)
-	for i in range(0, post_to_pick):
-		submission = next(x for x in memes_submissions if not x.stickied)
-
-	await ctx.send(submission.url)
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
