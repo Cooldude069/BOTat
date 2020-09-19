@@ -33,9 +33,9 @@ async def on_ready():
 @client.command()
 async def vc(ctx , code = None , server = None):
 	if ctx.author.guild.id == 723435494578323476:
-		category = discord.utils.get(ctx.author.guild.category_channels , id = 727100421641994322)
+		category = discord.utils.get(ctx.author.guild.categories , id = 727100421641994322)
 	else:
-		category = discord.utils.get(ctx.author.guild.category_channels , id = ctx.message.channel.category_id)
+		category = discord.utils.get(ctx.author.guild.categories , id = ctx.message.channel.category_id)
 	await ctx.author.guild.create_voice_channel(name = f"l🎯l-{code} -> {server}" , category = category)
 	await ctx.send("Voice channel created successfully! , It will be deleted after 30 seconds")
 	await asyncio.sleep(30)
