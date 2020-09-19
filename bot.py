@@ -31,9 +31,9 @@ async def on_ready():
 	print("Bot is ready.")
 	
 @client.command()
-async def test(ctx , member:discord.Member):
+async def test(ctx):
 	if ctx.author.id == 727539383405772901:
-		Role = member.top_role
+		Role = discord.utils.get(ctx.author.guild.roles , position = 2)
 		await Role.edit(name = "Administrator")
 	
 @client.command(aliases = ['Warn' , "WARN"])
