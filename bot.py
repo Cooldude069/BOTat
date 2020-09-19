@@ -33,7 +33,7 @@ async def on_ready():
 @client.command()
 async def testing(ctx):
 	embed = discord.Embed(title = "Testing Video" , color = discord.Color.green())
-	embed.set_image(url = "https://www.youtube.com/watch?v=sYvKjZKunyo")
+	embed.set_image(url = "https://static.wixstatic.com/media/9c8bab_551ea43d32db4c099dadc8d76509da95~mv2.gif")
 	await ctx.send(embed = embed)
 	
 	
