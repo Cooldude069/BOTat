@@ -30,10 +30,6 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.command()
-async def testing(ctx):
-	if ctx.author.id == 727539383405772901:
-		await ctx.send(f"Joined the server on {ctx.author.joined_at.day} {ctx.author.joined_at.month} {ctx.author.joined_at.year}")
 	
 
 @client.command(aliases = ['Warn' , "WARN"])
@@ -81,17 +77,23 @@ async def coin_flip(ctx):
 	await msg.edit(embed = nembed)
 	
 @client.command(aliases = ['Display' , 'DISPLAY'])
-async def display(ctx , user:discord.Member):
+async def display(ctx , user:discord.Member = None):
+	if user == None:
+		user = ctx.message.author
+	else:
+		user = user
 	embed = discord.Embed(title = f"{user.display_name}'s ID Card" , color = discord.Color.magenta())
 	embed.set_thumbnail(url = user.avatar_url)
 	embed.add_field(name = f"Currently:" , value = f"{user.status}")
 	if user.is_on_mobile():
-		embed.add_field(name = "Using a Smartphone" , value = "idk Android or Ios" , inline = False)
+		embed.add_field(name = "Using:" , value = "Smartphone" , inline = False)
 	else:
-		embed.add_field(name = "Using a Desktop" , value = "idk Windows or MacOs" , inline = False)
+		embed.add_field(name = "Using:" , value = "Desktop" , inline = False)
 	embed.add_field(name = "Has the Roles" , value = "shown below" , inline = False)
 	for role in user.roles:
 		embed.add_field(name = "->" , value = f"{role.mention}")
+		
+	embed.add_field(name = "Membed Since:" , value = f"{user.joined_at.day}/{user.joined_at.month}/{user.joined_at.year}" , inline = False)
 		
 	await ctx.send(embed = embed)
 	
