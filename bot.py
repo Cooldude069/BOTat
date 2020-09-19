@@ -30,6 +30,18 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@client.command()
+async def vc(ctx , code = None , server = None):
+	if ctx.author.guild.id == 723435494578323476:
+		category = discord.utils.get(ctx.author.guild.category_channels , id = 727100421641994322)
+	else:
+		category = ctx.message.category_channel
+	await ctx.author.guild.create_voice_channel(name = f"l🎯l-{code} -> {server}" , category = category)
+	await ctx.send("Voice channel created successfully! , It will be deleted after 30 seconds")
+	await asyncio.sleep(30)
+	vch = discord.utils.get(ctx.author.guild.voice_channels , name = f"l🎯l-{code} -> {server}" )
+	await vch.delete()
+	
 	
 
 @client.command(aliases = ['Warn' , "WARN"])
