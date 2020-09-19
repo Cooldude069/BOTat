@@ -30,7 +30,7 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-@client.commmand(aliases = ['Warn' , "WARN"])
+@client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
 	if ctx.message.author.guild_permissions.manage_server:
 		embed = discord.Embed(title = "You have been warned!" , color = discord.Color.red())
