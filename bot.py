@@ -53,7 +53,6 @@ async def slap(ctx , user:discord.Member):
 	embed = discord.Embed(title = f"{ctx.author.display_name} SLAPPED {user.display_name}" , color = discord.Color.red())
 	link = random.choice(links)
 	embed.set_image(url =link)
-	print(f"Link-> {link}")
 	await ctx.send(embed = embed)
 	
 @client.command(aliases = ["Hit" , 'HIT'])
