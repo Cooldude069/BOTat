@@ -10,6 +10,7 @@ import asyncio
 from discord.utils import get
 import datetime
 from discord import Spotify
+import praw
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -30,6 +31,18 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+reddit = praw.Reddit(client_id='745955990767403039',
+                     client_secret='Ytzza_FDncU5dxlnwqJFCwFQgRoIvhyi',
+                     user_agent='https://developers.whatismybrowser.com/useragents/parse/572332-discord-bot')
+	
+@client.command()
+async def meme(ctx):
+	memes_submissions = reddit.subreddit('memes').hot()
+	post_to_pick = random.randint(1, 10)
+	for i in range(0, post_to_pick):
+		submission = next(x for x in memes_submissions if not x.stickied)
+
+	await ctx.send(submission.url)
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
@@ -49,7 +62,7 @@ async def warn(ctx , user:discord.Member , * , message = None):
 	
 @client.command(aliases = ["Slap" , "SLAP"])
 async def slap(ctx , user:discord.Member):
-	links = [""https://thumbs.gfycat.com/ColdChillyApe-max-1mb.gif,"https://i.imgur.com/lGIlmT1.gif","https://i.pinimg.com/originals/e9/97/1d/e9971da9158f49c65c6292464d215dcd.gif","https://i.pinimg.com/originals/68/de/67/68de679cc20000570e8a7d9ed9218cd3.gif","https://media1.tenor.com/images/9ea4fb41d066737c0e3f2d626c13f230/tenor.gif?itemid=7355956","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://i.imgur.com/fm49srQ.gif","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://data.whicdn.com/images/226944712/original.gif" , "https://media3.giphy.com/media/srD8JByP9u3zW/200.gif" , "https://media1.tenor.com/images/814c84a90cc8b6a9826001b09982294f/tenor.gif?itemid=13764625" , "https://media.tenor.com/images/482b1c5415f3809d76153447ea2dedb5/tenor.gif" , "https://thumbs.gfycat.com/ForkedFamousGalapagoshawk-size_restricted.gif" , "https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
+	links = ["https://thumbs.gfycat.com/ColdChillyApe-max-1mb.gif","https://i.imgur.com/lGIlmT1.gif","https://i.pinimg.com/originals/e9/97/1d/e9971da9158f49c65c6292464d215dcd.gif","https://i.pinimg.com/originals/68/de/67/68de679cc20000570e8a7d9ed9218cd3.gif","https://media1.tenor.com/images/9ea4fb41d066737c0e3f2d626c13f230/tenor.gif?itemid=7355956","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://i.imgur.com/fm49srQ.gif","https://media.giphy.com/media/10Am8idu3qBYRy/giphy.gif","https://data.whicdn.com/images/226944712/original.gif" , "https://media3.giphy.com/media/srD8JByP9u3zW/200.gif" , "https://media1.tenor.com/images/814c84a90cc8b6a9826001b09982294f/tenor.gif?itemid=13764625" , "https://media.tenor.com/images/482b1c5415f3809d76153447ea2dedb5/tenor.gif" , "https://thumbs.gfycat.com/ForkedFamousGalapagoshawk-size_restricted.gif" , "https://64.media.tumblr.com/tumblr_ma7eshKF761rg550io1_250.gif" , "https://i.pinimg.com/originals/1e/59/ec/1e59ecec2c4231509f633c7cea00e78d.gif" , "https://i.pinimg.com/originals/49/fe/91/49fe91d5ee9827b8400b8a30c55b6323.gif"]
 	embed = discord.Embed(title = f"{ctx.author.display_name} SLAPPED {user.display_name}" , color = discord.Color.red())
 	embed.set_image(url = random.choice(links))
 	await ctx.send(embed = embed)
@@ -313,14 +326,6 @@ async def poll(ctx, question , *options : str):
 		else:
 			await ctx.send("You are not authorized to use this command")
 	
-@client.command(aliases = ['MEME', 'Meme'])
-async def meme(ctx):
-	emoji_1 = '🤣'
-	emoji_2 = '👍'
-	emoji_3 = '👎'
-	await ctx.message.add_reaction(emoji_1)
-	await ctx.message.add_reaction(emoji_2)
-	await ctx.message.add_reaction(emoji_3)
 	
 @client.command(aliases= ['Offence' , 'Complain', 'complain', 'COMPLAIN', 'OFFENCE'])
 async def offence(ctx, * ,complain):
