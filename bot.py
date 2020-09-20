@@ -10,7 +10,6 @@ import asyncio
 from discord.utils import get
 import datetime
 from discord import Spotify
-import youtube_dl
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -30,15 +29,6 @@ parts = []
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
-	
-@client.command(pass_context=True)
-async def testing(ctx, url):
-	server = ctx.message.server
-	await client.say ('Music now playing...')
-	voice_client = client.voice_client_in(server)
-	player = await voice_client.create_ytdl_player(url, ytdl_options={'default_search': 'auto'} ,  after=lambda: check_queue(server.id))
-	players[server.id] = player
-	player.start()
 	
 
 @client.command(aliases = ['Warn' , "WARN"])
