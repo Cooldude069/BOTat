@@ -160,7 +160,8 @@ async def instant_invite(ctx, code = None , server = None):
 	else:
 		category = discord.utils.get(ctx.author.guild.categories , id = ctx.message.channel.category_id)
 	await ctx.author.guild.create_voice_channel(name = f"l🎯l-{code} -> {server}" , category = category)
-	await ctx.send("Voice channel created successfully! , It will be deleted after 30 minutes")
+	vch = discord.utils.get(ctx.author.guild.voice_channels , name = f"l🎯l-{code} -> {server}" )
+	await ctx.send(f"{ctx.author.mention} Your voice channel created successfully! {vch.mention}, It will be deleted after 30 minutes")
 	role = discord.utils.get(ctx.author.guild.roles , name = 'Among Us')
 	for member in role.members:
 		await member.create_dm()
@@ -172,7 +173,6 @@ async def instant_invite(ctx, code = None , server = None):
 		await member.dm_channel.send(embed = embed)
 	await ctx.send("Instant invite sent successfully")
 	await asyncio.sleep(1770)
-	vch = discord.utils.get(ctx.author.guild.voice_channels , name = f"l🎯l-{code} -> {server}" )
 	await vch.delete()
 	await ctx.send(f"{ctx.author.mention}, your request timed out. Voice channel successfully deleted")
 	
