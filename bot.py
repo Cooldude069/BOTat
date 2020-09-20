@@ -33,7 +33,7 @@ async def on_ready():
 @client.command()
 async def vc(ctx):
 	await ctx.author.guild.create_voice_channel(name = f"Testing" , category = ctx.message.channel.category)
-	vc = discord.utils.get(ctx.guild.categories , name = "Testing")
+	vc = discord.utils.get(ctx.guild.voice_channels , name = "Testing")
 	await ctx.send(f"{vc.mention}")
 
 @client.command(aliases = ['Warn' , "WARN"])
