@@ -36,7 +36,7 @@ async def warn(ctx , user:discord.Member , * , message = None):
 	if ctx.message.author.guild_permissions.manage_roles:
 		embed = discord.Embed(title = "You have been warned!" , color = discord.Color.red())
 		embed.add_field(name = f"Reason : {message}" , value = f"By : {ctx.author.display_name}")
-		embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/746394605574029362/755748542404100106/Jarvis_2.jpg")
+		embed.set_thumbnail(url = "https://media.tenor.com/images/71a4376f7eb5247ef5e1ca772eeb12f8/tenor.gif")
 		await user.create_dm()
 		await user.dm_channel.send(embed = embed)
 		E2 = discord.Embed(title = f"Warned {user.display_name} | Reason -> {message}" , color = discord.Color.green())
