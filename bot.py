@@ -115,42 +115,47 @@ async def rtr(ctx , user:discord.Member):
 	
 @client.command(aliases = ["Guide" , "GUIDE"])
 async def guide(ctx):
-	embed = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
-	embed.set_image(url = "https://static.wixstatic.com/media/9c8bab_551ea43d32db4c099dadc8d76509da95~mv2.gif")
-	msg = await ctx.send(embed = embed)
-	await asyncio.sleep(31)
-	guide = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
-	guide.add_field(name = ":map:Full Guide" , value = "https://bit.ly/2ZHsF2A")
-	guide.add_field(name = "<:among_us:755993889508163655>Crewmate" , value = "https://bit.ly/3khxtU6")
-	guide.add_field(name = ":detective:Imposter" , value = "https://bit.ly/2ZHsF2A")
-	guide.add_field(name = "To learn about maps use the below command" , value = "jarvis maps" , inline = False)
-	guide.set_thumbnail(url = "https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
-	await msg.edit(embed = guide)
+	if not ctx.message.author.guild.id == 757239002826014731:
+		embed = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
+		embed.set_image(url = "https://static.wixstatic.com/media/9c8bab_551ea43d32db4c099dadc8d76509da95~mv2.gif")
+		msg = await ctx.send(embed = embed)
+		await asyncio.sleep(31)
+		guide = discord.Embed(title = "Among Us Guide Page" , color = discord.Color.orange())
+		guide.add_field(name = ":map:Full Guide" , value = "https://bit.ly/2ZHsF2A")
+		guide.add_field(name = "<:among_us:755993889508163655>Crewmate" , value = "https://bit.ly/3khxtU6")
+		guide.add_field(name = ":detective:Imposter" , value = "https://bit.ly/2ZHsF2A")
+		guide.add_field(name = "To learn about maps use the below command" , value = "jarvis maps" , inline = False)
+		guide.set_thumbnail(url = "https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO")
+		await msg.edit(embed = guide)
 	
 
 @client.command(aliases = ['Maps' , 'MAPS'])
 async def maps(ctx):
-	among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld \nyou can choose between skeld, mirahq and polus" , color = discord.Color.orange())
-	among.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
-	await ctx.send(embed = among)
+	if not ctx.message.author.guild.id == 757239002826014731:
+		among = discord.Embed(title = "Choose one of the below maps by typing the command `info_{map name}`.\n Eg. info_skeld \nyou can choose between skeld, mirahq and polus" , color = discord.Color.orange())
+		among.set_thumbnail(url = 'https://lh3.googleusercontent.com/VHB9bVB8cTcnqwnu0nJqKYbiutRclnbGxTpwnayKB4vMxZj8pk1220Rg-6oQ68DwAkqO')
+		await ctx.send(embed = among)
 	
 @client.command(aliases = ['Info_skeld' , 'INFO_SKELD'])
 async def info_skeld(ctx):
-	skeld = discord.Embed(title = 'Skeld' , color = discord.Color.orange())
-	skeld.set_image(url = 'https://preview.redd.it/tv8ef4iqszh41.png?auto=webp&s=46faf550020fd59c8d8bab29705b0fcb80521850')
-	await ctx.send(embed = skeld)
+	if not ctx.message.author.guild.id == 757239002826014731:
+		skeld = discord.Embed(title = 'Skeld' , color = discord.Color.orange())
+		skeld.set_image(url = 'https://preview.redd.it/tv8ef4iqszh41.png?auto=webp&s=46faf550020fd59c8d8bab29705b0fcb80521850')
+		await ctx.send(embed = skeld)
 	
 @client.command(aliases = ['Info_polus' , 'INFO_POLUS'])
 async def info_polus(ctx):
-	polus = discord.Embed(title = 'Polus' , color = discord.Color.orange())
-	polus.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/4/4c/Polus.png/revision/latest?cb=20200907133344')
-	await ctx.send(embed = polus)
+	if not ctx.message.author.guild.id == 757239002826014731:
+		polus = discord.Embed(title = 'Polus' , color = discord.Color.orange())
+		polus.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/4/4c/Polus.png/revision/latest?cb=20200907133344')
+		await ctx.send(embed = polus)
 	
 @client.command(aliases = ['Info_mirahq' , 'INFO_MIRAHQ'])
 async def info_mirahq(ctx):
-	mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
-	mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
-	await ctx.send(embed = mira)
+	if not ctx.message.author.guild.id == 757239002826014731:
+		mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
+		mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
+		await ctx.send(embed = mira)
 	
 @client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
 async def instant_invite(ctx, code = None , server = None):
