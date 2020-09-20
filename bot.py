@@ -30,7 +30,11 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
-	
+@client.command()
+async def vc(ctx):
+	await ctx.author.guild.create_voice_channel(name = f"Testing" , category = ctx.message.channel.category)
+	vc = discord.utils.get(ctx.guild.categories , name = "Testing")
+	await ctx.send(f"{vc.mention}")
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
