@@ -55,7 +55,7 @@ async def meme_count(ctx , user:discord.Member = None):
 			user = user
 			
 		meme = 0
-		channel = discord.utils.get(ctx.author.guild.test_channels , id = 750631580837609543)
+		channel = discord.utils.get(ctx.author.guild.text_channels , id = 750631580837609543)
 		for message in channel.history(limit = 300):
 			if message.author == user:
 				meme += 1
