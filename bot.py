@@ -58,7 +58,9 @@ async def meme_count(ctx , user:discord.Member = None):
 		channel = discord.utils.get(ctx.author.guild.text_channels , id = 750631580837609543)
 		async for message in channel.history(limit = 300):
 			if message.author == user:
-				meme += 1
+				if len(message.content) == 0:
+					meme += 1
+					
 		await ctx.send(f"{user.mention} has posted {meme} memes")
 	
 	
