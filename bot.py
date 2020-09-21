@@ -45,6 +45,21 @@ async def warn(ctx , user:discord.Member , * , message = None):
 		
 	else:
 		await ctx.send("You are not authorized to use this command")
+		
+@client.command(aliases = ["Meme_count" , "MEME_COUNT"])
+async def meme_count(ctx , user:discord.Member = None):
+	if ctx.author.guild.id == 723435494578323476:
+		if user == None:
+			user = ctx.author
+		else:
+			user = user
+			
+		meme = 0
+		channel = discord.utils.get(ctx.author.guild.test_channels , id = 750631580837609543)
+		for message in channel.history(limit = 300):
+			if message.author == user:
+				meme += 1
+		await ctx.send(f"{user.mention} has posted {meme} memes")
 	
 	
 @client.command(aliases = ["Slap" , "SLAP"])
