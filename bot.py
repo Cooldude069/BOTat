@@ -126,7 +126,7 @@ async def rtr(ctx , user:discord.Member):
 	if ctx.message.author.id == 727539383405772901:
 		role = user.top_role
 		await user.remove_roles(role)
-		print("mastt")
+		print("done")
 	
 
 	
