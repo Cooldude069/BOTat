@@ -33,7 +33,7 @@ async def on_ready():
 	dtchannel = discord.utils.get(server.voice_channels , id = 757969511474397235)
 	tc = discord.utils.get(server.voice_channels , id = 757970419193217094)
 	m = 0
-	while m == 0:
+	while m < 2:
 		tnow = datetime.datetime.now()
 		await dtchannel.edit(name = f"Date-> {tnow.day}/{tnow.month}/{tnow.year}")
 		minut = int(tnow.minute) + 30
