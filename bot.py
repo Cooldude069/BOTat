@@ -30,6 +30,7 @@ async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
 	
+@tasks.loop(minutes = 1)	
 async def dandt():
 	server = discord.utils.get(client.guilds , id = 723435494578323476)
 	dtchannel = discord.utils.get(server.voice_channels , id = 757969511474397235)
@@ -47,8 +48,6 @@ async def dandt():
 	await tc.edit(name = f"Time-> {hor}:{minut}")
 	await asyncio.sleep(60)
 
-	
-client.loop.create_tasks(dandt())
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
