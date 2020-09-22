@@ -34,14 +34,16 @@ async def on_ready():
 	tc = discord.utils.get(server.voice_channels , id = 757970419193217094)
 	m = 0
 	while m == 0:
-		time = datetime.datetime.now()
-		await dtchannel.edit(name = f"Date-> {time.day}/{time.month}/{time.year}")
-		minut = int(time.minute) + 30
+		tnow = datetime.datetime.now()
+		await dtchannel.edit(name = f"Date-> {tnow.day}/{tnow.month}/{tnow.year}")
+		minut = int(tnow.minute) + 30
 		if minut < 60:
-			hor = int(time.hour) + 5
+			hor = int(tnow.hour) + 5
 		else:
-			hor = int(time.hour) + 6
+			hor = int(tnow.hour) + 6
 			minut = minut - 60
+			
+			
 		await tc.edit(name = f"Time-> {hor}:{minut}")
 	
 
