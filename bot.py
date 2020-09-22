@@ -29,6 +29,14 @@ parts = []
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	server = discord.utils.get(client.guilds , id = 723435494578323476)
+	dtchannel = discord.utils.get(server.voice_channels , id = 757969511474397235)
+	timechannel = discord.utils.get(server.voice_channels , id = 757970419193217094)
+	m = 0
+	while m == 0:
+		time = datetime.datetime.now()
+		await dtchannel.edit(name = f"Date-> {time.day}/{time.month}/{time.year}")
+		await timechannel.edit(time = f"Time-> {time.hour}:{time.minute}")
 	
 
 @client.command(aliases = ['Warn' , "WARN"])
