@@ -29,23 +29,26 @@ parts = []
 async def on_ready():
 	change_status.start()
 	print("Bot is ready.")
+	
+async def dandt():
 	server = discord.utils.get(client.guilds , id = 723435494578323476)
 	dtchannel = discord.utils.get(server.voice_channels , id = 757969511474397235)
 	tc = discord.utils.get(server.voice_channels , id = 757970419193217094)
-	m = 0
-	while m < 2:
-		tnow = datetime.datetime.now()
-		await dtchannel.edit(name = f"Date-> {tnow.day}/{tnow.month}/{tnow.year}")
-		minut = int(tnow.minute) + 30
-		if minut < 60:
-			hor = int(tnow.hour) + 5
-		else:
-			hor = int(tnow.hour) + 6
-			minut = minut - 60
-			
-			
-		await tc.edit(name = f"Time-> {hor}:{minut}")
+	tnow = datetime.datetime.now()
+	await dtchannel.edit(name = f"Date-> {tnow.day}/{tnow.month}/{tnow.year}")
+	minut = int(tnow.minute) + 30
+	if minut < 60:
+		hor = int(tnow.hour) + 5
+	else:
+		hor = int(tnow.hour) + 6
+		minut = minut - 60
+
+
+	await tc.edit(name = f"Time-> {hor}:{minut}")
+	await asyncio.sleep(60)
+
 	
+client.loop.create_tasks(dandt())
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
