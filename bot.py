@@ -85,7 +85,7 @@ async def coin_flip(ctx):
 	embed = discord.Embed(title = f"{ctx.author.display_name} Has flipped a coin" , color = discord.Color.orange())
 	embed.set_thumbnail(url = ctx.author.avatar_url)
 	embed.set_image(url = "https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
-	links = ["https://cdn.discordapp.com/attachments/730075471269593150/756389061450793010/Screenshot_1045.png" , "https://cdn.discordapp.com/attachments/730075471269593150/756389088705118258/Screenshot_1044.png"]
+	links = ["https://media.tenor.com/images/d9cc74bec0a2a582d1887045c62595c9/tenor.gif" , "https://media.tenor.com/images/1de5555846dc3e3cd279983cbd2e986d/tenor.gif"]
 	msg = await ctx.send(embed = embed)
 	nembed = discord.Embed(title = f"And the result is ....." , color = discord.Color.orange())
 	nembed.set_image(url = random.choice(links)) 
