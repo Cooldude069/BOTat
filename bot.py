@@ -46,8 +46,6 @@ async def dandt():
 
 
 	await tc.edit(name = f"Time-> {hor}:{minut}")
-	await asyncio.sleep(60)
-
 
 @client.command(aliases = ['Warn' , "WARN"])
 async def warn(ctx , user:discord.Member , * , message = None):
