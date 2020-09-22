@@ -28,6 +28,7 @@ parts = []
 @client.event
 async def on_ready():
 	change_status.start()
+	dandt.start()
 	print("Bot is ready.")
 	
 @tasks.loop(minutes = 1)	
