@@ -36,7 +36,13 @@ async def on_ready():
 	while m == 0:
 		time = datetime.datetime.now()
 		await dtchannel.edit(name = f"Date-> {time.day}/{time.month}/{time.year}")
-		await tc.edit(name = f"Time-> {time.hour}:{time.minute}")
+		minut = int(time.minute) + 30
+		if minut < 60:
+			hor = int(time.hour) + 5
+		else:
+			hor = int(time.hour) + 6
+			minut = minut - 60
+		await tc.edit(name = f"Time-> {hor}:{minut}")
 	
 
 @client.command(aliases = ['Warn' , "WARN"])
