@@ -787,7 +787,7 @@ async def rains(ctx):
 			await asyncio.sleep(delay)
 			await Role.edit(server=ctx.message.guild , role = Role , color = discord.Color(incolor))
 	else:
-		await ctx.send("The command is exclusively made for Rudresh")
+		await ctx.send("The command is exclusively made for Shahid")
 	
 @client.command(aliases = ['Rainbow' , 'RAINBOW'])
 async def rainbow(ctx , Role:discord.Role, delay = 3):
