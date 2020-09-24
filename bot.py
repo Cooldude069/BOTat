@@ -297,6 +297,10 @@ async def category_lock(ctx , category : discord.CategoryChannel , timer = 0):
 				await channel.set_permissions(ctx.guild.default_role , send_messages = True)
 			await ctx.send(f"Locked down {category.mention} for `{timer}`s")
 		print(f"{ctx.message.author} has locked down {category.mention}")
+
+@client.command()
+async def cache_data(ctx):
+	await ctx.send(Bot.chached_messages)
 	
 @client.command(aliases = ['Category_unlock' , 'CATEGORY_UNLOCK' , 'C_unlock' , 'C_UNLOCK' , 'c_unlock'])
 async def category_unlock(ctx , cat : discord.CategoryChannel):
