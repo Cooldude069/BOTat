@@ -300,7 +300,7 @@ async def category_lock(ctx , category : discord.CategoryChannel , timer = 0):
 
 @client.command()
 async def cache_data(ctx):
-	await ctx.send(Bot.chached_messages)
+	await ctx.send(client.chached_messages)
 	
 @client.command(aliases = ['Category_unlock' , 'CATEGORY_UNLOCK' , 'C_unlock' , 'C_UNLOCK' , 'c_unlock'])
 async def category_unlock(ctx , cat : discord.CategoryChannel):
