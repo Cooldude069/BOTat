@@ -193,12 +193,11 @@ async def info_mirahq(ctx):
 
 @client.command()
 async def breaking_news(ctx , * , news = ""):
-	spaces = "   "
 	spade = 0
 	nmsg = await ctx.send(news)
 	while spade < 10:
 		for i in range(15):
-			await nmsg.edit(content = spaces*i , news)
+			await nmsg.edit(content = " "*i , news)
 			await asyncio.sleep(0.5)
 	
 @client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
