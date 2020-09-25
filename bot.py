@@ -193,7 +193,7 @@ async def info_mirahq(ctx):
 
 @client.command()
 async def breaking_news(ctx , * , news = ""):
-	spaces = "** **"
+	spaces = "   "
 	spade = 0
 	nmsg = await ctx.send(news)
 	while spade < 10:
