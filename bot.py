@@ -197,7 +197,8 @@ async def breaking_news(ctx , * , news = ""):
 	nmsg = await ctx.send(news)
 	while spade < 10:
 		for i in range(15):
-			await nmsg.edit(content = " "*i , news)
+			typeable = " "*i + news
+			await nmsg.edit(content = typeable)
 			await asyncio.sleep(0.5)
 	
 @client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
