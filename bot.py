@@ -190,16 +190,6 @@ async def info_mirahq(ctx):
 		mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
 		mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
 		await ctx.send(embed = mira)
-
-@client.command()
-async def breaking_news(ctx , * , news = ""):
-	spade = 0
-	nmsg = await ctx.send(news)
-	while spade < 10:
-		for i in range(15):
-			typeable = " "*i + news
-			await nmsg.edit(content = typeable)
-			await asyncio.sleep(0.5)
 	
 @client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
 async def instant_invite(ctx, code = None , server = None):
