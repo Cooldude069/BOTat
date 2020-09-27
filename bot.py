@@ -34,26 +34,22 @@ async def on_ready():
 
 
 class MyMenu(menus.Menu):
-    async def send_initial_message(self, ctx, channel):
-        return await channel.send(f'Hello {ctx.author}')
+    async def send_initial_message(self, ctx, channel , role):
+        return await channel.send(f'React to this message to get your role')
 
     @menus.button('\N{THUMBS UP SIGN}')
     async def on_thumbs_up(self, payload):
-        await self.message.edit(content=f'Thanks {self.ctx.author}!')
+        await self.ctx.author.add_roles(role)
 
-    @menus.button('\N{THUMBS DOWN SIGN}')
-    async def on_thumbs_down(self, payload):
-        await self.message.edit(content=f"That's not nice {self.ctx.author}...")
 
     @menus.button('\N{BLACK SQUARE FOR STOP}\ufe0f')
     async def on_stop(self, payload):
         self.stop()
 
-# later
 @client.command()
-async def menu_example(ctx):
+async def r_roles(ctx , Role:discord.Role):
     m = MyMenu()
-    await m.start(ctx)
+    await m.start(ctx , Role)
 	
 @tasks.loop(minutes = 1)	
 async def dandt():
