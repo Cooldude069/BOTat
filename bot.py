@@ -33,23 +33,61 @@ async def on_ready():
 	print("Bot is ready.")
 
 
-class MyMenu(menus.Menu):
-    async def send_initial_message(self, ctx, channel , role):
-        return await channel.send(f'React to this message to get your role')
-
-    @menus.button('\N{THUMBS UP SIGN}')
-    async def on_thumbs_up(self, payload):
-        await self.ctx.author.add_roles(role)
-
-
-    @menus.button('\N{BLACK SQUARE FOR STOP}\ufe0f')
-    async def on_stop(self, payload):
-        self.stop()
-
 @client.command()
-async def r_roles(ctx , role:discord.Role):
-    m = MyMenu(role)
-    await m.start(ctx)
+async def embedpages():
+    page1=discord.Embed(
+        title='Page 1/3',
+        description='Description',
+        colour=discord.Colour.orange()
+    )
+    page2=discord.Embed(
+        title='Page 2/3',
+        description='Description',
+        colour=discord.Colour.orange()
+    )
+    page3=discord.Embed(
+        title='Page 3/3',
+        description='Description',
+        colour=discord.Colour.orange()
+    )
+
+    pages=[page1,page2,page3]
+
+    message=await client.say(embed=page1)
+
+    await client.add_reaction(message,'\u23ee')
+    await client.add_reaction(message,'\u25c0')
+    await client.add_reaction(message,'\u25b6')
+    await client.add_reaction(message,'\u23ed')
+
+    i=0
+    emoji=''
+
+    while True:
+        if emoji=='\u23ee':
+            i=0
+            await client.edit_message(message,embed=pages[i])
+        if emoji=='\u25c0':
+            if i>0:
+                i-=1
+                await client.edit_message(message,embed=pages[i])
+        if emoji=='\u25b6':
+            if i<2:
+                i+=1
+                await client.edit_message(message,embed=pages[i])
+        if emoji=='\u23ed':
+            i=2
+            await client.edit_message(message,embed=pages[i])
+
+        res=await client.wait_for_reaction(message=message,timeout=30)
+        if res==None:
+            break
+        if str(res[1])!='<Bots name goes here>': #Example: 'MyBot#1111'
+            emoji=str(res[0].emoji)
+            await client.remove_reaction(message,res[0].emoji,res[1])
+
+    await client.clear_reactions(message)
+
 	
 @tasks.loop(minutes = 1)	
 async def dandt():
