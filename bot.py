@@ -33,57 +33,6 @@ async def on_ready():
 	print("Bot is ready.")
 
 
-@client.command()
-async def embedpages(ctx):
-    page1=discord.Embed(
-        title='Page 1/3',
-        description='Description',
-        colour=discord.Colour.orange()
-    )
-    page2=discord.Embed(
-        title='Page 2/3',
-        description='Description',
-        colour=discord.Colour.orange()
-    )
-    page3=discord.Embed(
-        title='Page 3/3',
-        description='Description',
-        colour=discord.Colour.orange()
-    )
-
-    pages=[page1,page2,page3]
-
-    message=await ctx.send(embed=page1)
-
-    await client.add_reaction(message,'\u23ee')
-    await client.add_reaction(message,'\u25c0')
-    await client.add_reaction(message,'\u25b6')
-    await client.add_reaction(message,'\u23ed')
-
-    i=0
-    emoji=''
-
-    while True:
-        if emoji=='\u23ee':
-            i=0
-            await message.edit(embed=pages[i])
-        if emoji=='\u25c0':
-            if i>0:
-                i-=1
-                await message.edit(embed=pages[i])
-        if emoji=='\u25b6':
-            if i<2:
-                i+=1
-                await message.edit(embed=pages[i])
-        if emoji=='\u23ed':
-            i=2
-            await message.edit(embed=pages[i])
-
-
-	await asyncio.sleep(30)
-
-
-    await message.clear_reactions()
 
 	
 @tasks.loop(minutes = 1)	
