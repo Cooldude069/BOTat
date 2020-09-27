@@ -48,7 +48,7 @@ class MyMenu(menus.Menu):
 
 @client.command()
 async def r_roles(ctx , role:discord.Role):
-    m = MyMenu()
+    m = MyMenu(role)
     await m.start(ctx)
 	
 @tasks.loop(minutes = 1)	
