@@ -47,9 +47,9 @@ class MyMenu(menus.Menu):
         self.stop()
 
 @client.command()
-async def r_roles(ctx , Role:discord.Role):
+async def r_roles(ctx , role:discord.Role):
     m = MyMenu()
-    await m.start(ctx , Role)
+    await m.start(ctx)
 	
 @tasks.loop(minutes = 1)	
 async def dandt():
