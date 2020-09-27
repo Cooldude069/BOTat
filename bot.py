@@ -78,7 +78,7 @@ async def embedpages(ctx):
         if emoji=='\u23ed':
             i=2
             await message.edit(embed=pages[i])
-			
+
 
 	await asyncio.sleep(30)
 
