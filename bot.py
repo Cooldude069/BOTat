@@ -691,6 +691,11 @@ async def gnumber(ctx, gnum):
 	else:
 		await ctx.send("`Guess the number game not created`")
 
+@client.command(aliases = ["Imposter" ,"IMPOSTER" , "Impost" , "IMPOST" , "impost"])
+async def imposter(ctx , user:discord.Member):
+	ak = ["not the", "the"]
+	await ctx.send(f"。　　　　•　 　ﾟ　　。\n.　　　.　　　 　　.　　　　　。　　 。　.\n.　　 。　 ඞ 。　 . •\n• {user.display_name} was {random.choice(ak)} imposter •. 。　.")
+
 
 @client.command(aliases=['Kick', 'KICK'])
 async def kick(ctx, member : discord.Member, *, reason=None):
