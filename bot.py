@@ -694,7 +694,7 @@ async def gnumber(ctx, gnum):
 @client.command(aliases = ["Imposter" ,"IMPOSTER" , "Impost" , "IMPOST" , "impost"])
 async def imposter(ctx , user:discord.Member):
 	ak = ["not the", "the"]
-	await ctx.send(f"。　　　　•　 　ﾟ　　。\n.　　　.　　　 　　.　　　　　。　　 。　.\n.　　 。　 ඞ 。　 . •\n• {user.display_name} was {random.choice(ak)} imposter •. 。　.")
+	await ctx.send(f"。　　　　•　 　ﾟ　　。\n.　　　.　　　 　　.　　　　　。　　 。　.\n.　　 。　 ඞ 。　 . •\n• {user.display_name} was {random.choice(ak)} imposter •. 。　.\n。　　　　•　 　ﾟ　　。\n.　　　.　　　 　　.　　　　　。　　 。　.")
 
 
 @client.command(aliases=['Kick', 'KICK'])
