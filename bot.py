@@ -908,7 +908,7 @@ async def slowend(ctx):
 
 
 @client.command()
-async def countlines(start, lines=0, header=True, begin_start=None):
+async def countlines(ctx , start, lines=0, header=True, begin_start=None):
     if header:
         await ctx.send('{:>10} |{:>10} | {:<20}'.format('ADDED', 'TOTAL', 'FILE'))
         await ctx.send('{:->11}|{:->11}|{:->20}'.format('', '', ''))
