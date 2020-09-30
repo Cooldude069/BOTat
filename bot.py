@@ -909,6 +909,13 @@ async def slowend(ctx):
 	
 @client.event
 async def on_message(message):
+	if message.author.guild.id == 757239002826014731:
+		if message.channel.id != 760746372679991336:
+			if message.content.startswith("https://discord.gg/"):
+				await message.delete()
+				await message.channel.send("You are not allowed to share links here")
+				return
+				
 	if len(message.content) == 0:
 		if message.channel.name == '🤣meme-competiton':
 			meme_1 = '🤣'
@@ -917,6 +924,7 @@ async def on_message(message):
 			await message.add_reaction(meme_1)
 			await message.add_reaction(meme_2)
 			await message.add_reaction(meme_3)
+			return
 					
 	await client.process_commands(message)
 
