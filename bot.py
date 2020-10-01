@@ -11,8 +11,6 @@ from discord.utils import get
 import datetime
 from discord import Spotify
 import menus
-import wikipedia
-from chatbot import Chat , register_call
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
