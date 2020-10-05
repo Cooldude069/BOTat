@@ -10,7 +10,7 @@ import asyncio
 from discord.utils import get
 import datetime
 from discord import Spotify
-import menus
+
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
@@ -31,6 +31,26 @@ async def on_ready():
 	change_status.start()
 	dandt.start()
 	print("Bot is ready.")
+
+@client.command()
+async def add_emoji(ctx , name = None, number = 0):
+	emojis = ["<:yes:759276088412471316>" , "<:why:759276133157044264>" , "<:whoIsImposter:759278022686670880>" , "<:whoareu:759275487222169600>" , "<:what:759276168679129108>",  "<:ruImposter:759275533023444992>" , "<:IsawUkilled:759275796816461834>" , "<:IdontKnow:759275922028757012>" , "<:idontkill:759275576480890880>" , "<:iamImposter:759275748778967070>" , "<:Hello:759276199406600244>" , "<:deadbody:759275974708690974>" , "<:dead:759276019303055360>" , "<:crewmate:759276054320775188>" , "<:letVoteOut:759275840948404266>"]
+	if number == 0:
+		embed = discord.Embed(title = "Emojis" , color = discord.Color.red())
+		for i in range(len(emojis)):
+			embed.add_field(name = "** **" , value = f"{i+1} : {emojis[i]}")
+
+		await ctx.send(embed = embed)
+		await ctx.send(f"Use add_emoji <name> <number> to add the emoji to your server")
+	else:
+		needed = number - 1
+		emojid = ["759276088412471316" , "759276133157044264" , "759278022686670880" , "759275487222169600" , "759276168679129108",  "759275533023444992" , "759275796816461834" , "759275922028757012" , "759275576480890880" , "759275748778967070" , "759276199406600244" , "759275974708690974" , "759276019303055360" , "759276054320775188" , "759275840948404266"]
+		emid = int(emojid[needed])
+		emoji = client.get_emoji(emid)
+		url = emoji.url
+		img = await url.read()
+		await ctx.author.guild.create_custom_emoji(name = name , image = img)
+		await ctx.send("Emoji created")
 
 
 @tasks.loop(minutes = 1)	
@@ -192,7 +212,7 @@ async def info_mirahq(ctx):
 		mira = discord.Embed(title = 'Mira HQ' , color = discord.Color.orange())
 		mira.set_image(url = 'https://vignette.wikia.nocookie.net/among-us-wiki/images/0/0a/Mirahq.png/revision/latest?cb=20200907132939')
 		await ctx.send(embed = mira)
-	
+		
 @client.command(aliases = ['Instant_invite' , 'INSTANT_INVITE' , 'II' , 'ii', 'Ii'])
 async def instant_invite(ctx, code = None , server = None):
 	if ctx.author.guild.id == 723435494578323476:
