@@ -936,7 +936,7 @@ async def on_message(message):
 				return
 				
 	if len(message.content) == 0:
-		if message.channel.name == '🤣meme-competiton':
+		if message.channel.id == 750631580837609543:
 			meme_1 = '🤣'
 			meme_2 = '👍'
 			meme_3 = '👎'
