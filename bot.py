@@ -14,7 +14,7 @@ from discord import Spotify
 
 client = commands.Bot(command_prefix=["jarvis ", "Jarvis ", ""])
 client.remove_command('help')
-status = cycle(['Fortnite on Android', 'Fortnite on Iphone','Wonderful Creation of Samarth','Pokemon','Valorant','PUBG','Clash Royale','Clash of Clans','Injustice' , 'SKRIBBL'])
+status = cycle(['HARI' , 'HARI'])
 global g
 global k
 global i
